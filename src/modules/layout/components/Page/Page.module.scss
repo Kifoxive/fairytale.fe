@@ -1,0 +1,13 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: colors.$primary-black;
+}
+
+.content {
+    height: 100%;
+}

@@ -1,0 +1,28 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    background-color: colors.$primary-yellow;
+    .form {
+        background-color: colors.$white;
+        @include utils.margin(y, 8);
+        @include utils.padding(all, 8);
+        @include utils.borderRadius(md);
+        .title {
+            @include utils.margin(bottom, 6);
+        }
+        .confirmReservation {
+            display: flex;
+            align-items: center;
+            gap: utils.sizer(3);
+            background-color: colors.$secondary-yellow;
+            @include utils.padding(all, 3);
+            @include utils.borderRadius(sm);
+        }
+    }
+}

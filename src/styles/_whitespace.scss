@@ -1,0 +1,18 @@
+$allowed-directions: (left, top, right, bottom); // all, x, y
+
+@mixin whitespace($attribute, $direction, $value) {
+    $result: sizer($value);
+    @if $direction == all {
+        #{$attribute}: $result;
+    } @else if $direction == x {
+        #{$attribute}-left: $result;
+        #{$attribute}-right: $result;
+    } @else if $direction == y {
+        #{$attribute}-top: $result;
+        #{$attribute}-bottom: $result;
+    } @else if list.index($allowed-directions, $direction) {
+        #{$attribute}-#{$direction}: $result;
+    } @else {
+        @error "Direction #{$direction} not allowed.";
+    }
+}

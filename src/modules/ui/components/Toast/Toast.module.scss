@@ -1,0 +1,53 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.toaster {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: utils.sizer(2);
+    min-width: utils.sizer(96);
+    color: colors.$white;
+    @include utils.padding(all, 1.5);
+    @include utils.borderRadius(lg);
+    @include utils.fontSize(sm);
+
+    &_content {
+        display: flex;
+        align-items: center;
+        gap: utils.sizer(2);
+    }
+}
+
+@mixin icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: utils.sizer(9);
+    height: utils.sizer(9);
+    @include utils.borderRadius(md);
+}
+
+.error {
+    &_icon {
+        @include icon();
+        background: #e63a3a;
+    }
+    background: colors.$danger;
+}
+
+.success {
+    &_icon {
+        @include icon();
+        background: colors.$success-dark;
+    }
+    background: colors.$success;
+}
+
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include utils.padding(all, 1);
+    cursor: pointer;
+}

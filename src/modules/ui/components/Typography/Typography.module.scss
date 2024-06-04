@@ -1,0 +1,87 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h6,
+.p {
+    color: colors.$text-primary;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+    font-weight: bold;
+}
+
+// .subheading,
+// .h6 {
+//     font-weight: 600;
+// }
+
+// .h1 {
+//     font-size: utils.sizer(8);
+// }
+
+// .h2 {
+//     font-size: utils.sizer(5);
+// }
+
+.h3 {
+    font-size: 24px;
+}
+
+.h4 {
+    font-size: 18px;
+}
+
+// .h6 {
+//     font-size: utils.sizer(3);
+// }
+
+.p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+// color
+.black {
+    color: colors.$primary-black;
+}
+.white {
+    color: colors.$white;
+}
+.light-yellow {
+    color: colors.$primary-white;
+}
+.yellow {
+    color: colors.$secondary-yellow;
+}
+
+// fontWeight
+.normal {
+    font-weight: 400;
+}
+.medium {
+    font-weight: 500;
+}
+.semibold {
+    font-weight: 600;
+}
+.bold {
+    font-weight: 700;
+}
+
+.link {
+    cursor: pointer;
+    &:hover {
+        opacity: 0.6;
+        text-decoration: none;
+    }
+}
+.underline {
+    text-decoration: underline;
+}

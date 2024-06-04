@@ -1,0 +1,19 @@
+@use '@styles/utils';
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: utils.sizer(5);
+    @include utils.margin(top, 6);
+}
+
+.link {
+    display: inline-block;
+    font-weight: 600;
+    @include utils.margin(top, 6);
+    @include utils.fontSize(sm);
+}
+
+.buttons {
+    @include utils.margin(top, 8);
+}

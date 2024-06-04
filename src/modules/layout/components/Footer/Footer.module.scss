@@ -1,0 +1,46 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: colors.$primary-black;
+    .info {
+        display: flex;
+        justify-content: space-between;
+        @include utils.padding(x, 4);
+        @include utils.padding(y, 8);
+        .title {
+            @include utils.margin(bottom, 4);
+        }
+        .socialMedia {
+            display: flex;
+            flex-direction: column;
+            gap: utils.sizer(1);
+            &_item {
+                display: flex;
+                align-items: center;
+                gap: utils.sizer(2);
+                color: white;
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+        }
+        .timetable {
+            display: flex;
+            flex-direction: column;
+            .day {
+                display: flex;
+                justify-content: space-between;
+                gap: 100px;
+            }
+        }
+    }
+    .copyright {
+        display: flex;
+        justify-content: center;
+        gap: utils.sizer(4);
+        @include utils.padding(all, 4);
+    }
+}

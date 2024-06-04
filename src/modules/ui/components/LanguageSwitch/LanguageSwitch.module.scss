@@ -1,0 +1,25 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.select {
+    color: colors.$primary-black;
+    background: transparent;
+    font-weight: 600;
+    border: solid 1px transparent;
+    cursor: pointer;
+    width: fit-content;
+    span:last-child {
+        margin-left: utils.sizer(4);
+    }
+
+    &:focus {
+        border-color: transparent;
+    }
+
+    &[aria-expanded='true'] {
+        border: solid 1px colors.$gray-600;
+    }
+}
+.icon {
+    color: colors.$gray-600;
+}

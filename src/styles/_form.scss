@@ -1,0 +1,62 @@
+@use 'utils';
+@use 'colors';
+
+@mixin field() {
+    @include utils.padding(x, 4);
+    @include utils.padding(y, 2.5);
+    @include utils.borderRadius(sm);
+    @include utils.fontSize(sm);
+    width: 100%;
+    outline: none;
+    background: colors.$white;
+    border: utils.sizer(0.5) solid colors.$input-outline;
+    overflow: hidden;
+    &-error {
+        background: colors.$danger-light;
+        border-color: colors.$danger;
+    }
+
+    &:focus {
+        border-color: colors.$primary-black;
+    }
+
+    &::placeholder {
+        color: colors.$placeholder;
+    }
+}
+
+@mixin select-list-container() {
+    @include utils.padding(all, 1);
+    @include utils.borderRadius(sm);
+    @include utils.shadow();
+    background-color: white;
+    border: utils.sizer(0.5) solid colors.$input-outline;
+    max-width: 400px;
+}
+
+@mixin select-list() {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: utils.sizer(1);
+}
+
+@mixin select-list-option() {
+    @include utils.padding(x, 6);
+    @include utils.padding(y, 2);
+    @include utils.borderRadius(sm);
+    display: flex;
+    align-items: center;
+    gap: utils.sizer(2);
+    position: relative;
+    user-select: none;
+
+    &-indicator {
+        position: absolute;
+        left: 0;
+        width: utils.sizer(6);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

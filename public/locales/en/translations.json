@@ -1,0 +1,87 @@
+{
+    "nav": {
+        "home": "Home",
+        "reservation": "Reservation",
+        "delivery": "Delivery",
+        "contact": "Contact"
+    },
+    "footer": {
+        "contactInfo": {
+            "title": "Contact info",
+            "address": "Chornovola 24, Kolomya, Ukraine, 78200",
+            "phoneNumber": "+380 123 456 789",
+            "email": "fairytale@test.com"
+        },
+        "socialMedia": { "title": "Social media" },
+        "timetable": {
+            "title": "Opening hours"
+        },
+        "copyright": {
+            "author": "© Kifoxive 2024",
+            "privacy": "privacy policy"
+        }
+    },
+    "common": {
+        "daysOfWeek": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
+        },
+        "dates": {
+            "minutes": "{{number}}m",
+            "hours": "{{number}}h"
+        }
+    },
+    "form": {
+        "addItem": "Add Item",
+        "removeItem": "Remove",
+        "item": "Item",
+        "noItems": "No items to display",
+        "save": "Save",
+        "cancel": "Cancel",
+        "saveError": "An error occurred while processing the request. Please try again later.",
+        "errors": {
+            "required": "This field is required",
+            "emailFormat": "Enter a valid email format",
+            "numberFormat": "Please enter a valid number",
+            "phoneFormat": "Please enter a valid phone number",
+            "stringFormat": "Please enter the correct format",
+            "exactlyLength": "Must have exactly {{length}} characters",
+            "notDigits": "Must not contain digits",
+            "firstNameRequired": "You must enter a first name",
+            "lastNameRequired": "You must enter a last name",
+            "minLengthOther": "The item must have at least {{minLength}} characters",
+            "minLengthOne": "The item must have at least {{minLength}} character",
+            "minLengthFew": "The item must have at least {{minLength}} characters",
+            "maxLengthOther": "Item must be at most {{maxLength}} characters",
+            "maxLengthOne": "Item must have at most {{maxLength}} character",
+            "maxLengthFew": "Item must have at most {{maxLength}} characters",
+            "exactlyLengthOther": "Item must be exactly {{length}} characters",
+            "exactlyLengthOne": "Item must be exactly {{length}} character",
+            "exactlyLengthFew": "Item must be exactly {{length}} characters",
+            "minValue": "Please enter a number greater than or equal to {{value}}",
+            "maxValue": "Please enter a number less than or equal to {{value}}"
+        }
+    },
+    "reservation": {
+        "form": {
+            "title": "Reservation form",
+            "name": "Your name",
+            "phone": "Phone",
+            "email": "Email",
+            "date": "Date",
+            "time": "Time",
+            "duration": "Visit duration",
+            "personCount": "Number of persons",
+            "note": "Notes",
+            "submit": "Reserve",
+            "weConfirmReservation": "We will confirm your reservation as soon as possible."
+        },
+        "success": "Your request was sent successfully.",
+        "error": "Your request could not be sent."
+    }
+}

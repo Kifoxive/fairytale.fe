@@ -1,0 +1,14 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.actionButtons {
+    display: flex;
+    gap: 8px;
+    .deleteBtn {
+        @include utils.padding(x, 3);
+    }
+}
+
+.btn {
+    width: 50%;
+}

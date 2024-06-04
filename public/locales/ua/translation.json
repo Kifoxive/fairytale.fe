@@ -1,0 +1,89 @@
+{
+    "nav": {
+        "home": "Додому",
+        "reservation": "Бронювання",
+        "delivery": "Доставка",
+        "contact": "Контакт"
+    },
+    "footer": {
+        "contactInfo": {
+            "title": "Контактна інформація",
+            "address": "Чорновола 24, Коломия, Україна, 78200",
+            "phoneNumber": "+380 123 456 789",
+            "email": "fairytale@test.com"
+        },
+        "socialMedia": {
+            "title": "Соціальні мережі"
+        },
+        "timetable": {
+            "title": "Робочий час"
+        },
+        "copyright": {
+            "author": "© Kifoxive 2024",
+            "privacy": "політика конфіденційності"
+        }
+    },
+    "common": {
+        "daysOfWeek": {
+            "monday": "Понеділок",
+            "tuesday": "Вівторок",
+            "wednesday": "Середа",
+            "thursday": "Четвер",
+            "friday": "Пʼятниця",
+            "saturday": "Субота",
+            "sunday": "Неділя"
+        },
+        "dates": {
+            "minutes": "{{number}} хв.",
+            "hours": "{{number}} г."
+        }
+    },
+    "form": {
+        "addItem": "addItem",
+        "removeItem": "removeItem",
+        "item": "пункт",
+        "noItems": "noitems",
+        "save": "зберегти",
+        "cancel": "скасувати",
+        "saveError": "saveError",
+        "errors": {
+            "required": "обов'язкове поле",
+            "emailFormat": "введіть коректний формат емейлу",
+            "numberFormat": "numberFormat",
+            "phoneFormat": "введіть коректний формат номеру",
+            "stringFormat": "stringFormat",
+            "exactlyLength": "точноДовжина",
+            "notDigits": "notDigits",
+            "firstNameRequired": "firstNameRequired",
+            "lastNameRequired": "lastNameRequired",
+            "minLengthOther": "minLengthOther",
+            "minLengthOne": "minLengthOne",
+            "minLengthFew": "minLengthFew",
+            "maxLengthOther": "maxLengthOther",
+            "maxLengthOne": "maxLengthOne",
+            "maxLengthFew": "maxLengthFew",
+            "exactlyLengthOther": "точно LengthOther",
+            "exactlyLengthOne": "точно LengthOne",
+            "exactlyLengthFew": "точно LengthFew",
+            "minValue": "minValue",
+            "maxValue": "maxValue"
+        }
+    },
+    "reservation": {
+        "form": {
+            "title": "Форма резервації",
+            "name": "Імʼя",
+            "phone": "Номер телеофну",
+            "email": "Електронна пошта",
+            "date": "Термін",
+            "time": "Час",
+            "duration": "Тривалість візиту",
+            "personCount": "Кількість осіб",
+            "note": "Примітки",
+            "submit": "Забронювати",
+            "weConfirmReservation": "Вашу резервацію якнайшвидше підтвердимо."
+        },
+        "success": "Ваш запит був надісланий успішно.",
+        "error": "Ваш запит не вдалося надіслати."
+    }
+}

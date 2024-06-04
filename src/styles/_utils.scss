@@ -1,0 +1,81 @@
+@use 'sass:list';
+@use 'colors';
+@import 'sizes';
+@import 'whitespace';
+
+@function sizer($value) {
+    @if not list.index($allowed-sizes, $value) {
+        @error "Value #{$value} not allowed.";
+    }
+    @return $size-base * $value;
+}
+
+@mixin padding($direction, $value) {
+    @include whitespace(padding, $direction, $value);
+}
+
+@mixin margin($direction, $value) {
+    @include whitespace(margin, $direction, $value);
+}
+
+@mixin borderRadius($size) {
+    border-radius: map-get(
+        $map: (
+            sm: sizer(1),
+            md: sizer(2),
+            lg: sizer(3),
+            pill: sizer(4),
+            full: 100%,
+        ),
+        $key: $size
+    );
+}
+
+@mixin fontSize($size) {
+    font-size: map-get(
+        $map: (
+            xs: sizer(3),
+            sm: sizer(3.5),
+            md: sizer(4),
+            lg: sizer(4.5),
+            xl: sizer(5),
+            xxl: sizer(5.5),
+            xxxl: sizer(6),
+        ),
+        $key: $size
+    );
+    line-height: map-get(
+        $map: (
+            xs: sizer(4),
+            sm: sizer(5),
+            md: sizer(5),
+            lg: sizer(7),
+            xl: sizer(8),
+            xxl: sizer(9),
+            xxxl: sizer(10),
+        ),
+        $key: $size
+    );
+}
+
+$shadow-sizes: (
+    xs: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+    sm: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+);
+
+@mixin shadow($size: md) {
+    $shadow-value: map-get($shadow-sizes, $size);
+
+    @if not $shadow-value {
+        @error "Invalid shadow size: #{$size}. Please use xs, sm, md, or lg.";
+    }
+
+    box-shadow: $shadow-value;
+}
+
+@mixin ring($color: colors.$primary-black) {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($color, 0.8);
+}

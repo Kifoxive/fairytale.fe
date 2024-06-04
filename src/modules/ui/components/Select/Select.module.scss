@@ -1,0 +1,71 @@
+@use '@styles/utils';
+@use '@styles/colors';
+@use '@styles/form';
+
+.trigger {
+    @include form.field();
+    @include utils.padding(y, 2);
+    @include utils.padding(x, 4);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    &[data-placeholder] {
+        color: colors.$placeholder;
+    }
+    &[data-disabled] {
+        background-color: colors.$gray-100;
+    }
+
+    &[aria-expanded='true'] .icon {
+        transform: rotate(-180deg);
+    }
+}
+
+.icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.startIcon {
+    margin-right: utils.sizer(2);
+}
+
+.content {
+    @include form.select-list-container();
+    z-index: 240;
+    overflow: hidden;
+}
+
+.viewport {
+    @include form.select-list();
+}
+
+.item {
+    @include form.select-list-option();
+    &[data-disabled] {
+        color: colors.$gray-200;
+        pointer-events: none;
+    }
+
+    &[data-highlighted] {
+        outline: none;
+        background-color: colors.$blue-light;
+        color: colors.$primary;
+    }
+
+    &[data-state='checked'] {
+        color: colors.$white;
+        background-color: colors.$primary;
+    }
+}
+
+.scroll-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: utils.sizer(6);
+    background-color: white;
+    color: blue;
+    cursor: default;
+}

@@ -1,0 +1,17 @@
+@use '@styles/utils';
+
+.grid {
+    display: grid;
+    align-items: start;
+    column-gap: utils.sizer(4);
+    row-gap: utils.sizer(4);
+}
+// TODO: Use class names and handle different breakpoints
+@for $i from 1 to 4 {
+    .grid-rows-#{$i} {
+        grid-template-rows: repeat($i, 1fr);
+    }
+    .grid-columns-#{$i} {
+        grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+}

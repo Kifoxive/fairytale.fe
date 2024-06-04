@@ -1,0 +1,17 @@
+@use 'utils';
+@use 'colors';
+@import 'reset';
+
+html,
+#root {
+    height: 100%;
+}
+
+a {
+    color: colors.$primary-black;
+    @include utils.fontSize(sm);
+
+    &:link {
+        text-decoration: none !important;
+    }
+}

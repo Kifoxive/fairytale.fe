@@ -1,0 +1,36 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 10;
+}
+
+.start {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: utils.sizer(2);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    flex-grow: 1;
+}
+
+.end {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: utils.sizer(2);
+}
+
+.artificial-gap {
+    min-height: 80px;
+}

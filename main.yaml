@@ -1,0 +1,17 @@
+runtime: nodejs18
+service: default
+
+instance_class: F1
+
+handlers:
+    - url: /(.*\.(json|ico|js|css|png|txt|svg|woff2?|ttf|map|jpg|gif))$
+      static_files: dist/\1
+      upload: dist/.*\.(json|ico|js|css|png|txt|svg|woff2?|ttf|map|jpg|gif)$
+      http_headers:
+          Cache-Control: 'public, max-age=3600'
+    - url: /.*
+      static_files: dist/index.html
+      upload: dist/index.html
+
+env_variables:
+    VITE_MODE: main

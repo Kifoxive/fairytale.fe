@@ -1,0 +1,16 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.logo {
+    $size: utils.sizer(9);
+    width: $size;
+    height: $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: colors.$white;
+    background: colors.$primary-black;
+    @include utils.borderRadius(md);
+    @include utils.fontSize(lg);
+}

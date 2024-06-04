@@ -1,0 +1,50 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.header {
+    // flex-shrink: 0;
+    // position: fixed;
+    // top: 0;
+    // z-index: 30;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    @include utils.padding(all, 4);
+    background-color: colors.$primary-yellow;
+    .logo {
+        border: 2px solid colors.$primary-black;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .nav {
+        display: flex;
+        gap: utils.sizer(2);
+        align-items: center;
+        height: 100%;
+        &-list {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            list-style: none;
+            @include utils.margin(left, 4);
+            &-item {
+                height: 100%;
+                .nav-link {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    // color: colors.$white;
+                    cursor: pointer;
+                    border-bottom: 2px solid transparent;
+                    @include utils.padding(x, 4);
+                    font-weight: 500;
+                    &.active {
+                        border-bottom-color: colors.$primary-black;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
