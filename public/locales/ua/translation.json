@@ -3,7 +3,8 @@
         "home": "Додому",
         "reservation": "Бронювання",
         "delivery": "Доставка",
-        "contact": "Контакт"
+        "contact": "Контакт",
+        "register": "Регістрація"
     },
     "footer": {
         "contactInfo": {

@@ -1,0 +1,55 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+$inner-ring: utils.sizer(3.5);
+$outer-ring: utils.sizer(5);
+
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: utils.sizer(2.5);
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    width: $outer-ring;
+    height: $outer-ring;
+    background-color: colors.$white;
+    border: utils.sizer(0.5) solid colors.$input-outline;
+    @include utils.borderRadius(full);
+
+    &[data-state='checked'] {
+        border-color: colors.$primary;
+    }
+    cursor: pointer;
+    &:focus {
+        @include utils.ring();
+    }
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        width: $inner-ring;
+        height: $inner-ring;
+        border-radius: 50%;
+        background-color: colors.$primary;
+    }
+}
+
+.label {
+    @include utils.padding(left, 3);
+    @include utils.fontSize(sm);
+}

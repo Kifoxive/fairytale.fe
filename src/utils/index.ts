@@ -1,4 +1,34 @@
+import { config } from 'config';
+import { AUTH_ROLE } from 'core/auth/types';
 import moment from 'moment';
+
+export const DEFAULT_REDIRECTS: Record<keyof typeof AUTH_ROLE, string> = {
+    [AUTH_ROLE['admin']]: config.routes.reservation.table,
+    [AUTH_ROLE['guest']]: config.routes.reservation.table,
+};
+
+export const tableNames = {
+    reservation: {
+        table: 'reservation-table',
+    },
+};
+
+/**
+ * Disable scrolling when on input with number type
+ */
+
+export const numberInputOnWheelPreventChange = (e: React.WheelEvent<HTMLInputElement>) => {
+    // Prevent the input value change;
+    'blur' in e.target && typeof e.target.blur === 'function' && e.target.blur();
+
+    // Prevent the page/container scrolling
+    e.stopPropagation();
+
+    // Refocus immediately, on the next tick (after the current function is done)
+    setTimeout(() => {
+        'focus' in e.target && typeof e.target.focus === 'function' && e.target.focus();
+    }, 0);
+};
 
 /**
  * Downloading the file.

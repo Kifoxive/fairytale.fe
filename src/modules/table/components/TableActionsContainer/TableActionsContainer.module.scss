@@ -1,0 +1,7 @@
+@use '@styles/utils';
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: utils.sizer(2);
+}

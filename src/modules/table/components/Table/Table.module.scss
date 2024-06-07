@@ -1,0 +1,232 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+$border-styles: utils.sizer(0.5) solid colors.$input-outline;
+
+.table-wrapper {
+    position: relative;
+    overflow-x: auto;
+    &[data-bordered='true'] {
+        border: $border-styles;
+        @include utils.borderRadius(sm);
+    }
+    // box-shadow: 0 0 2px 1px colors.$white;
+    .loading {
+        position: sticky;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background: colors.$gray-200;
+    }
+}
+
+.table {
+    @include utils.borderRadius(md);
+    width: 100%;
+}
+.thead {
+    .th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+}
+.tbody {
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+@mixin cell {
+    @include utils.padding(x, 2.5);
+    vertical-align: middle;
+}
+
+.tr {
+    border-bottom: utils.sizer(0.25) solid colors.$lines;
+    &:last-child {
+        border-bottom-width: 0;
+    }
+
+    &:nth-child(odd) {
+        background-color: colors.$gray-100;
+    }
+    &:nth-child(even) {
+        background-color: colors.$white;
+    }
+
+    &.hideBorders {
+        background-color: colors.$white;
+    }
+
+    &.unsolved {
+        &:nth-child(odd) {
+            background-color: colors.$red-odd;
+        }
+        &:nth-child(even) {
+            background-color: colors.$red-even;
+        }
+        &:hover {
+            background-color: colors.$red-hover;
+        }
+    }
+    &.selected {
+        &:nth-child(odd) {
+            background-color: colors.$purple-odd;
+        }
+        &:nth-child(even) {
+            background-color: colors.$purple-even;
+        }
+        &:hover {
+            background-color: colors.$purple-hover;
+        }
+    }
+    &.selectedAndDisabled {
+        background-color: colors.$background;
+    }
+
+    &:hover {
+        background-color: colors.$blue-light;
+    }
+}
+.resizer {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    z-index: 3;
+    cursor: col-resize;
+    &:hover {
+        background-color: #e4e7ea;
+    }
+}
+.th {
+    @include cell();
+    border-bottom: utils.sizer(0.5) solid colors.$lines;
+    border-right: utils.sizer(0.25) solid colors.$lines;
+    white-space: nowrap;
+    @include utils.padding(y, 1.5);
+    background-color: colors.$white;
+    position: relative;
+
+    &-container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+
+    &:last-child {
+        border-right-width: 0;
+        &.hideBorders {
+            width: 100px !important;
+        }
+    }
+
+    &.hideBorders {
+        border-right: none;
+        border-bottom: utils.sizer(0.25) solid colors.$lines;
+    }
+}
+
+.td {
+    @include cell();
+    border-right: utils.sizer(0.25) solid colors.$lines;
+    @include utils.fontSize(sm);
+    @include utils.padding(y, 1.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:last-child {
+        border-right-width: 0;
+    }
+
+    &.hideBorders {
+        border-right: none;
+    }
+}
+
+// Apply custom cell properties to rows or columns
+.cell {
+    &-color {
+        &-primary {
+            color: colors.$primary;
+        }
+        &-white {
+            color: colors.$white;
+        }
+    }
+    &-bgColor {
+        &-primary {
+            background: colors.$primary-light;
+        }
+        &-dark-gray {
+            background: colors.$gray-100;
+        }
+        &-light-gray {
+            background: colors.$gray-light;
+        }
+        &-green {
+            background: colors.$green;
+        }
+        &-light-green {
+            background: colors.$light-green;
+        }
+        &-light-orange {
+            background: colors.$light-orange;
+        }
+        &-light-yellow {
+            background: colors.$light-yellow;
+        }
+        // carrierOrderConfirmation
+        &-orange {
+            background-color: orange;
+        }
+    }
+    &-text-format {
+        &-bold {
+            font-weight: bold;
+        }
+        &-semi-bold {
+            font-weight: 600;
+        }
+        &-italics {
+            font-style: italic;
+        }
+        &-line-through {
+            text-decoration: line-through;
+        }
+    }
+}
+
+.empty-message {
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+// if we are using cards instead of rows
+.cardContainer {
+    padding-top: 20px;
+    column-gap: 20px;
+    row-gap: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.centerHeader {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}

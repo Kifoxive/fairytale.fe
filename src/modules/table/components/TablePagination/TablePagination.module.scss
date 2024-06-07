@@ -1,0 +1,57 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.pagination {
+    @include utils.margin(top, 4);
+    @include utils.padding(bottom, 5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-select {
+    display: flex;
+    align-items: center;
+    gap: utils.sizer(8);
+}
+
+.info {
+    @include utils.fontSize(sm);
+    // color: colors.$text-secondary;
+}
+
+.page-button {
+    cursor: pointer;
+    user-select: none;
+    border-bottom: utils.sizer(0.5) solid transparent;
+    @include utils.padding(all, 2);
+
+    &.current {
+        border-bottom-color: colors.$primary-black;
+    }
+}
+
+.controls {
+    @include utils.fontSize(sm);
+    display: flex;
+    align-items: center;
+    gap: utils.sizer(2);
+}
+
+.icon-button {
+    @include utils.padding(all, 3);
+    cursor: pointer;
+    background: transparent;
+}
+
+.input-controls {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: utils.sizer(2);
+}
+
+.select,
+.input-wrapper {
+    max-width: fit-content;
+}

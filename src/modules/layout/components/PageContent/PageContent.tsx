@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
-
 import styles from './PageContent.module.scss';
 
 export type PageContentProps = {

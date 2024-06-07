@@ -1,9 +1,20 @@
 {
     "nav": {
         "home": "Home",
-        "reservation": "Reservation",
-        "delivery": "Delivery",
-        "contact": "Contact"
+        "reservation": {
+            "page": "Reservation",
+            "table": "Reservation table",
+            "detail": "Reservation detail {{id}}"
+        },
+        "delivery": {
+            "page": "Delivery",
+            "table": "Delivery table",
+            "detail": "Delivery detail {{id}}"
+        },
+        "contact": "Contact",
+        "register": "Register",
+        "login": "Login",
+        "resetPassword": "Reset password"
     },
     "footer": {
         "contactInfo": {
@@ -82,6 +93,61 @@
             "weConfirmReservation": "We will confirm your reservation as soon as possible."
         },
         "success": "Your request was sent successfully.",
+        "error": "Your request could not be sent.",
+        "table": {
+            "reservation_id": "ID",
+            "name": "Guest name",
+            "phone": "Phone",
+            "email": "Email",
+            "date": "Date",
+            "time": "Time",
+            "duration": "Visit duration",
+            "personCount": "Number of persons",
+            "note": "Notes"
+        }
+    },
+    "register": {
+        "form": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email Address",
+            "password": "Password",
+            "signUp": "Sign Up",
+            "signIn": "Already have an account? Sign in"
+        },
+        "success": "User was created successfully.",
         "error": "Your request could not be sent."
+    },
+    "login": {
+        "form": {
+            "email": "Email Address",
+            "password": "Password",
+            "signIn": "Sign in",
+            "signUp": "Don't have an account? Sign Up",
+            "forgotPassword": "Forgot password?"
+        },
+        "success": "Login was successful.",
+        "error": "Your request could not be sent."
+    },
+    "table": {
+        "noData": "No data to display.",
+        "cancelFilters": "Cancel filters",
+        "recordsShown": "Showing {{showing}} items out of {{total}}",
+        "pageSize": "Items per page",
+        "currentPage": "Page",
+        "loading": "Loading data...",
+        "filtering": {
+            "clear": "Clear filter",
+            "contains": "Contains",
+            "min": "Minimum",
+            "max": "Maximum",
+            "dateFrom": "Date from",
+            "dateTo": "Date to",
+            "true": "Yes",
+            "false": "No",
+            "solved": "Solved",
+            "unsolved": "Unsolved"
+        },
+        "select": "Select"
     }
 }

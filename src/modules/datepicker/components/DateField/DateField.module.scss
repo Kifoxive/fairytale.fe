@@ -1,0 +1,56 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.wrapper {
+    position: relative;
+}
+
+.datePlaceholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    @include utils.fontSize(sm);
+    color: colors.$placeholder;
+}
+
+.segments {
+    display: flex;
+    width: 100%;
+    @include utils.fontSize(sm);
+
+    &_invisible {
+        opacity: 0;
+    }
+}
+
+.placeholder {
+    color: colors.$placeholder;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+}
+
+.segment:focus .placeholder {
+    color: colors.$white;
+}
+
+.segment {
+    @include utils.padding(x, 1);
+    @include utils.padding(y, 0.5);
+    text-align: center;
+    outline: none;
+    background: colors.$gray-100;
+    @include utils.borderRadius(sm);
+
+    &-literal {
+        @include utils.padding(x, 0);
+        background: none;
+    }
+
+    &:focus {
+        color: colors.$white;
+        background: colors.$primary;
+    }
+}

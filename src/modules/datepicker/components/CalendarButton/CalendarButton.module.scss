@@ -1,0 +1,16 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.button {
+    @include utils.borderRadius(full);
+    @include utils.padding(all, 2);
+    cursor: pointer;
+
+    &:focus-visible {
+        @include utils.ring();
+    }
+
+    &:hover {
+        background: colors.$blue-light;
+    }
+}

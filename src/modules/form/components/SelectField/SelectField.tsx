@@ -1,5 +1,5 @@
 import { Controller } from 'react-hook-form';
-import { FormControl, InputLabel, MenuItem, Select, TextField as MuiTextField } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { BaseFieldProps } from '../../types';
 

@@ -1,0 +1,51 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.content {
+    display: flex;
+    flex-direction: column;
+    @include utils.shadow(lg);
+    @include utils.padding(all, 3);
+    @include utils.borderRadius(sm);
+    background: colors.$white;
+    z-index: 24;
+}
+
+.trigger {
+    cursor: pointer;
+
+    &:focus-visible {
+        @include utils.ring();
+    }
+}
+
+.close {
+    @include utils.borderRadius(full);
+    @include utils.padding(all, 0.5);
+    cursor: pointer;
+
+    &:hover {
+        background: colors.$button-secondary;
+        transition: background 200ms ease-in-out;
+    }
+
+    &:focus-visible {
+        @include utils.ring();
+    }
+}
+
+.header {
+    @include utils.padding(bottom, 3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: utils.sizer(6);
+}
+
+.label {
+    font-weight: 600;
+}
+
+.arrow {
+    fill: colors.$gray-300;
+}

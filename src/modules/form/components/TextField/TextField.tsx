@@ -22,6 +22,7 @@ export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text'
                         value={value}
                         onChange={(e) => onChange(type === 'number' ? e.target.value && Number(e.target.value) : e)}
                         name={name}
+                        margin="normal"
                         error={Boolean(error?.message)}
                         helperText={error?.message}
                     />

@@ -1,0 +1,15 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.underlay {
+    position: fixed;
+    inset: 0;
+}
+
+.popover {
+    position: absolute;
+    background: colors.$white;
+    @include utils.shadow();
+    @include utils.padding(all, 3);
+    @include utils.borderRadius(sm);
+}

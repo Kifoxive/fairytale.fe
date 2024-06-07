@@ -1,0 +1,23 @@
+@use '@styles/utils';
+@use '@styles/colors';
+@use '@styles/form';
+
+.input {
+    @include form.field();
+    &:disabled {
+        background-color: colors.$gray-100;
+    }
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.end-icon {
+    position: absolute;
+    top: 50%;
+    right: utils.sizer(3);
+    transform: translateY(-50%);
+    pointer-events: none;
+}

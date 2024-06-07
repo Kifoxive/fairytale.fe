@@ -1,0 +1,33 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.container {
+    width: 100%;
+    @include utils.padding(x, 10);
+    @include utils.padding(bottom, 10);
+    background-color: colors.$white;
+}
+
+@mixin btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    aspect-ratio: 1/1;
+    @include utils.borderRadius(sm);
+    cursor: pointer;
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.actionButtons {
+    display: flex;
+    width: 60px;
+    gap: 12px;
+}
+
+.contactBtn {
+    background-color: colors.$button-secondary;
+    @include btn;
+}

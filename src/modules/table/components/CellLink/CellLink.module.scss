@@ -1,0 +1,20 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.cell {
+    box-sizing: border-box;
+    width: 100%;
+    @include utils.padding(x, 1.5);
+    background: colors.$gray-300;
+    @include utils.borderRadius(pill);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    &.orange {
+        background: colors.$orange;
+    }
+    &.blue {
+        background: #0097f5;
+    }
+}

@@ -3,7 +3,7 @@ import { LogoSquareIcon } from 'assets/icons';
 import classNames from 'classnames';
 import { config } from 'config';
 import { useAuth } from 'core/auth';
-import { AuthRole } from 'core/auth/types';
+import { AUTH_ROLE } from 'core/auth/types';
 import { useNonTypedTranslation } from 'core/translation';
 import { LanguageSwitch } from 'modules/ui';
 
@@ -16,13 +16,26 @@ export const Header = ({}: HeaderProps) => {
 
     const { user } = useAuth();
 
-    const getAvailableRoutes = () => {
-        return [
-            [config.nav.home, config.routes.home],
-            [config.nav.reservation, config.routes.reservation],
-            [config.nav.delivery, config.routes.delivery],
-            [config.nav.contact, config.routes.contact],
-        ];
+    const getAvailableRoutes = (role?: AUTH_ROLE): [string, string][] => {
+        switch (role) {
+            case AUTH_ROLE['admin']:
+                return [
+                    [config.nav.reservation.table, config.routes.reservation.table],
+                    [config.nav.delivery.table, config.routes.delivery.table],
+                ];
+            case AUTH_ROLE['guest']:
+                return [
+                    [config.nav.reservation.table, config.routes.reservation.table],
+                    [config.nav.delivery.table, config.routes.delivery.table],
+                ];
+            default:
+                return [
+                    [config.nav.home, config.routes.home],
+                    [config.nav.reservation.page, config.routes.reservation.page],
+                    [config.nav.delivery.page, config.routes.delivery.page],
+                    [config.nav.contact, config.routes.contact],
+                ];
+        }
     };
 
     return (
@@ -32,7 +45,7 @@ export const Header = ({}: HeaderProps) => {
             </Link>
             <nav className={styles.nav}>
                 <ul className={styles['nav-list']}>
-                    {getAvailableRoutes().map(([title, path]) => (
+                    {getAvailableRoutes(user?.role).map(([title, path]) => (
                         <li className={styles['nav-list-item']} key={path}>
                             <NavLink
                                 className={({ isActive, isPending }) =>

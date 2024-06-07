@@ -1,7 +1,8 @@
 {
     "nav": {
         "home": "Domov",
-        "reservation": "Reservace"
+        "reservation": "Reservace",
+        "hello": "hello"
     },
     "header": {
         "avatar": {

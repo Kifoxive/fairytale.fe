@@ -1,0 +1,10 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.button {
+    cursor: pointer;
+
+    &:focus-visible {
+        @include utils.ring();
+    }
+}

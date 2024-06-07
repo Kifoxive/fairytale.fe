@@ -15,7 +15,8 @@ export const Subheader = ({ children, startSlot, endSlot, title, titleSlot }: Su
             <div className={styles.wrapper}>
                 <div className={styles.start}>
                     {startSlot}
-                    <Typography variant="h3" component="h1" fontWeight="bold">
+                    {/* <Typography variant="h3" component="h1" fontWeight="bold"> */}
+                    <Typography variant="h3" component="h3" fontWeight="bold">
                         {title}
                     </Typography>
                     {titleSlot}

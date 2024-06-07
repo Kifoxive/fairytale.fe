@@ -1,0 +1,24 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.date-picker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: utils.sizer(4);
+    width: 100%;
+    outline: none;
+    border: utils.sizer(0.5) solid colors.$input-outline;
+    @include utils.padding(x, 3);
+    @include utils.padding(y, 2);
+    @include utils.borderRadius(sm);
+
+    &-error {
+        border-color: colors.$danger;
+        background: colors.$danger-light;
+    }
+
+    &-open {
+        border-color: colors.$primary;
+    }
+}

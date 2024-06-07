@@ -53,3 +53,23 @@ export * from './types';
 export { UnregisteredOnboardingStateIcon } from './unregisteredOnboardingState';
 export { VehiclesInfoIcon } from './vehiclesInfo';
 export { IconWeight } from './weight';
+
+// function makeReactSvgAttributes(styles: string) {
+//     const properties = styles.split(';');
+
+//     const tuple = properties.map((item) => item.split(':'));
+
+//     const result = tuple.map(([key, value]) => {
+//         const newKey = key
+//             .split('-')
+//             .map((keyPart, index) => (index === 0 ? keyPart : keyPart.charAt(0).toUpperCase() + keyPart.slice(1)))
+//             .join('');
+//         return `${newKey}="${value.trim()}"`;
+//     });
+//     console.log(result.join(''));
+// }
+
+// const styles =
+//     'stroke: none; stroke-width: 1; stroke-dasharray: none; strokeLinecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(17,17,17); fill-rule: nonzero; opacity: 1';
+
+// makeReactSvgAttributes(styles);

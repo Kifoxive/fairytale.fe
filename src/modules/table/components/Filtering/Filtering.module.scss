@@ -1,0 +1,62 @@
+@use '@styles/utils';
+@use '@styles/colors';
+
+.filtering {
+    display: flex;
+    flex-direction: column;
+    gap: utils.sizer(3);
+    min-width: utils.sizer(52);
+    z-index: 40;
+}
+
+.icon-filter {
+    // @include utils.padding(all, 1.5);
+    color: colors.$gray-500;
+}
+
+.icon-filter-active {
+    color: colors.$gray-700;
+    position: relative;
+
+    // Active indicator
+    &::after {
+        content: '';
+        position: absolute;
+        top: utils.sizer(1.5);
+        right: utils.sizer(2);
+        width: utils.sizer(1.5);
+        height: utils.sizer(1.5);
+        border: 1px solid colors.$white;
+        background: colors.$primary;
+        @include utils.borderRadius(full);
+    }
+}
+
+.clear-button {
+    cursor: pointer;
+    @include utils.padding(y, 1);
+    @include utils.fontSize(xs);
+    color: colors.$primary;
+    max-width: fit-content;
+    font-weight: 600;
+
+    &:hover {
+        color: colors.$primary-dark;
+    }
+
+    &:focus-visible {
+        @include utils.ring();
+    }
+}
+
+.number-range-filter {
+    display: flex;
+    flex-direction: column;
+    gap: utils.sizer(1);
+}
+
+.input {
+    &::placeholder {
+        color: colors.$placeholder;
+    }
+}

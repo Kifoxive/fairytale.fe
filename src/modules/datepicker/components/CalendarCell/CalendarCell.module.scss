@@ -1,0 +1,30 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: utils.sizer(10);
+    height: utils.sizer(7);
+    @include utils.borderRadius(pill);
+    @include utils.fontSize(sm);
+
+    &-hovered:hover {
+        cursor: pointer;
+        background: colors.$blue-light;
+    }
+
+    &-selected {
+        color: colors.$white;
+        background: colors.$primary;
+    }
+
+    &-disabled {
+        color: colors.$placeholder;
+    }
+
+    &-focus {
+        outline: utils.sizer(0.5) solid colors.$primary;
+    }
+}

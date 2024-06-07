@@ -6,15 +6,16 @@ import { I18nProvider } from 'react-aria';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { config } from 'config';
-import { Authenticated, LoginForm } from 'core/auth';
+import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
-import { HomePage, ReservationPage } from 'pages';
+import { ReservationPage, ReservationTablePage } from 'modules/reservations';
+import { HomePage } from 'pages';
 import { store } from 'store';
 
 import { ContactPage } from '../../../../pages/ContactPage/ContactSection';
 import { DeliveryPage } from '../../../../pages/DeliveryPage/DeliveryPage';
 
-('4h');
+('16h');
 
 const router = createBrowserRouter([
     {
@@ -28,12 +29,12 @@ const router = createBrowserRouter([
                 errorElement: <ErrorPage />,
             },
             {
-                path: config.routes.reservation,
+                path: config.routes.reservation.page,
                 element: <ReservationPage />,
                 errorElement: <ErrorPage />,
             },
             {
-                path: config.routes.delivery,
+                path: config.routes.delivery.page,
                 element: <DeliveryPage />,
                 errorElement: <ErrorPage />,
             },
@@ -42,11 +43,21 @@ const router = createBrowserRouter([
                 element: <ContactPage />,
                 errorElement: <ErrorPage />,
             },
+            {
+                path: config.routes.reservation.table,
+                element: <ReservationTablePage />,
+                errorElement: <ErrorPage />,
+            },
         ],
     },
     {
         path: config.routes.login,
-        element: <LoginForm />,
+        element: <LoginPage />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: config.routes.register,
+        element: <RegisterPage />,
         errorElement: <ErrorPage />,
     },
 ]);

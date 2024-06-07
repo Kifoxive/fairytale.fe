@@ -1,2 +1,4 @@
 export * from './Authenticated';
-export * from './LoginForm';
+export * from './AuthPage';
+export * from './LoginPage';
+export * from './RegisterPage';

@@ -36,7 +36,7 @@
         "@radix-ui/react-tooltip": "^1.0.6",
         "@react-aria/datepicker": "^3.4.0",
         "@reduxjs/toolkit": "^1.9.2",
-        "@tanstack/react-table": "^8.9.1",
+        "@tanstack/react-table": "^8.17.3",
         "@uidotdev/usehooks": "^2.4.1",
         "classnames": "^2.3.2",
         "date-fns": "^2.30.0",

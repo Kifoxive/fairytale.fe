@@ -12,7 +12,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({ name, label })
     return (
         <Controller
             name={name}
-            render={({ field: { value, onChange }, fieldState: { error } }) => {
+            render={({ field: { value, onChange } }) => {
                 const onInputChange = (e: Dayjs | null) => {
                     onChange(e ? e.unix() * 1000 : null);
                 };
