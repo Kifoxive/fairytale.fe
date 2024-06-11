@@ -1,5 +1,4 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { config } from 'config';
 import { baseQuery } from 'core/api/baseQuery';
 
 import { PostOnboardingEmailSchema } from '../types';
@@ -11,7 +10,7 @@ export const carrierApi = createApi({
     endpoints: (builder) => ({
         postOnboardingEmail: builder.mutation<{ [email: string]: boolean }, PostOnboardingEmailSchema>({
             query: (body) => ({
-                url: config.api.endpoints.onboardingEmail,
+                url: '/',
                 method: 'POST',
                 body,
             }),

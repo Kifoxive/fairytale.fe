@@ -8,14 +8,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { config } from 'config';
 import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
+import { DeliveryTablePage } from 'modules/deliveries';
 import { Page } from 'modules/layout';
 import { ReservationPage, ReservationTablePage } from 'modules/reservations';
 import { HomePage } from 'pages';
 import { store } from 'store';
 
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
-import { ContactPage } from '../../../../pages/ContactPage/ContactSection';
-import { DeliveryTablePage } from 'modules/deliveries';
+import { ContactPage } from '../../../../pages/ContactPage/ContactPage';
 
 ('24h');
 
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
 
 export const Application = () => (
     <Provider store={store}>
-        <I18nProvider locale="cs-CZ">
+        <I18nProvider locale="en">
             <Suspense fallback={<div>loading...</div>}>
                 <RouterProvider router={router} />
             </Suspense>

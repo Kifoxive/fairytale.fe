@@ -1,6 +1,5 @@
 import { Logout } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import { LogoutIcon } from 'assets/icons';
 
 import styles from './UserInfo.module.scss';
 
@@ -12,7 +11,7 @@ type UserInfoProps = {
     onLogout: () => void;
 };
 
-export const UserInfo: React.FC<UserInfoProps> = ({ firstName, lastName, email, onLogout }) => {
+export const UserInfo: React.FC<UserInfoProps> = ({ firstName, lastName, onLogout }) => {
     return (
         <div className={styles.container}>
             <div className={styles.details}>

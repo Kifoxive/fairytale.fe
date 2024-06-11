@@ -4,7 +4,7 @@ import { BaseTextFieldProps, CircularProgress, InputAdornment, TextField as MuiT
 import { BaseFieldProps } from '../../types';
 
 type TextFieldProps = {
-    type?: 'text' | 'number';
+    type?: 'text' | 'number' | 'password';
     isLoading?: boolean;
 } & BaseTextFieldProps &
     BaseFieldProps;

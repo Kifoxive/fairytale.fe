@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
-
+import { Done,HourglassTop, NotInterested } from '@mui/icons-material';
 import classNames from 'classnames';
+import { RESERVATION_STATUS } from 'modules/reservations';
 
 import styles from './ReservationStatus.module.scss';
-import { RESERVATION_STATUS } from 'modules/reservations';
-import { HourglassTop, NotInterested, Done } from '@mui/icons-material';
 
 export type ReservationStatusProps = {
     value: RESERVATION_STATUS;

@@ -34,7 +34,8 @@ export const reservationApi = createApi({
                 body,
                 method: 'POST',
             }),
-            invalidatesTags: (_, error, arg) => (error ? [] : ['Reservation', { type: 'ReservationItem', id: arg.id }]),
+            invalidatesTags: (_, error, arg) =>
+                error ? [] : ['Reservation', { type: 'ReservationItem', id: arg.data.reservation_id }],
         }),
     }),
 });

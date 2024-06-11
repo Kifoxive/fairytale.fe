@@ -6,5 +6,5 @@ export const CarriersPage = () => {
     const { t } = useTranslation();
     useDocumentTitle(t('nav.carriers'));
 
-    return <PageContent fullWidth>Carriers page</PageContent>;
+    return <PageContent>Carriers page</PageContent>;
 };

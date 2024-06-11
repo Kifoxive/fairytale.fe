@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { config } from 'config';
-import { useGetMeQuery } from 'core/api';
+// import { useGetMeQuery } from 'core/api';
 import { Page } from 'modules/layout';
 import { Spinner } from 'modules/ui';
 

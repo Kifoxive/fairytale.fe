@@ -13,16 +13,16 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { LogoSquareIcon } from 'assets/icons';
 import { useLazyRegisterUserQuery } from 'core/api';
+import useChange from 'hooks/useChange';
+import { debounce } from 'lodash';
 import { TextField } from 'modules/form';
 import { AnonymousLayout } from 'modules/layout';
-
 import { useLazyGetEmailAvailabilityQuery } from 'pages/UserTablePage';
+
 import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../application/hooks/useDocumentTitle';
 import { RegisterForm } from './types';
 import { registerFormSchema } from './types/index';
-import useChange from 'hooks/useChange';
-import { debounce } from 'lodash';
 
 function Copyright(props: any) {
     return (
@@ -41,7 +41,7 @@ export const RegisterPage = () => {
     const { t } = useTranslation();
     useDocumentTitle(t('nav.register'));
 
-    const [checkEmailAvailability, { isLoading, isError }] = useLazyGetEmailAvailabilityQuery();
+    const [checkEmailAvailability] = useLazyGetEmailAvailabilityQuery();
     const [registerUser] = useLazyRegisterUserQuery();
     const [isEmailCheckFetching, setIsEmailCheckFetching] = useState(false);
     const [isEmailAvailable, setIsEmailAvailable] = useState(true);
@@ -59,7 +59,7 @@ export const RegisterPage = () => {
         reValidateMode: 'onChange',
         resolver: zodResolver(registerFormSchema(t)),
     });
-    const { control, handleSubmit, setError, trigger, formState } = methods;
+    const { control, handleSubmit, setError, trigger } = methods;
 
     const { email } = useWatch({ control });
 

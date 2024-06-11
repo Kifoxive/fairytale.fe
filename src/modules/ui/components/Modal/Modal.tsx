@@ -5,7 +5,7 @@ import styles from './Modal.module.scss';
 interface ModalProps {
     show: boolean;
     label: string;
-    description?: string;
+    description?: React.ReactElement | string;
     approveComponent: React.ReactElement;
     cancelComponent: React.ReactElement;
     width?: number;

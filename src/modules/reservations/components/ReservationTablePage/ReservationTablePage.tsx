@@ -1,23 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { Trans, useTranslation } from 'react-i18next';
-import { createColumnHelper } from '@tanstack/react-table';
-import { IconContact } from 'assets/icons';
-import { useDocumentTitle } from 'core/application/hooks';
-import { PageContent } from 'modules/layout';
-import {
-    formatUnixDate,
-    getContainsFilterMeta,
-    getDateRangeFilterMeta,
-    // Table,
-    // TableContainer,
-    useTableState,
-} from 'modules/table';
-import { tableNames } from 'utils';
-import { HourglassTop, NotInterested, Done } from '@mui/icons-material';
-import { useChangeReservationStatusMutation, useGetAllReservationsQuery } from '../../api';
-import { IReservation, RESERVATION_STATUS } from '../ReservationPage';
-
-import styles from './ReservationTablePage.module.scss';
+import { Done, NotInterested } from '@mui/icons-material';
+import { AccessAlarm, CalendarMonth, Person } from '@mui/icons-material';
 import {
     Button,
     IconButton,
@@ -29,13 +14,28 @@ import {
     TableHead,
     TableRow,
 } from '@mui/material';
-import { Modal, ReservationStatus, Typography } from 'modules/ui';
-import { AccessAlarm, CalendarMonth, Email, EmailOutlined, Person } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+// import { createColumnHelper } from '@tanstack/react-table';
 import { config } from 'config';
-import { toast } from 'react-hot-toast';
+import { useDocumentTitle } from 'core/application/hooks';
+import { PageContent } from 'modules/layout';
+import {
+    formatUnixDate,
+    // getContainsFilterMeta,
+    // getDateRangeFilterMeta,
+    // Table,
+    // TableContainer,
+    // useTableState,
+} from 'modules/table';
+import { Modal, ReservationStatus, Typography } from 'modules/ui';
 
-const columnHelper = createColumnHelper<IReservation>();
+// import { tableNames } from 'utils';
+import { useChangeReservationStatusMutation, useGetAllReservationsQuery } from '../../api';
+import { IReservation, RESERVATION_STATUS } from '../ReservationPage';
+
+import styles from './ReservationTablePage.module.scss';
+import { Link } from 'react-router-dom';
+
+// const columnHelper = createColumnHelper<IReservation>();
 
 export const ReservationTablePage = () => {
     const { t } = useTranslation();
@@ -44,102 +44,102 @@ export const ReservationTablePage = () => {
     const [reservationIdToApprove, setReservationIdToApprove] = useState<IReservation | null>(null);
     const [reservationIdToCancel, setReservationIdToCancel] = useState<IReservation | null>(null);
 
-    const { data: response, isLoading, isFetching } = useGetAllReservationsQuery({ limit: 10, offset: 0 });
+    const { data: response } = useGetAllReservationsQuery({ limit: 10, offset: 0 });
     const [changeReservationStatus] = useChangeReservationStatusMutation();
 
     // const navigate = useNavigate();
-    const { tableProps } = useTableState<IReservation>({
-        rowIdKey: 'reservation_id',
-        defaultSorting: { id: 'customer_id', desc: true },
-        tableName: tableNames.reservation.table,
-    });
+    // const { tableProps } = useTableState<IReservation>({
+    //     rowIdKey: 'reservation_id',
+    //     defaultSorting: { id: 'customer_id', desc: true },
+    //     tableName: tableNames.reservation.table,
+    // });
 
-    const columns = useMemo(
-        () => [
-            columnHelper.accessor('reservation_id', {
-                header: t('reservation.table.reservation_id'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('name', {
-                header: t('reservation.table.name'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('email', {
-                header: t('reservation.table.email'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('phone', {
-                header: t('reservation.table.phone'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('date', {
-                header: t('reservation.table.date'),
-                cell: (info) => formatUnixDate(info.getValue()),
-                meta: {
-                    ...getDateRangeFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('time', {
-                header: t('reservation.table.time'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('duration', {
-                header: t('reservation.table.duration'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('personCount', {
-                header: t('reservation.table.personCount'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('note', {
-                header: t('reservation.table.note'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.accessor('status', {
-                header: t('reservation.table.status'),
-                meta: {
-                    ...getContainsFilterMeta(),
-                },
-            }),
-            columnHelper.display({
-                id: 'action-columns',
-                cell: ({ row }) => (
-                    <div className={styles.actionButtons}>
-                        <button
-                            // onClick={() => setReservationIdToContact(row.original.reservation_id)}
-                            type="button"
-                            className={styles.contactBtn}
-                        >
-                            <Email />
-                        </button>
-                    </div>
-                ),
-                meta: {
-                    align: 'right',
-                    disableRowClick: true,
-                },
-                enableSorting: false,
-                enableColumnFilter: false,
-            }),
-        ],
-        [t],
-    );
+    // const columns = useMemo(
+    //     () => [
+    //         columnHelper.accessor('reservation_id', {
+    //             header: t('reservation.table.reservation_id'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('name', {
+    //             header: t('reservation.table.name'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('email', {
+    //             header: t('reservation.table.email'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('phone', {
+    //             header: t('reservation.table.phone'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('date', {
+    //             header: t('reservation.table.date'),
+    //             cell: (info) => formatUnixDate(info.getValue()),
+    //             meta: {
+    //                 ...getDateRangeFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('time', {
+    //             header: t('reservation.table.time'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('duration', {
+    //             header: t('reservation.table.duration'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('personCount', {
+    //             header: t('reservation.table.personCount'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('note', {
+    //             header: t('reservation.table.note'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.accessor('status', {
+    //             header: t('reservation.table.status'),
+    //             meta: {
+    //                 ...getContainsFilterMeta(),
+    //             },
+    //         }),
+    //         columnHelper.display({
+    //             id: 'action-columns',
+    //             cell: ({ row }) => (
+    //                 <div className={styles.actionButtons}>
+    //                     <button
+    //                         // onClick={() => setReservationIdToContact(row.original.reservation_id)}
+    //                         type="button"
+    //                         className={styles.contactBtn}
+    //                     >
+    //                         <Email />
+    //                     </button>
+    //                 </div>
+    //             ),
+    //             meta: {
+    //                 align: 'right',
+    //                 disableRowClick: true,
+    //             },
+    //             enableSorting: false,
+    //             enableColumnFilter: false,
+    //         }),
+    //     ],
+    //     [t],
+    // );
 
     const onApproveReservationStatus = async (reservation_id: string) => {
         try {
@@ -288,7 +288,6 @@ export const ReservationTablePage = () => {
                 show={Boolean(reservationIdToApprove)}
                 onClick={() => setReservationIdToApprove(null)}
                 label={t('reservation.approveReservationStatusModal.label')}
-                // description={t('reservation.changeReservationStatusModal.description', { email: emailToContact })}
                 description={
                     <Trans
                         i18nKey={'reservation.approveReservationStatusModal.description'}
@@ -304,7 +303,6 @@ export const ReservationTablePage = () => {
                 approveComponent={
                     <Button
                         type="button"
-                        danger
                         variant="contained"
                         onClick={() => {
                             onApproveReservationStatus(reservationIdToApprove?.reservation_id || '');
@@ -318,7 +316,6 @@ export const ReservationTablePage = () => {
                 show={Boolean(reservationIdToCancel)}
                 onClick={() => setReservationIdToCancel(null)}
                 label={t('reservation.cancelReservationStatusModal.label')}
-                // description={t('reservation.changeReservationStatusModal.description', { email: emailToContact })}
                 description={
                     <Trans
                         i18nKey={'reservation.cancelReservationStatusModal.description'}
@@ -333,8 +330,6 @@ export const ReservationTablePage = () => {
                 }
                 approveComponent={
                     <Button
-                        type="button"
-                        danger
                         variant="contained"
                         onClick={() => {
                             onCancelReservationStatus(reservationIdToCancel?.reservation_id || '');

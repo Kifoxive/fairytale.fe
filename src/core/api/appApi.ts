@@ -7,7 +7,7 @@ export const appApi = createApi({
     reducerPath: 'appApi',
     baseQuery,
     tagTypes: ['Companies'],
-    endpoints: (builder) => ({
+    endpoints: () => ({
         // getCompanyData: builder.query<
         //     {
         //         ico: string;

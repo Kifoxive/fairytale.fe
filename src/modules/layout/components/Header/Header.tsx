@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AccountCircle, Logout } from '@mui/icons-material';
-import { Box, Button, IconButton } from '@mui/material';
+import { AccountCircle } from '@mui/icons-material';
+import { Button, IconButton } from '@mui/material';
 import { LogoSquareIcon } from 'assets/icons';
 import classNames from 'classnames';
 import { config } from 'config';
 import { useAuth } from 'core/auth';
 import { AUTH_ROLE } from 'core/auth/types';
 import { useNonTypedTranslation } from 'core/translation';
-import { LanguageSwitch, Modal, Typography, UserInfo } from 'modules/ui';
+import { LanguageSwitch, Modal, UserInfo } from 'modules/ui';
 
 import { useLogout } from '../../../../core/auth/hooks/useLogout';
 
@@ -100,14 +100,12 @@ export const Header = ({}: HeaderProps) => {
                 onClick={() => setShowLogoutConfirmationPopup(false)}
                 label={t('logout.label')}
                 cancelComponent={
-                    <Button type="button" variant="outlined" onClick={() => setShowLogoutConfirmationPopup(false)}>
+                    <Button variant="outlined" onClick={() => setShowLogoutConfirmationPopup(false)}>
                         {t('logout.cancel')}
                     </Button>
                 }
                 approveComponent={
                     <Button
-                        type="button"
-                        danger
                         variant="contained"
                         onClick={() => {
                             logout();
