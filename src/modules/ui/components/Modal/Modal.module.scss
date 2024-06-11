@@ -1,0 +1,33 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #0d171ab3;
+    z-index: 32;
+    .container {
+        margin: 20px;
+        padding: 20px;
+        @include utils.borderRadius(sm);
+        background-color: colors.$white;
+        .label {
+            // padding: 0px 0 20px;
+        }
+        .description {
+            margin: 10px 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+            gap: 16px;
+        }
+    }
+}

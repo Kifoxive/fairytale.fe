@@ -8,19 +8,21 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { config } from 'config';
 import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
+import { Page } from 'modules/layout';
 import { ReservationPage, ReservationTablePage } from 'modules/reservations';
 import { HomePage } from 'pages';
 import { store } from 'store';
 
+import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
 import { ContactPage } from '../../../../pages/ContactPage/ContactSection';
-import { DeliveryPage } from '../../../../pages/DeliveryPage/DeliveryPage';
+import { DeliveryTablePage } from 'modules/deliveries';
 
-('16h');
+('24h');
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Authenticated />,
+        element: <Page />,
         errorElement: <ErrorPage />,
         children: [
             {
@@ -43,11 +45,19 @@ const router = createBrowserRouter([
                 element: <ContactPage />,
                 errorElement: <ErrorPage />,
             },
+        ],
+    },
+    {
+        path: '/',
+        element: <Authenticated />,
+        errorElement: <ErrorPage />,
+        children: [
             {
                 path: config.routes.reservation.table,
                 element: <ReservationTablePage />,
                 errorElement: <ErrorPage />,
             },
+            { path: config.routes.delivery.table, element: <DeliveryTablePage />, errorElement: <ErrorPage /> },
         ],
     },
     {

@@ -1,9 +1,9 @@
-import React from 'react';
-import { CssBaseline } from '@mui/material';
-import { FormProvider, useForm } from 'react-hook-form';
+import React, { useCallback, useState } from 'react';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { CssBaseline } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -16,11 +16,13 @@ import { useLazyRegisterUserQuery } from 'core/api';
 import { TextField } from 'modules/form';
 import { AnonymousLayout } from 'modules/layout';
 
-// import { useLazyGetEmailAvailabilityQuery } from 'pages/UserTablePage';
+import { useLazyGetEmailAvailabilityQuery } from 'pages/UserTablePage';
 import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../application/hooks/useDocumentTitle';
 import { RegisterForm } from './types';
 import { registerFormSchema } from './types/index';
+import useChange from 'hooks/useChange';
+import { debounce } from 'lodash';
 
 function Copyright(props: any) {
     return (
@@ -39,8 +41,10 @@ export const RegisterPage = () => {
     const { t } = useTranslation();
     useDocumentTitle(t('nav.register'));
 
-    // const [checkEmailAvailability] = useLazyGetEmailAvailabilityQuery();
+    const [checkEmailAvailability, { isLoading, isError }] = useLazyGetEmailAvailabilityQuery();
     const [registerUser] = useLazyRegisterUserQuery();
+    const [isEmailCheckFetching, setIsEmailCheckFetching] = useState(false);
+    const [isEmailAvailable, setIsEmailAvailable] = useState(true);
 
     const formDefaultValues = {
         firstName: 'Yuriy',
@@ -55,22 +59,64 @@ export const RegisterPage = () => {
         reValidateMode: 'onChange',
         resolver: zodResolver(registerFormSchema(t)),
     });
-    const { handleSubmit } = methods;
+    const { control, handleSubmit, setError, trigger, formState } = methods;
+
+    const { email } = useWatch({ control });
 
     const onSubmit = async (formData: RegisterForm) => {
         try {
             await registerUser({ data: formData }).unwrap();
+
+            if (isEmailCheckFetching) {
+                return methods.setError('email', { message: t('register.waitCheckEmail') });
+            } else if (!isEmailAvailable) {
+                return methods.setError('email', { message: t('register.emailNotUnique') });
+            }
             toast.success(t('register.success'));
         } catch (error) {
             toast.error(t('register.error'));
         }
     };
 
+    // check is email available
+    const fetchIsEmailAvailable = async (email: string) => {
+        // do not check the email availability, if email is not valid
+        const isEmailValid = await trigger('email');
+        if (!isEmailValid) return;
+
+        try {
+            await checkEmailAvailability({ email }).unwrap();
+            setIsEmailAvailable(true);
+        } catch (e) {
+            console.log(e);
+            setError('email', { message: t('register.emailNotUnique') });
+            setIsEmailAvailable(false);
+        } finally {
+            setIsEmailCheckFetching(false);
+        }
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const fetchDelay = useCallback(
+        debounce((email: string) => {
+            fetchIsEmailAvailable(email);
+        }, 1500),
+        [],
+    );
+
+    // handle the email change & check email after delay
+    useChange(() => {
+        setIsEmailCheckFetching(true);
+        if (!email) return;
+        fetchDelay(email);
+    }, [email]);
+
     // React.useEffect(() => {
-    //     checkEmailAvailability({
-    //         email: 'palianycia@seznam.cz',
-    //     });
-    // }, []);
+    // checkEmailAvailability({
+    //     email: 'palianycia@seznam.cz',
+    // });
+    // setError('email', { message: t('register.emailNotUnique') });
+    // }, [email]);
 
     return (
         <AnonymousLayout>
@@ -101,7 +147,12 @@ export const RegisterPage = () => {
                                         <TextField name="lastName" label={t('register.form.lastName')} />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <TextField name="email" label={t('register.form.email')} fullWidth />
+                                        <TextField
+                                            name="email"
+                                            label={t('register.form.email')}
+                                            fullWidth
+                                            isLoading={isEmailCheckFetching}
+                                        />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField

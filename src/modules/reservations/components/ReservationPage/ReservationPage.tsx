@@ -11,8 +11,8 @@ import { Typography } from 'modules/ui';
 import { generateTimeIntervals } from 'utils';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
-import { usePostReservationMutation } from '../../api';
-import { ReservationForm, reservationFormSchema } from '../../types/index';
+import { ReservationForm,reservationFormSchema } from '../../types';
+import { usePostReservationMutation } from '.';
 
 import styles from './ReservationPage.module.scss';
 

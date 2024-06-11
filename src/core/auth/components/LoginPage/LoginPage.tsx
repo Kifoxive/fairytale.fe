@@ -1,9 +1,9 @@
 import React from 'react';
-import { CssBaseline, Paper } from '@mui/material';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { CssBaseline, Paper } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -55,7 +55,7 @@ export const LoginPage = () => {
 
     const onSubmit = async (formData: LoginForm) => {
         try {
-            const result = await loginUser({ data: formData }).unwrap();
+            await loginUser({ data: formData }).unwrap();
             toast.success(t('login.success'));
         } catch (error) {
             toast.error(t('login.error'));
@@ -107,10 +107,10 @@ export const LoginPage = () => {
                                         fullWidth
                                     />
 
-                                    <FormControlLabel
+                                    {/* <FormControlLabel
                                         control={<Checkbox value="remember" color="primary" />}
                                         label="Remember me"
-                                    />
+                                    /> */}
                                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                                         {t('login.form.signIn')}
                                     </Button>

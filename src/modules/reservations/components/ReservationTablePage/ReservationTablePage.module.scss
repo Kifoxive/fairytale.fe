@@ -3,8 +3,7 @@
 
 .container {
     width: 100%;
-    @include utils.padding(x, 10);
-    @include utils.padding(bottom, 10);
+    @include utils.padding(all, 10);
     background-color: colors.$white;
 }
 
@@ -30,4 +29,23 @@
 .contactBtn {
     background-color: colors.$button-secondary;
     @include btn;
+}
+
+@mixin cell {
+    display: flex;
+    align-items: center;
+    gap: utils.sizer(2);
+}
+
+.calendarCell {
+    @include cell;
+}
+.timeCell {
+    @include cell;
+}
+.personCountCell {
+    @include cell;
+}
+.conversationStatusCell {
+    @include cell;
 }

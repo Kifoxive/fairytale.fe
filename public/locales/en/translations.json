@@ -44,7 +44,9 @@
         },
         "dates": {
             "minutes": "{{number}}m",
-            "hours": "{{number}}h"
+            "hours": "{{number}}h",
+            "hours_one": "{{number}} hour",
+            "hours_few": "{{number}} hours"
         }
     },
     "form": {
@@ -94,6 +96,27 @@
         },
         "success": "Your request was sent successfully.",
         "error": "Your request could not be sent.",
+        "status": {
+            "waiting": "Waiting",
+            "cancelled": "Cancelled",
+            "successful": "Successful"
+        },
+        "approveReservationStatusModal": {
+            "label": "Approve the reservation",
+            "description": "You are about to send email to <strong>{{email}}</strong>",
+            "approve": "Approve",
+            "cancel": "Back",
+            "success": "Reservation has been successfully approved.",
+            "error": "Failed to send email."
+        },
+        "cancelReservationStatusModal": {
+            "label": "Cancel the reservation status",
+            "description": "You are about to send email to <strong>{{email}}</strong>",
+            "approve": "Cancel",
+            "cancel": "Back",
+            "success": "Reservation has been successfully cancelled.",
+            "error": "Failed to send email."
+        },
         "table": {
             "reservation_id": "ID",
             "name": "Guest name",
@@ -103,7 +126,8 @@
             "time": "Time",
             "duration": "Visit duration",
             "personCount": "Number of persons",
-            "note": "Notes"
+            "note": "Notes",
+            "status": "Status"
         }
     },
     "register": {
@@ -115,6 +139,8 @@
             "signUp": "Sign Up",
             "signIn": "Already have an account? Sign in"
         },
+        "emailNotUnique": "A user with this email already exists",
+        "waitCheckEmail": "Please wait until the uniqueness of the new email is checked",
         "success": "User was created successfully.",
         "error": "Your request could not be sent."
     },
@@ -128,6 +154,12 @@
         },
         "success": "Login was successful.",
         "error": "Your request could not be sent."
+    },
+    "logout": {
+        "label": "Do you really want to log out?",
+        "approve": "Log Out",
+        "cancel": "Stay",
+        "success": "You have been successfully logged out"
     },
     "table": {
         "noData": "No data to display.",

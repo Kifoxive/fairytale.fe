@@ -10,7 +10,7 @@ type TypographyProps = React.ComponentProps<
 > & {
     variant: TypographyVariant;
     component?: TypographyVariant;
-    color?: 'black' | 'white' | 'light-yellow' | 'yellow';
+    color?: 'black' | 'white' | 'light-yellow' | 'yellow' | 'blue';
     fontWeight?: 'normal' | 'medium' | 'semibold' | 'bold';
     // opacity on hover
     link?: boolean;

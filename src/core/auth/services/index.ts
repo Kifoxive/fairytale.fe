@@ -35,6 +35,13 @@ export const authSlice = createSlice({
             state.isAuthenticated = true;
             localStorage.setItem('accessToken', payload.accessToken);
         });
+        builder.addMatcher(authApi.endpoints.registerUser.matchFulfilled, (state, { payload }) => {
+            // const decoded: ITokenPayload = jwt_decode(payload.accessToken);
+            state.accessToken = payload.accessToken;
+            state.user = payload.user;
+            state.isAuthenticated = true;
+            localStorage.setItem('accessToken', payload.accessToken);
+        });
         builder.addMatcher(authApi.endpoints.refreshToken.matchFulfilled, (state, { payload }) => {
             // const decoded: ITokenPayload = jwt_decode(payload.authToken);
             state.accessToken = payload.accessToken;

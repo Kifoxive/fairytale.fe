@@ -18,6 +18,7 @@ export const config = {
             logout: '/auth/logout',
             // reservation
             reservation: '/reservation',
+            changeReservationStatus: '/reservation/change-status',
             // user
             emailAvailability: '/user/emailAvailability',
         },

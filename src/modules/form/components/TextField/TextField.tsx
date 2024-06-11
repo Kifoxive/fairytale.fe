@@ -1,14 +1,15 @@
 import { Controller } from 'react-hook-form';
-import { BaseTextFieldProps, TextField as MuiTextField } from '@mui/material';
+import { BaseTextFieldProps, CircularProgress, InputAdornment, TextField as MuiTextField } from '@mui/material';
 
 import { BaseFieldProps } from '../../types';
 
 type TextFieldProps = {
     type?: 'text' | 'number';
+    isLoading?: boolean;
 } & BaseTextFieldProps &
     BaseFieldProps;
 
-export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text', ...props }) => {
+export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text', isLoading = false, ...props }) => {
     return (
         <Controller
             name={name}
@@ -25,6 +26,13 @@ export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text'
                         margin="normal"
                         error={Boolean(error?.message)}
                         helperText={error?.message}
+                        InputProps={{
+                            endAdornment: isLoading && (
+                                <InputAdornment position="end">
+                                    <CircularProgress size={20} />
+                                </InputAdornment>
+                            ),
+                        }}
                     />
                 );
             }}

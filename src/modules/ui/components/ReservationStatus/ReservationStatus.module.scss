@@ -1,0 +1,32 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: utils.sizer(2);
+    font-weight: 600;
+    max-width: fit-content;
+    font-size: 13px;
+    @include utils.borderRadius(sm);
+    @include utils.padding(y, 2);
+    @include utils.padding(x, 4);
+    &:first-letter {
+        text-transform: capitalize;
+    }
+}
+
+.waiting {
+    color: colors.$primary;
+    background: colors.$blue-light;
+}
+
+.cancelled {
+    color: colors.$danger;
+    background: colors.$danger-light;
+}
+
+.successful {
+    color: colors.$success;
+    background: colors.$success-light;
+}

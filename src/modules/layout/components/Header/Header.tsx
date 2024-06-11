@@ -1,20 +1,29 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AccountCircle, Logout } from '@mui/icons-material';
+import { Box, Button, IconButton } from '@mui/material';
 import { LogoSquareIcon } from 'assets/icons';
 import classNames from 'classnames';
 import { config } from 'config';
 import { useAuth } from 'core/auth';
 import { AUTH_ROLE } from 'core/auth/types';
 import { useNonTypedTranslation } from 'core/translation';
-import { LanguageSwitch } from 'modules/ui';
+import { LanguageSwitch, Modal, Typography, UserInfo } from 'modules/ui';
+
+import { useLogout } from '../../../../core/auth/hooks/useLogout';
 
 import styles from './Header.module.scss';
 
 export interface HeaderProps extends React.ComponentProps<'header'> {}
 
 export const Header = ({}: HeaderProps) => {
+    const { t } = useTranslation();
     const { tnt } = useNonTypedTranslation();
-
-    const { user } = useAuth();
+    const logout = useLogout();
+    const { isAuthenticated, user } = useAuth();
+    const [showLogoutConfirmationPopup, setShowLogoutConfirmationPopup] = useState(false);
+    const navigate = useNavigate();
 
     const getAvailableRoutes = (role?: AUTH_ROLE): [string, string][] => {
         switch (role) {
@@ -61,7 +70,54 @@ export const Header = ({}: HeaderProps) => {
                     ))}
                 </ul>
             </nav>
-            <LanguageSwitch />
+            <div className={styles.actions}>
+                <LanguageSwitch />
+                {isAuthenticated ? (
+                    <>
+                        {/* <Typography variant="p" fontWeight="medium">
+                            {user?.firstName} {user?.lastName}
+                        </Typography>
+                        <IconButton size="medium" onClick={() => setShowLogoutConfirmationPopup(true)} color="inherit">
+                            <Logout />
+                        </IconButton> */}
+                        <UserInfo
+                            firstName={user?.firstName || ''}
+                            lastName={user?.lastName || ''}
+                            email={user?.email || ''}
+                            //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+                            // &auto=format&fit=crop&w=2776&q=80"
+                            onLogout={() => setShowLogoutConfirmationPopup(true)}
+                        />
+                    </>
+                ) : (
+                    <IconButton size="medium" onClick={() => navigate(config.routes.login)} color="inherit">
+                        <AccountCircle />
+                    </IconButton>
+                )}
+            </div>
+            <Modal
+                show={showLogoutConfirmationPopup}
+                onClick={() => setShowLogoutConfirmationPopup(false)}
+                label={t('logout.label')}
+                cancelComponent={
+                    <Button type="button" variant="outlined" onClick={() => setShowLogoutConfirmationPopup(false)}>
+                        {t('logout.cancel')}
+                    </Button>
+                }
+                approveComponent={
+                    <Button
+                        type="button"
+                        danger
+                        variant="contained"
+                        onClick={() => {
+                            logout();
+                            setShowLogoutConfirmationPopup(false);
+                        }}
+                    >
+                        {t('logout.approve')}
+                    </Button>
+                }
+            />
         </header>
     );
 };

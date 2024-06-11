@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-// import { config } from 'config';
 
+// import { config } from 'config';
 import { baseQuery } from './baseQuery';
 
 export const appApi = createApi({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, YouTube, } from '@mui/icons-material';
+import { Facebook, Instagram, YouTube } from '@mui/icons-material';
 import { config } from 'config';
 import { Typography } from 'modules/ui';
 

@@ -2,7 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { config } from 'config';
 import { baseQuery } from 'core/api/baseQuery';
 
-import { GetAllReservations, PostReservation } from '../types';
+import { ChangeReservationStatus, GetAllReservations, PostReservation } from '../types';
 
 export const reservationApi = createApi({
     reducerPath: 'reservationApi',
@@ -25,7 +25,19 @@ export const reservationApi = createApi({
             }),
             invalidatesTags: (_, error) => (error ? [] : ['Reservation']),
         }),
+        changeReservationStatus: builder.mutation<
+            ChangeReservationStatus['response'],
+            ChangeReservationStatus['request']
+        >({
+            query: (body) => ({
+                url: config.api.endpoints.changeReservationStatus,
+                body,
+                method: 'POST',
+            }),
+            invalidatesTags: (_, error, arg) => (error ? [] : ['Reservation', { type: 'ReservationItem', id: arg.id }]),
+        }),
     }),
 });
 
-export const { useGetAllReservationsQuery, usePostReservationMutation } = reservationApi;
+export const { useGetAllReservationsQuery, usePostReservationMutation, useChangeReservationStatusMutation } =
+    reservationApi;

@@ -2,6 +2,12 @@ import { T } from 'core/translation/types';
 import { phoneRegex } from 'utils';
 import { z } from 'zod';
 
+export enum RESERVATION_STATUS {
+    waiting = 'waiting',
+    cancelled = 'cancelled',
+    successful = 'successful',
+}
+
 export const reservationFormSchema = (t: T) =>
     z.object({
         // can be first name, second name or full name
@@ -41,6 +47,7 @@ export type IReservation = {
     createdAt: number;
     updatedAt: number;
     reservation_id: string;
+    status: RESERVATION_STATUS;
 };
 
 export type GetAllReservations = {
@@ -57,6 +64,18 @@ export type GetAllReservations = {
 export type PostReservation = {
     request: {
         data: ReservationForm;
+    };
+    response: {
+        data: IReservation;
+    };
+};
+
+export type ChangeReservationStatus = {
+    request: {
+        data: {
+            status: RESERVATION_STATUS;
+            reservation_id: string;
+        };
     };
     response: {
         data: IReservation;
