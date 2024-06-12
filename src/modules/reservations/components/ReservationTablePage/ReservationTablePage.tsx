@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Trans, useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Done, NotInterested } from '@mui/icons-material';
 import { AccessAlarm, CalendarMonth, Person } from '@mui/icons-material';
 import {
@@ -33,7 +34,6 @@ import { useChangeReservationStatusMutation, useGetAllReservationsQuery } from '
 import { IReservation, RESERVATION_STATUS } from '../ReservationPage';
 
 import styles from './ReservationTablePage.module.scss';
-import { Link } from 'react-router-dom';
 
 // const columnHelper = createColumnHelper<IReservation>();
 

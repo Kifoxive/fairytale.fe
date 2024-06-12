@@ -10,6 +10,8 @@ import { Select } from '../Select';
 import styles from './LanguageSwitch.module.scss';
 
 export const LanguageSwitch = () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const { i18n } = useTranslation();
     const [storedLang, setLanguage] = useLocalStorage<Language>('language', 'en');
     // useLocalStorage<Language>('language', 'en');

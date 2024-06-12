@@ -15,9 +15,7 @@ import { useLogout } from '../../../../core/auth/hooks/useLogout';
 
 import styles from './Header.module.scss';
 
-export interface HeaderProps extends React.ComponentProps<'header'> {}
-
-export const Header = ({}: HeaderProps) => {
+export const Header = () => {
     const { t } = useTranslation();
     const { tnt } = useNonTypedTranslation();
     const logout = useLogout();

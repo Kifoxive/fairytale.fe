@@ -74,7 +74,7 @@ const router = createBrowserRouter([
 
 export const Application = () => (
     <Provider store={store}>
-        <I18nProvider locale="en">
+        <I18nProvider locale="en" i18nIsDynamicList>
             <Suspense fallback={<div>loading...</div>}>
                 <RouterProvider router={router} />
             </Suspense>

@@ -11,13 +11,16 @@ import { Typography } from 'modules/ui';
 import { generateTimeIntervals } from 'utils';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
-import { ReservationForm,reservationFormSchema } from '../../types';
+import { ReservationForm, reservationFormSchema } from '../../types';
 import { usePostReservationMutation } from '.';
 
 import styles from './ReservationPage.module.scss';
 
 export const ReservationPage = () => {
-    const { t } = useTranslation();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const { t } = useTranslation(); // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     useDocumentTitle(t('nav.reservation.page'));
 
     const [postReservation] = usePostReservationMutation();
@@ -44,6 +47,8 @@ export const ReservationPage = () => {
     const timeToVisitOptions = generateTimeIntervals('11:00', '19:00', 15);
 
     const durationOptions = [
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         { label: t('common.dates.minutes', { defaultValue: '30', number: 30 }), value: 0.5 },
     ].concat(
         [...Array(8).keys()].map((number) => ({
