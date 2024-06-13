@@ -6,6 +6,8 @@ import { Dayjs, unix } from 'dayjs';
 
 import { BaseFieldProps } from '../../types';
 
+import styles from './DatePickerField.module.scss';
+
 interface DatePickerFieldProps extends BaseFieldProps {}
 
 export const DatePickerField: React.FC<DatePickerFieldProps> = ({ name, label }) => {
@@ -24,6 +26,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({ name, label })
                             onChange={onInputChange}
                             name={name}
                             format="DD.MM.YYYY"
+                            className={styles.field}
                         />
                     </LocalizationProvider>
                 );

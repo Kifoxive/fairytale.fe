@@ -4,11 +4,11 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Info } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Box, Button, Container, Paper } from '@mui/material';
 import { DatePickerField, FormGrid, SelectField, TextField } from 'modules/form';
 import { PageContent } from 'modules/layout';
-import { Typography } from 'modules/ui';
 import { generateTimeIntervals } from 'utils';
+import { Grid, Typography } from '@mui/material';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
 import { ReservationForm, reservationFormSchema } from '../../types';
@@ -68,58 +68,92 @@ export const ReservationPage = () => {
 
     return (
         <PageContent>
-            <div className={styles.container}>
+            <Container component="main" maxWidth="sm">
                 <FormProvider {...methods}>
                     <form onSubmit={handleSubmit(onSubmit, (error) => console.log(error))}>
-                        <div className={styles.form}>
-                            <Typography className={styles.title} variant="h4" fontWeight="medium">
+                        <Box
+                            sx={{
+                                marginY: 8,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Typography component="h1" variant="h5">
                                 {t('reservation.form.title')}
                             </Typography>
-                            <FormGrid>
-                                <FormGrid columns={2}>
-                                    <TextField name="name" label={t('reservation.form.name')} />
-                                    <TextField name="phone" label={t('reservation.form.phone')} />
-                                    <TextField name="email" label={t('reservation.form.email')} />
-                                    <TextField
-                                        type="number"
-                                        name="personCount"
-                                        label={t('reservation.form.personCount')}
-                                    />
-                                    <DatePickerField name="date" label={t('reservation.form.date')} />
-                                    <FormGrid columns={2}>
+                            <Box sx={{ mt: 3 }}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField name="name" label={t('reservation.form.name')} fullWidth />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField name="email" label={t('register.form.email')} fullWidth />
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <TextField name="phone" label={t('reservation.form.phone')} fullWidth />
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <TextField
+                                            type="number"
+                                            name="personCount"
+                                            label={t('reservation.form.personCount')}
+                                            fullWidth
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <DatePickerField name="date" label={t('reservation.form.date')} />
+                                    </Grid>
+                                    <Grid item xs={6} sm={3}>
                                         <SelectField
                                             name="time"
                                             label={t('reservation.form.time')}
                                             options={timeToVisitOptions}
+                                            fullWidth
                                         />
+                                    </Grid>
+                                    <Grid item xs={6} sm={3}>
                                         <SelectField
                                             name="duration"
                                             label={t('reservation.form.duration')}
                                             options={durationOptions}
+                                            fullWidth
                                         />
-                                    </FormGrid>
-                                </FormGrid>
-                                <TextField
-                                    multiline
-                                    minRows={3}
-                                    maxRows={3}
-                                    name="note"
-                                    label={t('reservation.form.note')}
-                                />
-                                <div className={styles.confirmReservation}>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            multiline
+                                            minRows={3}
+                                            maxRows={3}
+                                            name="note"
+                                            label={t('reservation.form.note')}
+                                            fullWidth
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Paper
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        marginY: 2,
+                                        gap: 1,
+                                        padding: 1,
+                                        backgroundColor: '#ffdd84',
+                                    }}
+                                >
                                     <Info />
-                                    <Typography variant="p" fontWeight="medium">
+                                    <Typography variant="subtitle2" fontWeight="medium">
                                         {t('reservation.form.weConfirmReservation')}
                                     </Typography>
-                                </div>
-                                <Button type="submit" variant="contained">
+                                </Paper>
+                                <Button type="submit" variant="contained" fullWidth>
                                     {t('reservation.form.submit')}
                                 </Button>
-                            </FormGrid>
-                        </div>
+                            </Box>
+                        </Box>
                     </form>
                 </FormProvider>
-            </div>
+            </Container>
         </PageContent>
     );
 };

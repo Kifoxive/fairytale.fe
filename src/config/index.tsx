@@ -5,9 +5,9 @@ export const config = {
     },
     api: {
         //     local server
-        // url: 'http://localhost:3000/api',
+        url: 'http://localhost:3001/api',
         // production server
-        url: 'https://fairytale-be.netlify.app/api',
+        // url: 'https://fairytale-be.netlify.app/api',
         // websocketUrl:
         //     process.env.VITE_MODE === 'main' ? 'wss://api.qapline.k42.app' : 'wss://dev.qapline.api.koala42.com',
         // mapboxToken: 'pk.eyJ1IjoiaHVsZGFjeiIsImEiOiJjbGJ6M2l3d2cwd2hyM3FvNXM5M2twb2RlIn0.nVPfoiec06LkIocNYRPoGA',
@@ -21,6 +21,8 @@ export const config = {
             // reservation
             reservation: '/reservation',
             changeReservationStatus: '/reservation/change-status',
+            // meal category
+            mealCategory: '/mealCategory',
             // user
             emailAvailability: '/user/emailAvailability',
         },
@@ -37,6 +39,11 @@ export const config = {
             table: '/delivery/table',
             detail: '/delivery/:id',
         },
+        menu: {
+            table: '/menu/table',
+        },
+        meal: { detail: '/meal/:id', new: '/meal/new' },
+        mealCategory: { detail: '/meal-category/:id', new: '/meal-category/new' },
         privacy: '/privacy',
         contact: '/contact',
         login: '/login',
@@ -54,6 +61,17 @@ export const config = {
             page: 'delivery.page',
             table: 'delivery.table',
             detail: 'delivery.detail',
+        },
+        menu: {
+            table: 'menu.table',
+        },
+        meal: {
+            detail: 'meal.detail',
+            new: 'meal.new',
+        },
+        category: {
+            detail: 'mealCategory.detail',
+            new: 'mealCategory.new',
         },
         contact: 'contact',
     },

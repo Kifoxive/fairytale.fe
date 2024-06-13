@@ -9,10 +9,9 @@
         flex-direction: column;
         gap: utils.sizer(0.5);
         align-items: start;
-        margin-right: utils.sizer(6);
         .name {
             color: colors.$primary-black;
-            font-weight: bold;
+            font-weight: 600;
             @include utils.fontSize(sm);
         }
         .email {

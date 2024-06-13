@@ -1,13 +1,18 @@
 import { Controller } from 'react-hook-form';
-import { BaseTextFieldProps, CircularProgress, InputAdornment, TextField as MuiTextField } from '@mui/material';
+import {
+    CircularProgress,
+    InputAdornment,
+    TextField as MuiTextField,
+    TextFieldProps as MuiTextFieldProps,
+} from '@mui/material';
 
 import { BaseFieldProps } from '../../types';
 
-type TextFieldProps = {
-    type?: 'text' | 'number' | 'password';
-    isLoading?: boolean;
-} & BaseTextFieldProps &
-    BaseFieldProps;
+type TextFieldProps = BaseFieldProps &
+    MuiTextFieldProps & {
+        type?: 'text' | 'number' | 'password';
+        isLoading?: boolean;
+    };
 
 export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text', isLoading = false, ...props }) => {
     return (
@@ -16,16 +21,6 @@ export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text'
             render={({ field: { value, onChange }, fieldState: { error } }) => {
                 return (
                     <MuiTextField
-                        {...props}
-                        type={type}
-                        id={name}
-                        label={label}
-                        value={value}
-                        onChange={(e) => onChange(type === 'number' ? e.target.value && Number(e.target.value) : e)}
-                        name={name}
-                        margin="normal"
-                        error={Boolean(error?.message)}
-                        helperText={error?.message}
                         InputProps={{
                             endAdornment: isLoading && (
                                 <InputAdornment position="end">
@@ -33,6 +28,15 @@ export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text'
                                 </InputAdornment>
                             ),
                         }}
+                        {...props}
+                        type={type}
+                        id={name}
+                        label={label}
+                        value={value}
+                        onChange={(e) => onChange(type === 'number' ? e.target.value && Number(e.target.value) : e)}
+                        name={name}
+                        error={Boolean(error?.message)}
+                        helperText={error?.message}
                     />
                 );
             }}

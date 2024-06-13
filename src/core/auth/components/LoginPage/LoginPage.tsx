@@ -26,7 +26,7 @@ function Copyright(props: any) {
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
             <Link color="inherit" href="https://mui.com/">
-                Your Website
+                Kifoxive
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -67,7 +67,6 @@ export const LoginPage = () => {
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit, (error) => console.log(error))}>
                     <Grid container component="main" sx={{ height: '100vh' }}>
-                        <CssBaseline />
                         <Grid
                             item
                             xs={false}
@@ -99,18 +98,19 @@ export const LoginPage = () => {
                                     {t('login.form.signIn')}
                                 </Typography>
                                 <Box sx={{ mt: 1 }}>
-                                    <TextField name="email" label={t('login.form.email')} fullWidth />
-                                    <TextField
-                                        name="password"
-                                        type="password"
-                                        label={t('login.form.password')}
-                                        fullWidth
-                                    />
-
-                                    {/* <FormControlLabel
-                                        control={<Checkbox value="remember" color="primary" />}
-                                        label="Remember me"
-                                    /> */}
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <TextField name="email" label={t('login.form.email')} fullWidth />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                name="password"
+                                                type="password"
+                                                label={t('login.form.password')}
+                                                fullWidth
+                                            />
+                                        </Grid>
+                                    </Grid>
                                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                                         {t('login.form.signIn')}
                                     </Button>

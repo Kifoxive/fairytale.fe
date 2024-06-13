@@ -4,12 +4,23 @@
         "reservation": {
             "page": "Reservation",
             "table": "Reservation table",
-            "detail": "Reservation detail {{id}}"
+            "detail": "Reservation detail"
         },
         "delivery": {
             "page": "Delivery",
             "table": "Delivery table",
-            "detail": "Delivery detail {{id}}"
+            "detail": "Delivery detail"
+        },
+        "menu": {
+            "table": "Menu table"
+        },
+        "meal": {
+            "detail": "Meal detail",
+            "new": "Meal new"
+        },
+        "mealCategory": {
+            "detail": "Meal category detail",
+            "new": "Meal category new"
         },
         "contact": "Contact",
         "register": "Register",
@@ -47,6 +58,10 @@
             "hours": "{{number}}h",
             "hours_one": "{{number}} hour",
             "hours_few": "{{number}} hours"
+        },
+        "currencies": {
+            "eur": "€",
+            "czk": "Kč"
         }
     },
     "form": {
@@ -77,7 +92,8 @@
             "exactlyLengthOne": "Item must be exactly {{length}} character",
             "exactlyLengthFew": "Item must be exactly {{length}} characters",
             "minValue": "Please enter a number greater than or equal to {{value}}",
-            "maxValue": "Please enter a number less than or equal to {{value}}"
+            "maxValue": "Please enter a number less than or equal to {{value}}",
+            "passwordLength": "Password must be at least {{minLength}} characters long"
         }
     },
     "reservation": {
@@ -129,6 +145,42 @@
             "note": "Notes",
             "status": "Status"
         }
+    },
+    "menu": {
+        "categories": {
+            "title": "Meal categories",
+            "addCategory": "Add category"
+        }
+    },
+    "meal": {
+        "form": {
+            "title": "Meal details",
+            "name": "Name of the meal",
+            "description": "Description",
+            "price": "Price",
+            "weight": "Weight",
+            "allergens": "List of allergens",
+            "mealCategory_id": "Meal category",
+            "imgUrl": "Preview picture",
+            "order": "Order in the list",
+            "show": "Show in the menu",
+            "updatePreview": "Update preview",
+            "submit_new": "Create category",
+            "submit_detail": "Save",
+            "success_new": "Meal category have been created successfully",
+            "success_detail": "Meal category have been updated successfully",
+            "error_new": "Failed to create a new meal category",
+            "error_detail": "Failed to update the meal category"
+        }
+    },
+    "mealCategory": {
+        "form": {
+            "title": "Meal category details",
+            "name": "Name of the meal category",
+            "description": "Description",
+            "subMealCategoriesId": "Sub categories list"
+        },
+        "new": "+ Add new category"
     },
     "register": {
         "form": {

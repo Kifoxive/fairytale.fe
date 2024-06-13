@@ -29,7 +29,7 @@ function Copyright(props: any) {
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
             <Link color="inherit" href="https://mui.com/">
-                Your Website
+                Kifoxive
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -121,7 +121,6 @@ export const RegisterPage = () => {
     return (
         <AnonymousLayout>
             <Container component="main" maxWidth="xs">
-                <CssBaseline />
                 <FormProvider {...methods}>
                     <form onSubmit={handleSubmit(onSubmit, (error) => console.log(error))}>
                         <Box
@@ -141,10 +140,10 @@ export const RegisterPage = () => {
                             <Box sx={{ mt: 3 }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} sm={6}>
-                                        <TextField name="firstName" label={t('register.form.firstName')} />
+                                        <TextField name="firstName" fullWidth label={t('register.form.firstName')} />
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
-                                        <TextField name="lastName" label={t('register.form.lastName')} />
+                                        <TextField name="lastName" fullWidth label={t('register.form.lastName')} />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField

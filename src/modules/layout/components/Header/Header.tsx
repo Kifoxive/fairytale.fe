@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AccountCircle } from '@mui/icons-material';
-import { Button, IconButton } from '@mui/material';
+import { AccountCircle, Logout, Settings } from '@mui/icons-material';
+import { Avatar, Button, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
 import { LogoSquareIcon } from 'assets/icons';
 import classNames from 'classnames';
 import { config } from 'config';
@@ -29,6 +29,7 @@ export const Header = () => {
                 return [
                     [config.nav.reservation.table, config.routes.reservation.table],
                     [config.nav.delivery.table, config.routes.delivery.table],
+                    [config.nav.menu.table, config.routes.menu.table],
                 ];
             case AUTH_ROLE['guest']:
                 return [
@@ -69,27 +70,19 @@ export const Header = () => {
                 </ul>
             </nav>
             <div className={styles.actions}>
-                <LanguageSwitch />
+                {/* <LanguageSwitch /> */}
                 {isAuthenticated ? (
-                    <>
-                        {/* <Typography variant="p" fontWeight="medium">
-                            {user?.firstName} {user?.lastName}
-                        </Typography>
-                        <IconButton size="medium" onClick={() => setShowLogoutConfirmationPopup(true)} color="inherit">
-                            <Logout />
-                        </IconButton> */}
-                        <UserInfo
-                            firstName={user?.firstName || ''}
-                            lastName={user?.lastName || ''}
-                            email={user?.email || ''}
-                            //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
-                            // &auto=format&fit=crop&w=2776&q=80"
-                            onLogout={() => setShowLogoutConfirmationPopup(true)}
-                        />
-                    </>
+                    <UserInfo
+                        firstName={user?.firstName || ''}
+                        lastName={user?.lastName || ''}
+                        email={user?.email || ''}
+                        //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+                        // &auto=format&fit=crop&w=2776&q=80"
+                        onLogout={() => setShowLogoutConfirmationPopup(true)}
+                    />
                 ) : (
                     <IconButton size="medium" onClick={() => navigate(config.routes.login)} color="inherit">
-                        <AccountCircle />
+                        <AccountCircle fontSize="medium" />
                     </IconButton>
                 )}
             </div>

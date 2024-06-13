@@ -19,7 +19,7 @@ export const registerFormSchema = (t: T) =>
         email: z.string().email({
             message: t('form.errors.emailFormat'),
         }),
-        password: z.string().min(8, { message: t('auth.password.error.length', { minLength: 8 }) }),
+        password: z.string().min(8, { message: t('form.errors.passwordLength', { minLength: 8 }) }),
     });
 
 export type PostRegister = {

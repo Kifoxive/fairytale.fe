@@ -1,21 +1,23 @@
 import { Controller } from 'react-hook-form';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { BaseSelectProps, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { BaseFieldProps } from '../../types';
 
-interface SelectFieldProps extends BaseFieldProps {
-    options: { label: string; value: string | number }[];
-}
+type SelectFieldProps = BaseFieldProps &
+    BaseSelectProps & {
+        options: { label: string; value: string | number }[];
+    };
 
-export const SelectField: React.FC<SelectFieldProps> = ({ name, label, options }) => {
+export const SelectField: React.FC<SelectFieldProps> = ({ name, label, options, ...props }) => {
     return (
         <Controller
             name={name}
             render={({ field: { value, onChange }, fieldState: { error } }) => {
                 return (
-                    <FormControl>
+                    <FormControl fullWidth={props.fullWidth}>
                         <InputLabel id={name + '-label'}>{label}</InputLabel>
                         <Select
+                            {...props}
                             labelId={name + '-label'}
                             id={name}
                             value={value || null}

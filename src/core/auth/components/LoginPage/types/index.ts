@@ -10,7 +10,7 @@ export const loginFormSchema = (t: T) =>
             message: t('form.errors.emailFormat'),
         }),
         // password of user
-        password: z.string().min(8, { message: t('auth.password.error.length', { minLength: 8 }) }),
+        password: z.string().min(8, { message: t('form.errors.passwordLength', { minLength: 8 }) }),
     });
 
 export type LoginForm = z.infer<ReturnType<typeof loginFormSchema>>;

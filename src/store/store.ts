@@ -4,9 +4,10 @@ import { handleExpiredTokenMiddleware } from 'core/api/middlewares';
 import { appSlice } from 'core/application';
 import { authSlice } from 'core/auth';
 import { carrierApi } from 'modules/carriers/services';
+import { mealCategoryApi } from 'modules/mealCategories';
 
-import { reservationApi } from '../modules/reservations/api/index';
-import { userApi } from '../pages/UserTablePage/api/index';
+import { reservationApi } from '../modules/reservations/api';
+import { userApi } from '../pages/UserTablePage/api';
 
 const slices = {
     [authSlice.name]: authSlice.reducer,
@@ -19,6 +20,7 @@ const apis = {
     [carrierApi.reducerPath]: carrierApi.reducer,
     [reservationApi.reducerPath]: reservationApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
+    [mealCategoryApi.reducerPath]: mealCategoryApi.reducer,
 };
 
 const middleware = [
@@ -27,6 +29,7 @@ const middleware = [
     carrierApi.middleware,
     reservationApi.middleware,
     userApi.middleware,
+    mealCategoryApi.middleware,
     handleExpiredTokenMiddleware,
 ];
 

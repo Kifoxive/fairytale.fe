@@ -1,0 +1,9 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.previewImg {
+    height: 100%;
+    width: 100%;
+    // background-size: cover;
+    object-fit: cover;
+}
