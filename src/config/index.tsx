@@ -5,9 +5,11 @@ export const config = {
     },
     api: {
         //     local server
-        url: 'http://localhost:3001/api',
+        // url: 'http://localhost:3001/api',
         // production server
         // url: 'https://fairytale-be.netlify.app/api',
+        url: process.env.VITE_MODE === 'main' ? 'https://fairytale-be.netlify.app/api' : 'http://localhost:3001/api',
+        // mapboxToken: 'pk.eyJ1IjoiaHVsZGFjeiIsImEiOiJjbGJ6M2l3d2cwd2hyM3FvNXM5M2twb2RlIn0.nVPfoiec06LkIocNYRPoGA',
         // websocketUrl:
         //     process.env.VITE_MODE === 'main' ? 'wss://api.qapline.k42.app' : 'wss://dev.qapline.api.koala42.com',
         // mapboxToken: 'pk.eyJ1IjoiaHVsZGFjeiIsImEiOiJjbGJ6M2l3d2cwd2hyM3FvNXM5M2twb2RlIn0.nVPfoiec06LkIocNYRPoGA',
