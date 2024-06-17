@@ -149,7 +149,11 @@
     "menu": {
         "categories": {
             "title": "Meal categories",
-            "addCategory": "Add category"
+            "addCategory": "+ Add new category"
+        },
+        "meals": {
+            "title": "Meals",
+            "addCategory": "+ Add new meal"
         }
     },
     "meal": {
@@ -165,12 +169,12 @@
             "order": "Order in the list",
             "show": "Show in the menu",
             "updatePreview": "Update preview",
-            "submit_new": "Create category",
+            "submit_new": "Create meal",
             "submit_detail": "Save",
-            "success_new": "Meal category have been created successfully",
-            "success_detail": "Meal category have been updated successfully",
-            "error_new": "Failed to create a new meal category",
-            "error_detail": "Failed to update the meal category"
+            "success_new": "Meal have been created successfully",
+            "success_detail": "Meal have been updated successfully",
+            "error_new": "Failed to create a new meal",
+            "error_detail": "Failed to update the meal"
         }
     },
     "mealCategory": {
@@ -178,9 +182,14 @@
             "title": "Meal category details",
             "name": "Name of the meal category",
             "description": "Description",
-            "subMealCategoriesId": "Sub categories list"
-        },
-        "new": "+ Add new category"
+            "subMealCategoriesId": "Sub categories list",
+            "submit_new": "Create category",
+            "submit_detail": "Save",
+            "success_new": "Meal category have been created successfully",
+            "success_detail": "Meal category have been updated successfully",
+            "error_new": "Failed to create a new meal category",
+            "error_detail": "Failed to update the meal category"
+        }
     },
     "register": {
         "form": {

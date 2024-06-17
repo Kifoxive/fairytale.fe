@@ -12,14 +12,17 @@ import { SelectField, TextField } from 'modules/form';
 import { useGetAllMealCategoriesQuery } from 'modules/mealCategories/api';
 import { MealCategoryCard } from '../MealCategoryCard';
 import { Link } from 'react-router-dom';
+import { MealCard, useGetAllMealsQuery } from 'modules/meals';
 
 export const MenuTablePage = () => {
     const { t } = useTranslation();
     useDocumentTitle(t('nav.menu.table'));
 
-    const { data: response } = useGetAllMealCategoriesQuery({ limit: 40, offset: 0 });
+    const { data: responseMealCategory } = useGetAllMealCategoriesQuery({ limit: 40, offset: 0 });
+    const { data: responseMeal } = useGetAllMealsQuery({ limit: 40, offset: 0 });
 
-    const mealCategoryList = response?.data || [];
+    const mealCategoryList = responseMealCategory?.data || [];
+    const mealList = responseMeal?.data || [];
 
     return (
         <PageContent>
@@ -27,46 +30,45 @@ export const MenuTablePage = () => {
                 <Box
                     sx={{
                         marginY: 5,
-                        gap: 2,
-                        // display: 'flex',
-                        // flexDirection: 'column',
+                        gap: 6,
+                        display: 'flex',
+                        flexDirection: 'column',
                         // alignItems: 'center',
                     }}
                 >
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                             <Typography component="h1" variant="h5">
                                 {t('menu.categories.title')}
                             </Typography>
-
                             <Link to={config.routes.mealCategory.new}>
                                 <Typography paragraph color="darkblue">
-                                    {t('mealCategory.new')}
+                                    {t('menu.categories.addCategory')}
                                 </Typography>
                             </Link>
                         </Box>
-
-                        {/* <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                            {mealCategoryList.map((item) => (
-                                <MealCategoryCard data={item} key={item.mealCategory_id} />
-                            ))}
-                        </Box> */}
                         <Grid container spacing={2}>
                             {mealCategoryList.map((item) => (
                                 <MealCategoryCard data={item} key={item.mealCategory_id} />
                             ))}
                         </Grid>
-
-                        {/* <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-                            <Grid item>
-                                <Button variant="outlined"> {t('meal.form.updatePreview')}</Button>
-                            </Grid>
-                            <Grid item>
-                                <Button type="submit" variant="contained">
-                                    {t('meal.form.submit')}
-                                </Button>
-                            </Grid>
-                        </Box> */}
+                    </Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                            <Typography component="h1" variant="h5">
+                                {t('menu.meals.title')}
+                            </Typography>
+                            <Link to={config.routes.meal.new}>
+                                <Typography paragraph color="darkblue">
+                                    {t('menu.meals.addCategory')}
+                                </Typography>
+                            </Link>
+                        </Box>
+                        <Grid container spacing={2}>
+                            {mealList.map((item) => (
+                                <MealCard data={item} key={item.meal_id} />
+                            ))}
+                        </Grid>
                     </Box>
                 </Box>
             </Container>

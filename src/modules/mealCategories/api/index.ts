@@ -2,12 +2,18 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { config } from 'config';
 import { baseQuery } from 'core/api/baseQuery';
 
-import { PostMealCategory, GetAllMealCategories } from '../types';
+import {
+    GetAllMealCategories,
+    GetMealCategoriesList,
+    GetOneMealCategory,
+    PostMealCategory,
+    PutMealCategory,
+} from '../types';
 
 export const mealCategoryApi = createApi({
     reducerPath: 'mealCategoryApi',
     baseQuery,
-    tagTypes: ['MealCategory', 'MealCategoryItems'],
+    tagTypes: ['MealCategory', 'MealCategoryItem'],
     endpoints: (builder) => ({
         getAllMealCategories: builder.query<GetAllMealCategories['response'], GetAllMealCategories['request']>({
             query: (params) => ({
@@ -17,6 +23,21 @@ export const mealCategoryApi = createApi({
             }),
             providesTags: ['MealCategory'],
         }),
+        getMealCategoryList: builder.query<GetMealCategoriesList['response'], GetMealCategoriesList['request']>({
+            query: () => ({
+                url: config.api.endpoints.mealCategoryList,
+                method: 'GET',
+            }),
+            providesTags: ['MealCategory'],
+        }),
+        getOneMealCategory: builder.query<GetOneMealCategory['response'], GetOneMealCategory['request']>({
+            query: (params) => ({
+                url: `${config.api.endpoints.mealCategory}/${params.id}`,
+                params,
+                method: 'GET',
+            }),
+            // providesTags: (_result, _error, arg) => [{ type: 'MealCategoryItem', id: arg.id }],
+        }),
         postMealCategory: builder.mutation<PostMealCategory['response'], PostMealCategory['request']>({
             query: (body) => ({
                 url: config.api.endpoints.mealCategory,
@@ -25,19 +46,22 @@ export const mealCategoryApi = createApi({
             }),
             invalidatesTags: (_, error) => (error ? [] : ['MealCategory']),
         }),
-        // changeReservationStatus: builder.mutation<
-        //     ChangeReservationStatus['response'],
-        //     ChangeReservationStatus['request']
-        // >({
-        //     query: (body) => ({
-        //         url: config.api.endpoints.changeReservationStatus,
-        //         body,
-        //         method: 'POST',
-        //     }),
-        //     invalidatesTags: (_, error, arg) =>
-        //         error ? [] : ['Reservation', { type: 'ReservationItem', id: arg.data.reservation_id }],
-        // }),
+        putMealCategory: builder.mutation<PutMealCategory['response'], PutMealCategory['request']>({
+            query: ({ id, data }) => ({
+                url: `${config.api.endpoints.mealCategory}/${id}`,
+                body: { data },
+                method: 'PUT',
+            }),
+            invalidatesTags: (_, error, arg) =>
+                error ? [] : ['MealCategory', { type: 'MealCategoryItem', id: arg.id }],
+        }),
     }),
 });
 
-export const { useGetAllMealCategoriesQuery, usePostMealCategoryMutation } = mealCategoryApi;
+export const {
+    useGetAllMealCategoriesQuery,
+    useGetMealCategoryListQuery,
+    useGetOneMealCategoryQuery,
+    usePostMealCategoryMutation,
+    usePutMealCategoryMutation,
+} = mealCategoryApi;

@@ -2,42 +2,46 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { config } from 'config';
 import { baseQuery } from 'core/api/baseQuery';
 
-import { ChangeReservationStatus, GetAllReservations, PostReservation } from '../types';
+import { GetAllMeals, GetOneMeal, PostMeal, PutMeal } from '../types';
 
-export const menuApi = createApi({
-    reducerPath: 'reservationApi',
+export const mealApi = createApi({
+    reducerPath: 'mealApi',
     baseQuery,
-    tagTypes: ['Reservation', 'ReservationItem'],
+    tagTypes: ['Meal', 'MealItem'],
     endpoints: (builder) => ({
-        // getAllReservations: builder.query<GetAllReservations['response'], GetAllReservations['request']>({
-        //     query: (params) => ({
-        //         url: config.api.endpoints.reservation,
-        //         params,
-        //         method: 'GET',
-        //     }),
-        //     providesTags: ['Reservation'],
-        // }),
-        postReservation: builder.mutation<PostReservation['response'], PostReservation['request']>({
+        getAllMeals: builder.query<GetAllMeals['response'], GetAllMeals['request']>({
+            query: (params) => ({
+                url: config.api.endpoints.meal,
+                params,
+                method: 'GET',
+            }),
+            providesTags: ['Meal'],
+        }),
+        getOneMeal: builder.query<GetOneMeal['response'], GetOneMeal['request']>({
+            query: (params) => ({
+                url: `${config.api.endpoints.meal}/${params.id}`,
+                params,
+                method: 'GET',
+            }),
+            providesTags: (_, error, arg) => [{ type: 'MealItem', id: arg.id }],
+        }),
+        postMeal: builder.mutation<PostMeal['response'], PostMeal['request']>({
             query: (body) => ({
-                url: config.api.endpoints.reservation,
+                url: config.api.endpoints.meal,
                 body,
                 method: 'POST',
             }),
-            invalidatesTags: (_, error) => (error ? [] : ['Reservation']),
+            invalidatesTags: (_, error) => (error ? [] : ['Meal']),
         }),
-        // changeReservationStatus: builder.mutation<
-        //     ChangeReservationStatus['response'],
-        //     ChangeReservationStatus['request']
-        // >({
-        //     query: (body) => ({
-        //         url: config.api.endpoints.changeReservationStatus,
-        //         body,
-        //         method: 'POST',
-        //     }),
-        //     invalidatesTags: (_, error, arg) =>
-        //         error ? [] : ['Reservation', { type: 'ReservationItem', id: arg.data.reservation_id }],
-        // }),
+        putMeal: builder.mutation<PutMeal['response'], PutMeal['request']>({
+            query: ({ id, data }) => ({
+                url: `${config.api.endpoints.meal}/${id}`,
+                body: { data },
+                method: 'PUT',
+            }),
+            invalidatesTags: (_, error, arg) => (error ? [] : ['Meal', { type: 'MealItem', id: arg.id }]),
+        }),
     }),
 });
 
-export const { useGetAllReservationsQuery, usePostReservationMutation, useChangeReservationStatusMutation } = menuApi;
+export const { useGetAllMealsQuery, useGetOneMealQuery, usePostMealMutation, usePutMealMutation } = mealApi;

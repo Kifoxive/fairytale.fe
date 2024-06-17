@@ -17,10 +17,11 @@ import { store } from 'store';
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
 import { ContactPage } from '../../../../pages/ContactPage/ContactPage';
 
-import { MenuTablePage, MealCategoryNewPage } from 'modules/mealCategories';
+import { MenuTablePage, MealCategoryNewPage, MealCategoryDetailPage } from 'modules/mealCategories';
 import { MealNewPage } from 'modules/meals';
+import { MealDetailPage } from '../../../../modules/meals/components/MealDetailPage/MealDetailPage';
 
-('28h');
+('32');
 
 const router = createBrowserRouter([
     {
@@ -63,7 +64,13 @@ const router = createBrowserRouter([
             { path: config.routes.delivery.table, element: <DeliveryTablePage />, errorElement: <ErrorPage /> },
             { path: config.routes.menu.table, element: <MenuTablePage />, errorElement: <ErrorPage /> },
             { path: config.routes.meal.new, element: <MealNewPage />, errorElement: <ErrorPage /> },
+            { path: config.routes.meal.detail, element: <MealDetailPage />, errorElement: <ErrorPage /> },
             { path: config.routes.mealCategory.new, element: <MealCategoryNewPage />, errorElement: <ErrorPage /> },
+            {
+                path: config.routes.mealCategory.detail,
+                element: <MealCategoryDetailPage />,
+                errorElement: <ErrorPage />,
+            },
         ],
     },
     {

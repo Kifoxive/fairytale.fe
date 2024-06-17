@@ -7,36 +7,42 @@ import { PageContent } from 'modules/layout';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
 import { IMealCategoryForm } from '../../types';
-import { usePostMealCategoryMutation } from '../../api';
+import { useGetOneMealCategoryQuery, usePostMealCategoryMutation, usePutMealCategoryMutation } from '../../api';
 
 import { MealCategoryForm } from '../MealCategoryForm';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Spinner } from 'modules/ui';
 import { config } from 'config';
 
-export const MealCategoryNewPage = () => {
+export const MealCategoryDetailPage = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const { t } = useTranslation(); // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    useDocumentTitle(t('nav.mealCategory.new'));
+    useDocumentTitle(t('nav.mealCategory.detail'));
     const navigate = useNavigate();
+    const { id } = useParams();
 
-    const [postMealCategory] = usePostMealCategoryMutation();
+    const { data: response } = useGetOneMealCategoryQuery({ id: id || '' }, { skip: !id });
+    const [putMealCategory] = usePutMealCategoryMutation();
 
     const onSubmit = async (formData: IMealCategoryForm) => {
+        if (!id) return;
         try {
-            await postMealCategory({ data: formData }).unwrap();
-            toast.success(t('mealCategory.form.success', { context: 'new' }));
+            await putMealCategory({ id, data: formData }).unwrap();
+            toast.success(t('mealCategory.form.success', { context: 'detail' }));
             navigate(config.routes.menu.table);
         } catch (error) {
-            toast.error(t('mealCategory.form.error', { context: 'new' }));
+            toast.error(t('mealCategory.form.error', { context: 'detail' }));
         }
     };
+
+    if (!response) return <Spinner fullScreen />;
 
     return (
         <PageContent>
             <Container component="main" maxWidth="md">
-                <MealCategoryForm onSubmitData={onSubmit} />
+                <MealCategoryForm fetchedData={response?.data} onSubmitData={onSubmit} />
             </Container>
         </PageContent>
     );

@@ -5,22 +5,26 @@ import { z } from 'zod';
 export const mealFormSchema = (t: T) =>
     z.object({
         // name of the meal
-        name: z.string({
-            invalid_type_error: t('form.errors.stringFormat'),
-            required_error: t('form.errors.required'),
-        }),
+        name: z
+            .string({
+                invalid_type_error: t('form.errors.stringFormat'),
+                required_error: t('form.errors.required'),
+            })
+            .min(1, { message: t('form.errors.required') }),
         // description of the meal
-        description: z.string(),
+        description: z.string().nullable(),
         // price of the meal
         price: z.number({
             invalid_type_error: t('form.errors.numberFormat'),
             required_error: t('form.errors.required'),
         }),
         // weight of the food (grams, litres)
-        weight: z.string({
-            invalid_type_error: t('form.errors.stringFormat'),
-            required_error: t('form.errors.required'),
-        }),
+        weight: z
+            .string({
+                invalid_type_error: t('form.errors.stringFormat'),
+                required_error: t('form.errors.required'),
+            })
+            .min(1, { message: t('form.errors.required') }),
         // list of allergies
         allergens: z.array(
             z.string({
@@ -49,7 +53,7 @@ export const mealFormSchema = (t: T) =>
         // show: z.boolean(),
     });
 
-export type MealForm = z.infer<ReturnType<typeof mealFormSchema>>;
+export type IMealForm = z.infer<ReturnType<typeof mealFormSchema>>;
 
 export type IMeal = {
     meal_id: string;
@@ -62,9 +66,36 @@ export type IMeal = {
     imgUrl: string | null;
 };
 
+export type GetAllMeals = {
+    request: {
+        limit: number;
+        offset: number;
+    };
+    response: {
+        data: IMeal[];
+        totalCount: number;
+    };
+};
+export type GetOneMeal = {
+    request: { id: string };
+    response: {
+        data: IMeal;
+    };
+};
+
 export type PostMeal = {
     request: {
-        data: MealForm;
+        data: IMealForm;
+    };
+    response: {
+        data: IMeal;
+    };
+};
+
+export type PutMeal = {
+    request: {
+        id: string;
+        data: IMealForm;
     };
     response: {
         data: IMeal;

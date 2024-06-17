@@ -22,7 +22,10 @@ export const config = {
             reservation: '/reservation',
             changeReservationStatus: '/reservation/change-status',
             // meal category
-            mealCategory: '/mealCategory',
+            mealCategory: '/meal-category',
+            mealCategoryList: '/meal-category/list',
+            // meal
+            meal: '/meal',
             // user
             emailAvailability: '/user/emailAvailability',
         },

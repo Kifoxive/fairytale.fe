@@ -1,13 +1,18 @@
 import { Controller } from 'react-hook-form';
-import { BaseSelectProps, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import {
+    BaseSelectProps,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+} from '@mui/material';
 
-import { Theme, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 
 import Chip from '@mui/material/Chip';
 import { BaseFieldProps } from '../../types';
-import { useState } from 'react';
 
 type MultiSelectFieldProps = BaseFieldProps &
     BaseSelectProps & {
@@ -20,7 +25,7 @@ export const MultiSelectField: React.FC<MultiSelectFieldProps> = ({ name, label,
             name={name}
             render={({ field: { value, onChange }, fieldState: { error } }) => {
                 return (
-                    <FormControl fullWidth={props.fullWidth}>
+                    <FormControl fullWidth={props.fullWidth} error={Boolean(error?.message)}>
                         <InputLabel id={name + '-label'}>{label}</InputLabel>
                         <Select
                             // {...props}
@@ -58,6 +63,7 @@ export const MultiSelectField: React.FC<MultiSelectFieldProps> = ({ name, label,
                                 </MenuItem>
                             ))}
                         </Select>
+                        {Boolean(error?.message) && <FormHelperText color="danger">{error?.message}</FormHelperText>}
                     </FormControl>
                 );
             }}

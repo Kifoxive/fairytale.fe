@@ -1,5 +1,5 @@
 import { Controller } from 'react-hook-form';
-import { BaseSelectProps, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { BaseSelectProps, FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { BaseFieldProps } from '../../types';
 
@@ -14,7 +14,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({ name, label, options, 
             name={name}
             render={({ field: { value, onChange }, fieldState: { error } }) => {
                 return (
-                    <FormControl fullWidth={props.fullWidth}>
+                    <FormControl fullWidth={props.fullWidth} error={Boolean(error?.message)}>
                         <InputLabel id={name + '-label'}>{label}</InputLabel>
                         <Select
                             {...props}
@@ -23,7 +23,6 @@ export const SelectField: React.FC<SelectFieldProps> = ({ name, label, options, 
                             value={value || null}
                             label={label}
                             onChange={onChange}
-                            error={Boolean(error?.message)}
                         >
                             {options.map(({ label, value }) => (
                                 <MenuItem key={value} value={value}>
@@ -31,6 +30,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({ name, label, options, 
                                 </MenuItem>
                             ))}
                         </Select>
+                        {Boolean(error?.message) && <FormHelperText color="danger">{error?.message}</FormHelperText>}
                     </FormControl>
                 );
             }}
