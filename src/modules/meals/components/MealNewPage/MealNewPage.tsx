@@ -1,23 +1,16 @@
 import React from 'react';
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Info } from '@mui/icons-material';
-import { Box, Button, Container, InputAdornment, Paper } from '@mui/material';
-import { DatePickerField, FormGrid, SelectField, TextField } from 'modules/form';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Container } from '@mui/material';
+import { config } from 'config';
+import { useAppDispatch } from 'hooks';
 import { PageContent } from 'modules/layout';
-import { generateTimeIntervals } from 'utils';
-import { Grid, Typography } from '@mui/material';
+import { mealApi,useLazyPostFileQuery, usePostMealMutation } from 'modules/meals/api';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
 import { IMealForm, mealFormSchema } from '../../types';
-
-import { useGetOneMealQuery, usePostMealMutation, usePutMealMutation } from 'modules/meals/api';
 import { MealForm } from '../MealForm';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Spinner } from 'modules/ui';
-import { config } from 'config';
 
 export const MealNewPage = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -26,12 +19,19 @@ export const MealNewPage = () => {
     // @ts-ignore
     useDocumentTitle(t('nav.meal.new'));
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const [postMeal] = usePostMealMutation();
+    const [postFile] = useLazyPostFileQuery();
 
-    const onSubmit = async (formData: IMealForm) => {
+    const onSubmit = async (formData: IMealForm, imgFile?: File) => {
         try {
-            await postMeal({ data: formData }).unwrap();
+            const { data } = await postMeal({ data: formData }).unwrap();
+
+            if (imgFile) await postFile({ file: imgFile, directory: '/meal', id: data.meal_id });
+
+            dispatch(mealApi.util.invalidateTags(['Meal']));
+
             toast.success(t('meal.form.success', { context: 'new' }));
             navigate(config.routes.menu.table);
         } catch (error) {

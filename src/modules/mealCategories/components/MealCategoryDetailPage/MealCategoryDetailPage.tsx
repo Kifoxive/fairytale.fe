@@ -1,18 +1,16 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from '@mui/material';
+import { config } from 'config';
 import { PageContent } from 'modules/layout';
+import { Spinner } from 'modules/ui';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
-import { IMealCategoryForm } from '../../types';
 import { useGetOneMealCategoryQuery, usePostMealCategoryMutation, usePutMealCategoryMutation } from '../../api';
-
+import { IMealCategoryForm } from '../../types';
 import { MealCategoryForm } from '../MealCategoryForm';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Spinner } from 'modules/ui';
-import { config } from 'config';
 
 export const MealCategoryDetailPage = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

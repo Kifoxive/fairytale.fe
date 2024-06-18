@@ -1,19 +1,16 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { Box, Button, Container } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { t } from 'i18next';
 import { DatePickerField, FormGrid, MultiSelectField, SelectField, TextField } from 'modules/form';
 import { PageContent } from 'modules/layout';
-import { Grid, Typography } from '@mui/material';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
-import { IMealCategory, IMealCategoryForm, mealCategoryFormSchema } from '../../types';
 import { useGetMealCategoryListQuery, usePostMealCategoryMutation } from '../../api';
-
-import { t } from 'i18next';
+import { IMealCategory, IMealCategoryForm, mealCategoryFormSchema } from '../../types';
 
 interface MealCategoryFormProps {
     fetchedData?: IMealCategory;
@@ -21,8 +18,6 @@ interface MealCategoryFormProps {
 }
 
 export const MealCategoryForm: React.FC<MealCategoryFormProps> = ({ fetchedData, onSubmitData }) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const { t } = useTranslation();
 
     const context = fetchedData ? 'detail' : 'new';
@@ -42,7 +37,13 @@ export const MealCategoryForm: React.FC<MealCategoryFormProps> = ({ fetchedData,
         reValidateMode: 'onChange',
         resolver: zodResolver(mealCategoryFormSchema(t)),
     });
-    const { handleSubmit } = methods;
+    const { handleSubmit, formState } = methods;
+
+    globalThis.addEventListener('beforeunload', (event) => {
+        if (formState.isDirty) {
+            event.returnValue = 'You have unfinished changes!';
+        }
+    });
 
     const onSubmit = async (formData: IMealCategoryForm) => {
         onSubmitData(formData);

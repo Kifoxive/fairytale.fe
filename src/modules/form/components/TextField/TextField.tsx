@@ -10,7 +10,7 @@ import { BaseFieldProps } from '../../types';
 
 type TextFieldProps = BaseFieldProps &
     MuiTextFieldProps & {
-        type?: 'text' | 'number' | 'password';
+        type?: 'text' | 'number' | 'password' | 'array';
         isLoading?: boolean;
     };
 
@@ -32,8 +32,16 @@ export const TextField: React.FC<TextFieldProps> = ({ name, label, type = 'text'
                         type={type}
                         id={name}
                         label={label}
-                        value={value}
-                        onChange={(e) => onChange(type === 'number' ? e.target.value && Number(e.target.value) : e)}
+                        value={type === 'array' ? value && value.join(', ') : value}
+                        onChange={(e) =>
+                            onChange(
+                                type === 'number'
+                                    ? e.target.value && Number(e.target.value)
+                                    : type === 'array'
+                                    ? e.target.value && e.target.value.split(', ')
+                                    : e,
+                            )
+                        }
                         name={name}
                         error={Boolean(error?.message)}
                         helperText={error?.message}

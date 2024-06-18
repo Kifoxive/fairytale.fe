@@ -2,7 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { config } from 'config';
 import { baseQuery } from 'core/api/baseQuery';
 
-import { GetAllMeals, GetOneMeal, PostMeal, PutMeal } from '../types';
+import { GetAllMeals, GetOneMeal, PostFile, PostMeal, PutMeal } from '../types';
 
 export const mealApi = createApi({
     reducerPath: 'mealApi',
@@ -23,7 +23,7 @@ export const mealApi = createApi({
                 params,
                 method: 'GET',
             }),
-            providesTags: (_, error, arg) => [{ type: 'MealItem', id: arg.id }],
+            providesTags: (_, error, arg) => (error ? [] : [{ type: 'MealItem', id: arg.id }]),
         }),
         postMeal: builder.mutation<PostMeal['response'], PostMeal['request']>({
             query: (body) => ({
@@ -41,7 +41,27 @@ export const mealApi = createApi({
             }),
             invalidatesTags: (_, error, arg) => (error ? [] : ['Meal', { type: 'MealItem', id: arg.id }]),
         }),
+        postFile: builder.query<PostFile['response'], PostFile['request']>({
+            query: ({ file, directory, id }) => {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('directory', directory);
+                formData.append('id', id);
+                return {
+                    url: config.api.endpoints.mealFile,
+                    body: formData,
+                    method: 'POST',
+                    formData: true,
+                };
+            },
+        }),
     }),
 });
 
-export const { useGetAllMealsQuery, useGetOneMealQuery, usePostMealMutation, usePutMealMutation } = mealApi;
+export const {
+    useGetAllMealsQuery,
+    useGetOneMealQuery,
+    usePostMealMutation,
+    usePutMealMutation,
+    useLazyPostFileQuery,
+} = mealApi;

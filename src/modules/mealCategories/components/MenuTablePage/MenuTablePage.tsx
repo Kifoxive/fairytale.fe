@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Trans, useTranslation } from 'react-i18next';
-
+import { Link } from 'react-router-dom';
+import { Box, Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { config } from 'config';
 import { useDocumentTitle } from 'core/application/hooks';
+import { SelectField, TextField } from 'modules/form';
 import { PageContent } from 'modules/layout';
+import { useGetAllMealCategoriesQuery } from 'modules/mealCategories/api';
+import { MealCard, useGetAllMealsQuery } from 'modules/meals';
+
+import { MealCategoryCard } from '../MealCategoryCard';
 
 import styles from './MenuTablePage.module.scss';
-import { Box, Button, Container, Grid, Paper, Typography } from '@mui/material';
-import { SelectField, TextField } from 'modules/form';
-import { useGetAllMealCategoriesQuery } from 'modules/mealCategories/api';
-import { MealCategoryCard } from '../MealCategoryCard';
-import { Link } from 'react-router-dom';
-import { MealCard, useGetAllMealsQuery } from 'modules/meals';
 
 export const MenuTablePage = () => {
     const { t } = useTranslation();

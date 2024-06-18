@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Edit } from '@mui/icons-material';
+import { CardActionArea, CardActions, CardHeader, Grid, IconButton } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions, CardHeader, Grid, IconButton } from '@mui/material';
-import { IMealCategory } from 'modules/mealCategories/types';
-import { useNavigate } from 'react-router-dom';
 import { config } from 'config';
-import { Edit } from '@mui/icons-material';
+import { IMealCategory } from 'modules/mealCategories/types';
 
 interface MealCategoryCardProps {
     data: IMealCategory;

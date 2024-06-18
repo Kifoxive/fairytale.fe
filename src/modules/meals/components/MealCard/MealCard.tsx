@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Edit } from '@mui/icons-material';
 import {
     // CardActionArea,
     // CardActions,
@@ -12,13 +12,14 @@ import {
     IconButton,
     IconButtonProps,
 } from '@mui/material';
-import { IMeal } from '../../types';
-import { useNavigate } from 'react-router-dom';
-import { config } from 'config';
-import { Edit } from '@mui/icons-material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
-import { useTranslation } from 'react-i18next';
+import Typography from '@mui/material/Typography';
+import { config } from 'config';
+
+import { IMeal } from '../../types';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -51,7 +52,13 @@ export const MealCard: React.FC<MealCardProps> = ({ data: { meal_id, name, descr
     return (
         <Grid item xs={3}>
             <Card sx={{ maxWidth: 345 }}>
-                <CardMedia component="img" height="194" image={imgUrl || undefined} alt={name} />
+                <CardMedia
+                    component="img"
+                    height="194"
+                    // src="/src/assets/images/showcase-missing-image.webp"
+                    image={imgUrl || '/src/assets/images/showcase-missing-image.webp'}
+                    alt={name}
+                />
                 <CardHeader
                     title={name}
                     action={

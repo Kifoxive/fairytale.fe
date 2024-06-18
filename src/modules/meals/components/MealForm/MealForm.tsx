@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, InputAdornment, Paper } from '@mui/material';
-import { SelectField, TextField } from 'modules/form';
 import { Grid, Typography } from '@mui/material';
+import { t } from 'i18next';
+import { SelectField, TextField } from 'modules/form';
+import { useGetMealCategoryListQuery } from 'modules/mealCategories';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
-import { IMealForm, IMeal, mealFormSchema } from '../../types';
+import { IMeal, IMealForm, mealFormSchema } from '../../types';
 
 import styles from './MealForm.module.scss';
-import { useGetMealCategoryListQuery } from 'modules/mealCategories';
-import { t } from 'i18next';
 
 interface MealFormProps {
     fetchedData?: IMeal;
-    onSubmitData: (newData: IMealForm) => void;
+    onSubmitData: (newData: IMealForm, img?: File) => void;
 }
 export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData }) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -23,6 +23,21 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
     const { t } = useTranslation(); // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 
     const context = fetchedData ? 'detail' : 'new';
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const [imgFile, setImgFile] = useState<File>();
+    // const [filePreviewSrc, setFilePreviewSrc] = useState<string | null>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files !== null) {
+            setImgFile(e.target.files[0]);
+            // const url = URL.createObjectURL(e.target.files[0])
+            // setFilePreviewSrc(url);
+        }
+
+        e.target.value = '';
+    };
 
     const { data: response } = useGetMealCategoryListQuery(undefined);
     const mealCategoryList = response?.data || [];
@@ -43,12 +58,18 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
         reValidateMode: 'onChange',
         resolver: zodResolver(mealFormSchema(t)),
     });
-    const { control, handleSubmit } = methods;
+    const { control, handleSubmit, formState } = methods;
 
-    const { name, imgUrl } = useWatch({ control });
+    globalThis.addEventListener('beforeunload', (event) => {
+        if (formState.isDirty || imgFile) {
+            event.returnValue = 'You have unfinished changes!';
+        }
+    });
+
+    const { name } = useWatch({ control });
 
     const onSubmit = async (formData: IMealForm) => {
-        onSubmitData(formData);
+        onSubmitData(formData, imgFile);
     };
 
     return (
@@ -80,10 +101,10 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={3}>
                                     <TextField name="weight" label={t('meal.form.weight')} fullWidth />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={3}>
                                     <TextField
                                         name="price"
                                         label={t('meal.form.price')}
@@ -96,6 +117,15 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
                                                 </InputAdornment>
                                             ),
                                         }}
+                                    />
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <TextField
+                                        name="allergens"
+                                        label={t('meal.form.allergens')}
+                                        // type="number"
+                                        fullWidth
+                                        type="array"
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -115,17 +145,36 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
                                     item
                                     component={Paper}
                                     sx={{
-                                        height: '250px',
+                                        height: '245px',
                                         width: '100%',
                                     }}
                                 >
-                                    {imgUrl ? <img className={styles.previewImg} src={imgUrl} alt={name} /> : null}
+                                    <img
+                                        className={styles.previewImg}
+                                        src={
+                                            (imgFile && URL.createObjectURL(imgFile)) ||
+                                            fetchedData?.imgUrl ||
+                                            '/src/assets/images/showcase-missing-image.webp'
+                                        }
+                                        alt={name}
+                                    />
+
+                                    {/* <img className={styles.previewImg} src={filePreviewSrc || imgUrl} alt={name} /> */}
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
                             <Grid item>
-                                <Button variant="outlined"> {t('meal.form.updatePreview')}</Button>
+                                <Button onClick={() => fileInputRef.current?.click()} variant="outlined">
+                                    {t('meal.form.updatePreview')}
+                                </Button>
+                                <input
+                                    onChange={handleFileChange}
+                                    ref={fileInputRef}
+                                    type="file"
+                                    className={styles.hidden}
+                                    accept="image/png, image/webp, image/jpeg, image/jpg"
+                                />
                             </Grid>
                             <Grid item>
                                 <Button type="submit" variant="contained">

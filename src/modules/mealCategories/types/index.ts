@@ -1,5 +1,4 @@
 import { T } from 'core/translation/types';
-
 import { z } from 'zod';
 
 export const mealCategoryFormSchema = (t: T) =>

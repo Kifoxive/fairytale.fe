@@ -38,12 +38,12 @@ export const mealFormSchema = (t: T) =>
             required_error: t('form.errors.required'),
         }),
         // URL of preview image
-        imgUrl: z
-            .string({
-                invalid_type_error: t('form.errors.stringFormat'),
-                required_error: t('form.errors.required'),
-            })
-            .nullable(),
+        // imgUrl: z
+        //     .string({
+        //         invalid_type_error: t('form.errors.stringFormat'),
+        //         required_error: t('form.errors.required'),
+        //     })
+        //     .nullable(),
         // order of item in the category list
         // order: z.number({
         //     invalid_type_error: t('form.errors.numberFormat'),
@@ -85,7 +85,7 @@ export type GetOneMeal = {
 
 export type PostMeal = {
     request: {
-        data: IMealForm;
+        data: IMealForm & { imgUrl?: string };
     };
     response: {
         data: IMeal;
@@ -95,9 +95,20 @@ export type PostMeal = {
 export type PutMeal = {
     request: {
         id: string;
-        data: IMealForm;
+        data: IMealForm & { imgUrl?: string };
     };
     response: {
         data: IMeal;
+    };
+};
+
+export type PostFile = {
+    request: {
+        file: File;
+        directory: '/meal';
+        id: string;
+    };
+    response: {
+        fileUrl: string;
     };
 };

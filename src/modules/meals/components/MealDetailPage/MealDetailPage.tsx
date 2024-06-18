@@ -1,20 +1,16 @@
 import React from 'react';
-
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from '@mui/material';
-
 import { PageContent } from 'modules/layout';
+import { useGetOneMealQuery, useLazyPostFileQuery, usePutMealMutation } from 'modules/meals/api';
+import { Spinner } from 'modules/ui';
 
+import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
 import { IMealForm, mealFormSchema } from '../../types';
-
-import { useGetOneMealQuery, usePostMealMutation, usePutMealMutation } from 'modules/meals/api';
 import { MealForm } from '../MealForm';
-import { useNavigate, useParams } from 'react-router-dom';
-import { config } from '../../../../config/index';
-import { Spinner } from 'modules/ui';
 
 export const MealDetailPage = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -27,11 +23,16 @@ export const MealDetailPage = () => {
 
     const { data: response } = useGetOneMealQuery({ id: id || '' }, { skip: !id });
     const [putMeal] = usePutMealMutation();
+    const [postFile] = useLazyPostFileQuery();
 
-    const onSubmit = async (formData: IMealForm) => {
+    const onSubmit = async (formData: IMealForm, imgFile?: File) => {
         if (!id) return;
         try {
-            await putMeal({ id, data: formData }).unwrap();
+            if (imgFile) {
+                await postFile({ file: imgFile, directory: '/meal', id });
+            }
+            await putMeal({ id, data: { ...formData } }).unwrap();
+
             toast.success(t('meal.form.success', { context: 'detail' }));
             navigate(config.routes.menu.table);
         } catch (error) {

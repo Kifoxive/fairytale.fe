@@ -168,7 +168,7 @@
             "imgUrl": "Preview picture",
             "order": "Order in the list",
             "show": "Show in the menu",
-            "updatePreview": "Update preview",
+            "updatePreview": "Upload preview",
             "submit_new": "Create meal",
             "submit_detail": "Save",
             "success_new": "Meal have been created successfully",

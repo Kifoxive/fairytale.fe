@@ -10,16 +10,15 @@ import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
 import { DeliveryTablePage } from 'modules/deliveries';
 import { Page } from 'modules/layout';
+import { MealCategoryDetailPage,MealCategoryNewPage, MenuTablePage } from 'modules/mealCategories';
+import { MealNewPage } from 'modules/meals';
 import { ReservationPage, ReservationTablePage } from 'modules/reservations';
 import { HomePage } from 'pages';
 import { store } from 'store';
 
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
-import { ContactPage } from '../../../../pages/ContactPage/ContactPage';
-
-import { MenuTablePage, MealCategoryNewPage, MealCategoryDetailPage } from 'modules/mealCategories';
-import { MealNewPage } from 'modules/meals';
 import { MealDetailPage } from '../../../../modules/meals/components/MealDetailPage/MealDetailPage';
+import { ContactPage } from '../../../../pages/ContactPage/ContactPage';
 
 ('32');
 

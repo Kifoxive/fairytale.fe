@@ -49,12 +49,12 @@ export const authSlice = createSlice({
             state.isAuthenticated = true;
             localStorage.setItem('accessToken', payload.accessToken);
         });
-        builder.addMatcher(authApi.endpoints.refreshToken.matchRejected, (state) => {
-            state.user = null;
-            state.accessToken = null;
-            state.isAuthenticated = false;
-            localStorage.removeItem('accessToken');
-        });
+        // builder.addMatcher(authApi.endpoints.refreshToken.matchRejected, (state) => {
+        //     state.accessToken = null;
+        //     state.user = null;
+        //     state.isAuthenticated = false;
+        //     localStorage.removeItem('accessToken');
+        // });
         builder.addMatcher(authApi.endpoints.getMe.matchFulfilled, (state, { payload }) => {
             state.user = payload;
         });

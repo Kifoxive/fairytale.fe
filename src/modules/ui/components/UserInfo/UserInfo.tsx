@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { AccountCircle, Logout, Settings } from '@mui/icons-material';
 import { Avatar, Button, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
-import { useState } from 'react';
 
 import styles from './UserInfo.module.scss';
 

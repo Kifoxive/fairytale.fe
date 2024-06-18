@@ -18,12 +18,12 @@ export const handleExpiredTokenMiddleware: Middleware =
             const refreshResult = await storeAPI.dispatch(authApi.endpoints.refreshToken.initiate(null));
 
             if ('error' in refreshResult || !refreshResult?.data?.accessToken) return storeAPI.dispatch(setAnonymous());
-
             // save the new accessToken to the state and localStorage
             storeAPI.dispatch(setAuthenticated({ token: refreshResult.data.accessToken }));
             // call the getMe endpoint to get the user credentials
-            storeAPI.dispatch(authApi.endpoints.getMe.initiate(null));
+            await storeAPI.dispatch(authApi.endpoints.getMe.initiate(null));
             return next(action);
+            // storeAPI.dispatch(action);
         }
 
         return next(action);
