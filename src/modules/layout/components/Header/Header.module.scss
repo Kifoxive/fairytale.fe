@@ -1,11 +1,12 @@
 @use '@styles/colors';
 @use '@styles/utils';
+@use '@styles/breakpoints';
 
 .header {
     // flex-shrink: 0;
-    // position: fixed;
-    // top: 0;
-    // z-index: 30;
+    position: fixed;
+    top: 0;
+    z-index: 2;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -18,10 +19,12 @@
         overflow: hidden;
     }
     .nav {
-        display: flex;
+        display: none;
         gap: utils.sizer(2);
         align-items: center;
-        height: 100%;
+        @include breakpoints.sm {
+            display: flex;
+        }
         &-list {
             height: 100%;
             display: flex;
@@ -50,7 +53,6 @@
     }
     .actions {
         display: flex;
-        // align-items: baseline;
         align-items: center;
     }
 }

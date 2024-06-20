@@ -8,7 +8,6 @@ import { Application } from 'core/application';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <CssBaseline />
         <Application />
     </React.StrictMode>,
 );

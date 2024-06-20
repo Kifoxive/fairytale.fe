@@ -1,39 +1,52 @@
 @use '@styles/colors';
 @use '@styles/utils';
+@use '@styles/breakpoints';
 
 .footer {
     display: flex;
     flex-direction: column;
     background-color: colors.$primary-black;
     .info {
-        display: flex;
-        justify-content: space-between;
         @include utils.padding(x, 4);
         @include utils.padding(y, 8);
-        .title {
-            @include utils.margin(bottom, 4);
-        }
-        .socialMedia {
+        justify-content: center;
+        .infoSection {
+            // max-width: 450px;
             display: flex;
             flex-direction: column;
-            gap: utils.sizer(1);
-            &_item {
+            // align-items: flex-start;
+            // align-items: center;
+            // @include breakpoints.sm {
+            // }
+
+            .title {
+                @include utils.margin(bottom, 4);
+            }
+            .socialMedia {
                 display: flex;
-                align-items: center;
-                gap: utils.sizer(2);
-                color: white;
-                &:hover {
-                    opacity: 0.6;
+                flex-direction: column;
+                gap: utils.sizer(1);
+                &_item {
+                    display: flex;
+                    align-items: center;
+                    gap: utils.sizer(2);
+                    color: white;
+                    &:hover {
+                        opacity: 0.6;
+                    }
                 }
             }
-        }
-        .timetable {
-            display: flex;
-            flex-direction: column;
-            .day {
+            .timetable {
                 display: flex;
-                justify-content: space-between;
-                gap: 100px;
+                flex-direction: column;
+                .day {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 100px;
+                    p {
+                        white-space: nowrap;
+                    }
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
 export { AddressesInfoIcon } from './addressesInfo';
+export { IconLineDecoration } from './LineDecoration';
 export { ArrowRightIcon } from './arrowRight';
 export { ArrowTriangleRightIcon } from './arrowTriangleRight';
 export { CalendarIcon } from './calendar';

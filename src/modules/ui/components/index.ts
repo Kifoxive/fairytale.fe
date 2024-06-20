@@ -10,3 +10,4 @@ export * from './Spinner';
 export * from './Toast';
 export * from './Typography';
 export * from './UserInfo';
+export * from './DropdownMenu';

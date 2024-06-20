@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, InputAdornment, Paper } from '@mui/material';
+import { Box, Button, Hidden, InputAdornment, Paper } from '@mui/material';
 import { Grid, Typography } from '@mui/material';
 import { t } from 'i18next';
 import { SelectField, TextField } from 'modules/form';
@@ -87,65 +87,16 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
                                 {t('meal.form.title')}
                             </Typography>
                         </Box>
-                        <Grid container sx={{ gap: 2 }}>
-                            {/* left side (form) */}
-                            <Grid xs={6} container spacing={2}>
-                                <Grid item xs={6}>
-                                    <TextField name="name" label={t('meal.form.name')} fullWidth />
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <SelectField
-                                        name="mealCategory_id"
-                                        label={t('meal.form.mealCategory_id')}
-                                        options={mealCategoryList}
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <TextField name="weight" label={t('meal.form.weight')} fullWidth />
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <TextField
-                                        name="price"
-                                        label={t('meal.form.price')}
-                                        type="number"
-                                        fullWidth
-                                        InputProps={{
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    {t('common.currencies.eur')}
-                                                </InputAdornment>
-                                            ),
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <TextField
-                                        name="allergens"
-                                        label={t('meal.form.allergens')}
-                                        // type="number"
-                                        fullWidth
-                                        type="array"
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        multiline
-                                        minRows={3}
-                                        maxRows={3}
-                                        name="description"
-                                        label={t('meal.form.description')}
-                                        fullWidth
-                                    />
-                                </Grid>
-                            </Grid>
+                        <Grid container spacing={2} flexDirection="row-reverse">
                             {/* right side (img) */}
-                            <Grid xs={6} container sx={{ gap: 1 }}>
+                            <Grid item xs={12} md={6} container sx={{ gap: 1 }}>
                                 <Grid
                                     item
                                     component={Paper}
                                     sx={{
-                                        height: '245px',
+                                        // height: '375px',
+                                        aspectRatio: '1.33 / 1',
+                                        overflow: 'hidden',
                                         width: '100%',
                                     }}
                                 >
@@ -158,30 +109,99 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
                                         }
                                         alt={name}
                                     />
-
-                                    {/* <img className={styles.previewImg} src={filePreviewSrc || imgUrl} alt={name} /> */}
                                 </Grid>
                             </Grid>
+                            {/* left side (form) */}
+                            <Grid item xs={12} md={6} height={'100%'}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+                                        gap: 2,
+                                    }}
+                                >
+                                    <Box>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={6}>
+                                                <TextField name="name" label={t('meal.form.name')} fullWidth />
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <SelectField
+                                                    name="mealCategory_id"
+                                                    label={t('meal.form.mealCategory_id')}
+                                                    options={mealCategoryList}
+                                                    fullWidth
+                                                />
+                                            </Grid>
+                                            <Grid item xs={3}>
+                                                <TextField name="weight" label={t('meal.form.weight')} fullWidth />
+                                            </Grid>
+                                            <Grid item xs={3}>
+                                                <TextField
+                                                    name="price"
+                                                    label={t('meal.form.price')}
+                                                    type="number"
+                                                    fullWidth
+                                                    InputProps={{
+                                                        startAdornment: (
+                                                            <InputAdornment position="start">
+                                                                {t('common.currencies.eur')}
+                                                            </InputAdornment>
+                                                        ),
+                                                    }}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <TextField
+                                                    name="allergens"
+                                                    label={t('meal.form.allergens')}
+                                                    // type="number"
+                                                    fullWidth
+                                                    type="array"
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <TextField
+                                                    multiline
+                                                    minRows={3}
+                                                    maxRows={3}
+                                                    name="description"
+                                                    label={t('meal.form.description')}
+                                                    fullWidth
+                                                />
+                                            </Grid>
+                                        </Grid>
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            flexGrow: 1,
+                                            justifyContent: 'flex-end',
+                                            gap: 2,
+                                        }}
+                                    >
+                                        <Grid item>
+                                            <Button onClick={() => fileInputRef.current?.click()} variant="outlined">
+                                                {t('meal.form.updatePreview')}
+                                            </Button>
+                                            <input
+                                                onChange={handleFileChange}
+                                                ref={fileInputRef}
+                                                type="file"
+                                                className={styles.hidden}
+                                                accept="image/png, image/webp, image/jpeg, image/jpg"
+                                            />
+                                        </Grid>
+                                        <Grid item>
+                                            <Button type="submit" variant="contained">
+                                                {t('meal.form.submit', { context })}
+                                            </Button>
+                                        </Grid>
+                                    </Box>
+                                </Box>
+                            </Grid>
                         </Grid>
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-                            <Grid item>
-                                <Button onClick={() => fileInputRef.current?.click()} variant="outlined">
-                                    {t('meal.form.updatePreview')}
-                                </Button>
-                                <input
-                                    onChange={handleFileChange}
-                                    ref={fileInputRef}
-                                    type="file"
-                                    className={styles.hidden}
-                                    accept="image/png, image/webp, image/jpeg, image/jpg"
-                                />
-                            </Grid>
-                            <Grid item>
-                                <Button type="submit" variant="contained">
-                                    {t('meal.form.submit', { context })}
-                                </Button>
-                            </Grid>
-                        </Box>
                     </Box>
                 </Box>
             </form>

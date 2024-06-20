@@ -10,7 +10,7 @@ import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
 import { DeliveryTablePage } from 'modules/deliveries';
 import { Page } from 'modules/layout';
-import { MealCategoryDetailPage,MealCategoryNewPage, MenuTablePage } from 'modules/mealCategories';
+import { MealCategoryDetailPage, MealCategoryNewPage, MenuTablePage } from 'modules/mealCategories';
 import { MealNewPage } from 'modules/meals';
 import { ReservationPage, ReservationTablePage } from 'modules/reservations';
 import { HomePage } from 'pages';
@@ -19,8 +19,9 @@ import { store } from 'store';
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
 import { MealDetailPage } from '../../../../modules/meals/components/MealDetailPage/MealDetailPage';
 import { ContactPage } from '../../../../pages/ContactPage/ContactPage';
+import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
-('32');
+('40');
 
 const router = createBrowserRouter([
     {
@@ -84,12 +85,24 @@ const router = createBrowserRouter([
     },
 ]);
 
+const theme = createTheme({
+    typography: {
+        fontFamily: ['Inder', 'sans-serif'].join(','),
+    },
+    // palette: {
+    //     black: 'black',
+    // },
+});
+
 export const Application = () => (
     <Provider store={store}>
-        <I18nProvider locale="en" i18nIsDynamicList>
-            <Suspense fallback={<div>loading...</div>}>
-                <RouterProvider router={router} />
-            </Suspense>
-        </I18nProvider>
+        <CssBaseline />
+        <ThemeProvider theme={theme}>
+            <I18nProvider locale="en" i18nIsDynamicList>
+                <Suspense fallback={<div>loading...</div>}>
+                    <RouterProvider router={router} />
+                </Suspense>
+            </I18nProvider>
+        </ThemeProvider>
     </Provider>
 );

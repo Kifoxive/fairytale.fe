@@ -15,8 +15,8 @@ interface MealCategoryCardProps {
 export const MealCategoryCard: React.FC<MealCategoryCardProps> = ({ data: { mealCategory_id, name, description } }) => {
     const navigate = useNavigate();
     return (
-        <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
+            <Card>
                 <CardHeader
                     title={name}
                     action={

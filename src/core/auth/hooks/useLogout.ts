@@ -17,8 +17,8 @@ export const useLogout = () => {
         try {
             await postLogout(null);
             toast.success(t('logout.success'));
-            dispatch(setAnonymous());
             navigate(config.routes.home);
+            dispatch(setAnonymous());
         } catch (error) {
             console.log(error);
         }

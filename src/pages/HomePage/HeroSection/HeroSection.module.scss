@@ -1,0 +1,70 @@
+@use '@styles/utils';
+@use '@styles/colors';
+@use '@styles/breakpoints';
+
+.heroContainer {
+    background: url('src/assets/images/cover.png') center / cover no-repeat;
+    height: calc(100vh - 60px);
+    width: 100%;
+    overflow: hidden;
+    .heroCircle {
+        position: relative;
+        left: 50%;
+        top: 500px;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include breakpoints.sm {
+            transform: none;
+            align-items: flex-start;
+            top: 440px;
+            left: 210px;
+        }
+        .heroCircleContent {
+            &::before {
+                content: '';
+                z-index: 0;
+                display: block;
+                position: absolute;
+                top: -200px;
+                left: -200px;
+                width: 720px;
+                aspect-ratio: 1/1;
+                background-color: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+                @include breakpoints.sm {
+                    left: -330px;
+                    top: -170px;
+                    width: 720px;
+                }
+                // @include breakpoints.xl {
+                //     // width: 814px;
+                //     width: 720px;
+                // }
+                // @include breakpoints.xxl {
+                //     width: 914px;
+                // }
+            }
+            .title {
+                position: relative;
+            }
+            .subtitle {
+                position: relative;
+                width: 280px;
+            }
+            .reservationBtn {
+                background-color: black;
+                padding: 1px 25px;
+                border-radius: 10px;
+                // margin: 12% 0;
+                margin: 3% 0;
+            }
+            .quote {
+                position: relative;
+                width: 280px;
+                text-align: center;
+            }
+        }
+    }
+}

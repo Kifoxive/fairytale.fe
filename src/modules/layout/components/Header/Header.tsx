@@ -9,7 +9,7 @@ import { config } from 'config';
 import { useAuth } from 'core/auth';
 import { AUTH_ROLE } from 'core/auth/types';
 import { useNonTypedTranslation } from 'core/translation';
-import { LanguageSwitch, Modal, UserInfo } from 'modules/ui';
+import { DropdownMenu, LanguageSwitch, Modal, UserInfo } from 'modules/ui';
 
 import { useLogout } from '../../../../core/auth/hooks/useLogout';
 
@@ -70,21 +70,24 @@ export const Header = () => {
                 </ul>
             </nav>
             <div className={styles.actions}>
-                {/* <LanguageSwitch /> */}
-                {isAuthenticated ? (
-                    <UserInfo
-                        firstName={user?.firstName || ''}
-                        lastName={user?.lastName || ''}
-                        email={user?.email || ''}
-                        //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
-                        // &auto=format&fit=crop&w=2776&q=80"
-                        onLogout={() => setShowLogoutConfirmationPopup(true)}
-                    />
-                ) : (
-                    <IconButton size="medium" onClick={() => navigate(config.routes.login)} color="inherit">
-                        <AccountCircle fontSize="medium" />
-                    </IconButton>
-                )}
+                <DropdownMenu
+                    // firstName={user?.firstName || ''}
+                    // lastName={user?.lastName || ''}
+                    // email={user?.email || ''}
+                    user={user}
+                    //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+                    // &auto=format&fit=crop&w=2776&q=80"
+                    onLogout={() => setShowLogoutConfirmationPopup(true)}
+                    availableRoutes={getAvailableRoutes(user?.role)}
+                />
+                <UserInfo
+                    firstName={user?.firstName || ''}
+                    lastName={user?.lastName || ''}
+                    email={user?.email || ''}
+                    //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+                    // &auto=format&fit=crop&w=2776&q=80"
+                    onLogout={() => setShowLogoutConfirmationPopup(true)}
+                />
             </div>
             <Modal
                 show={showLogoutConfirmationPopup}

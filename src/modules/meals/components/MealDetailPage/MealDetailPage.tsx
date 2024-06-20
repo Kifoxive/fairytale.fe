@@ -40,7 +40,7 @@ export const MealDetailPage = () => {
         }
     };
 
-    if (!response) return <Spinner />;
+    if (!response) return <Spinner fullScreen />;
 
     return (
         <PageContent>

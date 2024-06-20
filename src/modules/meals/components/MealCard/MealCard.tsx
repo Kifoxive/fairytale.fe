@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Edit } from '@mui/icons-material';
 import {
+    Box,
     // CardActionArea,
     // CardActions,
     CardHeader,
@@ -50,8 +51,16 @@ export const MealCard: React.FC<MealCardProps> = ({ data: { meal_id, name, descr
     };
 
     return (
-        <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
+            <Card
+                sx={{
+                    // maxWidth: 345,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    // justifyContent: 'space-between',
+                }}
+            >
                 <CardMedia
                     component="img"
                     height="194"
@@ -61,6 +70,7 @@ export const MealCard: React.FC<MealCardProps> = ({ data: { meal_id, name, descr
                 />
                 <CardHeader
                     title={name}
+                    sx={{ height: '100%', alignItems: 'flex-start' }}
                     action={
                         <IconButton
                             size="medium"
@@ -76,17 +86,14 @@ export const MealCard: React.FC<MealCardProps> = ({ data: { meal_id, name, descr
                     </Typography>
                 </CardHeader>
                 <CardContent>
-                    <Grid container>
-                        <Grid item xs={4}>
-                            <Typography variant="subtitle1">
-                                {/* <LocalOfferOutlined /> */}
-                                {price} {t('common.currencies.eur')}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Typography variant="subtitle1">{weight}</Typography>
-                        </Grid>
-                    </Grid>
+                    <Box sx={{ display: 'flex', gap: 3 }}>
+                        <Typography variant="subtitle1">
+                            {/* <LocalOfferOutlined /> */}
+                            {price} {t('common.currencies.eur')}
+                        </Typography>
+
+                        <Typography variant="subtitle1">{weight}</Typography>
+                    </Box>
                 </CardContent>
                 {/* <CardActions disableSpacing>
                     <ExpandMore
