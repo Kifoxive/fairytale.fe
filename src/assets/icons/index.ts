@@ -1,5 +1,4 @@
 export { AddressesInfoIcon } from './addressesInfo';
-export { IconLineDecoration } from './LineDecoration';
 export { ArrowRightIcon } from './arrowRight';
 export { ArrowTriangleRightIcon } from './arrowTriangleRight';
 export { CalendarIcon } from './calendar';
@@ -30,6 +29,7 @@ export { IconInfo } from './iconInfo';
 export { IconPrint } from './iconPrint';
 export { IconWarning } from './iconWarning';
 export { IconLength } from './length';
+export { IconLineDecoration } from './LineDecoration';
 export { LoaderTableIcon } from './loaderTable';
 export { LocationMarkIcon } from './locationMarkIcon';
 export { LogoIcon } from './logo';

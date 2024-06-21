@@ -1,13 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageContent } from 'modules/layout';
-import styles from './HomePage.module.scss';
 
 import { useDocumentTitle } from '../../core/application/hooks/useDocumentTitle';
-import { Typography } from 'modules/ui';
-import { Button } from '@mui/material';
+import { CarouselSection } from './CarouselSection';
 import { HeroSection } from './HeroSection';
+import { VisitSection } from './VisitSection';
 import { WelcomeSection } from './WelcomeSection';
+
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
     const { t } = useTranslation();
@@ -17,10 +18,8 @@ export const HomePage = () => {
         <PageContent>
             <HeroSection />
             <WelcomeSection />
+            <CarouselSection />
+            {/* <VisitSection /> */}
         </PageContent>
     );
 };
-
-// export const ClassicButton = () => {
-
-// }

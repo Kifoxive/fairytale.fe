@@ -1,15 +1,15 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material';
 import { config } from 'config';
 import { useAppDispatch } from 'hooks';
 import { PageContent } from 'modules/layout';
-import { mealApi,useLazyPostFileQuery, usePostMealMutation } from 'modules/meals/api';
+import { mealApi, useLazyPostFileQuery, usePostMealMutation } from 'modules/meals/api';
 
 import { useDocumentTitle } from '../../../../core/application/hooks/useDocumentTitle';
-import { IMealForm, mealFormSchema } from '../../types';
+import { IMealForm } from '../../types';
 import { MealForm } from '../MealForm';
 
 export const MealNewPage = () => {

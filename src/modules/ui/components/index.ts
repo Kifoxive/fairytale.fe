@@ -1,4 +1,5 @@
 export * from './Checkbox';
+export * from './DropdownMenu';
 export * from './Input';
 export * from './LanguageSwitch';
 export * from './Modal';
@@ -10,4 +11,3 @@ export * from './Spinner';
 export * from './Toast';
 export * from './Typography';
 export * from './UserInfo';
-export * from './DropdownMenu';

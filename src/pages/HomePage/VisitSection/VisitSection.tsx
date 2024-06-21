@@ -4,9 +4,9 @@ import { Box } from '@mui/material';
 import { IconLineDecoration } from 'assets/icons';
 import { Typography } from 'modules/ui';
 
-import styles from './WelcomeSection.module.scss';
+import styles from './VisitSection.module.scss';
 
-export const WelcomeSection = () => {
+export const VisitSection = () => {
     const { t } = useTranslation();
 
     return (
@@ -32,11 +32,9 @@ export const WelcomeSection = () => {
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', maxWidth: '1660px', width: '100%', gap: '10%' }}>
-                {/* <Divider> */}
                 <div className={styles.divider} />
                 <IconLineDecoration />
                 <div className={styles.divider} />
-                {/* </Divider> */}
             </Box>
         </Box>
     );

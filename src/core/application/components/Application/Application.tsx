@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { I18nProvider } from 'react-aria';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createTheme, CssBaseline,ThemeProvider } from '@mui/material';
 import { config } from 'config';
 import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
@@ -19,7 +20,6 @@ import { store } from 'store';
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
 import { MealDetailPage } from '../../../../modules/meals/components/MealDetailPage/MealDetailPage';
 import { ContactPage } from '../../../../pages/ContactPage/ContactPage';
-import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
 ('40');
 

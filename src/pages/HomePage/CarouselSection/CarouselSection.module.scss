@@ -1,0 +1,33 @@
+@use '@styles/utils';
+@use '@styles/colors';
+@use '@styles/breakpoints';
+
+.carouselContainer {
+    // height: 678px;
+    width: 100%;
+    margin-bottom: 100px;
+    .carousel {
+        .carouselItem {
+            // height: 500px;
+            background-color: yellow;
+            display: flex;
+            justify-content: center;
+            // height: 100%;
+
+            // width: 1050px;
+            // height: 678px;
+            // width: 50%;
+            // aspect-ratio: 1/0.5;
+            // margin: 0 88px;
+            // margin: 0 44px;
+            @include breakpoints.sm {
+                margin: 0 4%;
+            }
+
+            @include utils.borderRadius(md);
+            & > img {
+                height: auto;
+            }
+        }
+    }
+}

@@ -45,12 +45,12 @@ export const Header = () => {
                 ];
         }
     };
-
     return (
         <header className={styles.header}>
             <Link to={config.routes.home} className={styles.logo}>
                 <LogoSquareIcon />
             </Link>
+            {/* shows on desktop */}
             <nav className={styles.nav}>
                 <ul className={styles['nav-list']}>
                     {getAvailableRoutes(user?.role).map(([title, path]) => (
@@ -70,24 +70,14 @@ export const Header = () => {
                 </ul>
             </nav>
             <div className={styles.actions}>
+                {/* show on mobile */}
                 <DropdownMenu
-                    // firstName={user?.firstName || ''}
-                    // lastName={user?.lastName || ''}
-                    // email={user?.email || ''}
                     user={user}
-                    //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
-                    // &auto=format&fit=crop&w=2776&q=80"
-                    onLogout={() => setShowLogoutConfirmationPopup(true)}
                     availableRoutes={getAvailableRoutes(user?.role)}
-                />
-                <UserInfo
-                    firstName={user?.firstName || ''}
-                    lastName={user?.lastName || ''}
-                    email={user?.email || ''}
-                    //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
-                    // &auto=format&fit=crop&w=2776&q=80"
                     onLogout={() => setShowLogoutConfirmationPopup(true)}
                 />
+                {/* shows on desktop */}
+                <UserInfo user={user} onLogout={() => setShowLogoutConfirmationPopup(true)} />
             </div>
             <Modal
                 show={showLogoutConfirmationPopup}

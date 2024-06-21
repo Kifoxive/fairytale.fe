@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { useTranslation } from 'react-i18next';
-import styles from './HeroSection.module.scss';
-
-import { Typography } from 'modules/ui';
 import { Button } from '@mui/material';
+import { Typography } from 'modules/ui';
+
+import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
     const { t } = useTranslation();

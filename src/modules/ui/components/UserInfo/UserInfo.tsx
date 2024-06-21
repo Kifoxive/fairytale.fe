@@ -1,50 +1,57 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { AccountCircle, Logout, Settings } from '@mui/icons-material';
-import { Avatar, Button, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
+import { Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
+import { config } from 'config';
+import { IUser } from 'core/auth/types';
 
 import styles from './UserInfo.module.scss';
 
 type UserInfoProps = {
-    email: string;
-    firstName: string;
-    lastName: string;
-    imgSrc?: string;
+    user: IUser | null;
     onLogout: () => void;
 };
 
-export const UserInfo: React.FC<UserInfoProps> = ({ firstName, lastName, onLogout }) => {
+export const UserInfo: React.FC<UserInfoProps> = ({ user, onLogout }) => {
+    const { t } = useTranslation();
+    const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+
+    const handleOpenMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+        if (!user) return navigate(config.routes.login);
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleCloseMenuClick = () => {
         setAnchorEl(null);
     };
 
     return (
         <div className={styles.container}>
-            <div className={styles.details}>
-                <p className={styles.name}>{`${firstName} ${lastName}`}</p>
-            </div>
-            <Tooltip title="Account settings">
+            {user && (
+                <div className={styles.details}>
+                    <p className={styles.name}>{`${user.firstName} ${user.lastName}`}</p>
+                </div>
+            )}
+            <Tooltip title={t('header.accountSettings')}>
                 <IconButton
-                    onClick={handleClick}
-                    size="small"
-                    sx={{ ml: 2 }}
+                    onClick={handleOpenMenuClick}
+                    size="medium"
+                    sx={{ ml: 1 }}
                     aria-controls={open ? 'account-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                 >
-                    <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                    <AccountCircle sx={{ color: 'black' }} />
                 </IconButton>
             </Tooltip>
             <Menu
                 anchorEl={anchorEl}
                 id="account-menu"
                 open={open}
-                onClose={handleClose}
-                onClick={handleClose}
+                onClose={handleCloseMenuClick}
+                onClick={handleCloseMenuClick}
                 PaperProps={{
                     elevation: 0,
                     sx: {
@@ -74,29 +81,29 @@ export const UserInfo: React.FC<UserInfoProps> = ({ firstName, lastName, onLogou
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleCloseMenuClick}>
                     <ListItemIcon>
                         <AccountCircle />
                     </ListItemIcon>
-                    <p className={styles.name}>{`${firstName} ${lastName}`}</p>
+                    <p className={styles.name}>{`${user?.firstName} ${user?.lastName}`}</p>
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleCloseMenuClick}>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
-                    Settings
+                    {t('header.settings')}
                 </MenuItem>
                 <MenuItem
                     onClick={() => {
-                        handleClose();
+                        handleCloseMenuClick();
                         onLogout();
                     }}
                 >
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    Logout
+                    {t('header.logout')}
                 </MenuItem>
             </Menu>
         </div>

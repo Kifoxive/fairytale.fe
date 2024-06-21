@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { Divider, IconButton, ListItemIcon, Menu, MenuItem } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import styles from './DropdownMenu.module.scss';
-import { AccountCircle, Logout, Settings } from '@mui/icons-material';
-import { AUTH_ROLE, IUser } from 'core/auth/types';
-import { config } from 'config';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { AccountCircle, Logout, Settings } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Divider, IconButton, ListItemIcon, Menu, MenuItem } from '@mui/material';
+import { config } from 'config';
+import { AUTH_ROLE, IUser } from 'core/auth/types';
 import { useNonTypedTranslation } from 'core/translation';
 
+import styles from './DropdownMenu.module.scss';
+
 type DropdownMenuProps = {
-    // email: string;
-    // firstName: string;
-    // lastName: string;
-    // imgSrc?: string;
     user: IUser | null;
     availableRoutes: [string, string][];
     onLogout: () => void;
@@ -136,21 +133,6 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ user, availableRoute
             >
                 <MenuIcon fontSize="medium" sx={{ color: 'black' }} />
             </IconButton>
-            {/* {isAuthenticated ? (
-                    <UserInfo
-                        firstName={user?.firstName || ''}
-                        lastName={user?.lastName || ''}
-                        email={user?.email || ''}
-                        //     imgSrc="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
-                        // &auto=format&fit=crop&w=2776&q=80"
-                        onLogout={() => setShowLogoutConfirmationPopup(true)}
-                    />
-                ) : (
-                    <IconButton size="medium" onClick={() => navigate(config.routes.login)} color="inherit">
-                        <AccountCircle fontSize="medium" />
-                    </IconButton>
-                )} */}
-
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
@@ -160,11 +142,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ user, availableRoute
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {/*     <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-
-                {getAvailableMenuItems(user?.role).map((item, index) => item)}
+                {getAvailableMenuItems(user?.role).map((item, index) => React.cloneElement(item, { key: index }))}
             </Menu>
         </div>
     );

@@ -28,8 +28,9 @@
         "resetPassword": "Reset password"
     },
     "header": {
-        "settings": "settings",
-        "logout": "logout"
+        "accountSettings": "Account settings",
+        "settings": "Settings",
+        "logout": "Logout"
     },
     "home": {
         "hero": {
@@ -41,6 +42,11 @@
             "title": "Welcome to the restaurant Fairytale",
             "subtitle1": "“Fairytale” is an oasis of exquisite cuisine and unique atmosphere, located in the heart of the picturesque mountain resort of Bukovel. Our establishment combines modern design, coziness and exquisite dishes that give the taste sensations of unforgettable gastronomic travels.",
             "subtitle2": "We invite you to a delicious vacation to Fairytale, where you can enjoy the author's dishes of our chef, feel the warm atmosphere and enjoy the enchanting views of the mountain peaks. Come to us with your family, friends or as a couple - we will do everything to make your stay at Fairytale an unforgettable experience!"
+        },
+        "visit": {
+            "text": "Visit the restaurant “Tastes of Bukovel” and let yourself enjoy a real gastronomic masterpiece in the most magical corner of the Carpathians!",
+            "kitchenTitle": "Chef and kitchen",
+            "kitchenText": "We chose him as the most demanding gourmets of this country.Our talented chef Elise Khimii knows how to surprise, and these surprises are always right on the money! Kirill has prepared an incredible menu for you. You will want to settle in our restaurant! We are waiting for you! "
         },
         "reservation": "Reservation"
     },

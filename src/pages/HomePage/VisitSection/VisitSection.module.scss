@@ -1,0 +1,26 @@
+@use '@styles/utils';
+@use '@styles/colors';
+@use '@styles/breakpoints';
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    @include breakpoints.sm {
+        margin-bottom: 70px;
+    }
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    @include breakpoints.sm {
+        margin-bottom: 46px;
+    }
+}
+
+.divider {
+    background-color: #111111;
+    height: 1px;
+    // width: 100%;
+    flex-grow: 1;
+}

@@ -2,11 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, YouTube } from '@mui/icons-material';
+import { Box, Grid } from '@mui/material';
 import { config } from 'config';
 import { Typography } from 'modules/ui';
 
 import styles from './Footer.module.scss';
-import { Box, Grid } from '@mui/material';
 
 // type of fixed social media icons list
 type ISocialNetwork = {

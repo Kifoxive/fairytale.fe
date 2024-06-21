@@ -15,6 +15,8 @@ import { useTranslation } from 'react-i18next';
 export type NonTypedTranslation = ReturnType<typeof useNonTypedTranslation>['tnt'];
 
 export const useNonTypedTranslation = () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const { t } = useTranslation();
 
     // @ts-expect-error Ignore type
