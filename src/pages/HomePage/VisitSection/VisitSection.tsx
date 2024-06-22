@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { IconLineDecoration } from 'assets/icons';
 import { Typography } from 'modules/ui';
 
@@ -10,32 +10,26 @@ export const VisitSection = () => {
     const { t } = useTranslation();
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginTop: '10%',
-                marginBottom: '8%',
-                paddingX: 3,
-            }}
-        >
-            <Box sx={{ maxWidth: '1060px' }}>
-                <Typography variant="h1" fontFamily="inder" component="p" className={styles.title}>
-                    {t('home.welcome.title')}
+        <Box className={styles.visitSectionContainer}>
+            <Typography variant="h4" fontFamily="inder" component="p" className={styles.text}>
+                {t('home.visit.text')}
+            </Typography>
+            <Button className={styles.reservationBtn} variant="contained">
+                <Typography variant="h4" fontFamily="inder" color="white">
+                    {t('home.reservation')}
                 </Typography>
-                <Typography variant="h4" fontFamily="inder" className={styles.subtitle}>
-                    {t('home.welcome.subtitle1')}
-                </Typography>
-                <Typography variant="h4" fontFamily="inder" className={styles.subtitle}>
-                    {t('home.welcome.subtitle2')}
-                </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', maxWidth: '1660px', width: '100%', gap: '10%' }}>
+            </Button>
+            <Box className={styles.dividerContainer}>
                 <div className={styles.divider} />
                 <IconLineDecoration />
                 <div className={styles.divider} />
             </Box>
+            <Typography variant="h3" fontFamily="inder" className={styles.title}>
+                {t('home.visit.kitchenTitle')}
+            </Typography>
+            <Typography variant="h4" fontFamily="inder" className={styles.subtitle}>
+                {t('home.visit.kitchenText')}
+            </Typography>
         </Box>
     );
 };

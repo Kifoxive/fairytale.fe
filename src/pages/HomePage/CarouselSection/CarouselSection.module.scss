@@ -5,7 +5,10 @@
 .carouselContainer {
     // height: 678px;
     width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
+    @include breakpoints.sm {
+        margin-bottom: 104px;
+    }
     .carousel {
         .carouselItem {
             // height: 500px;

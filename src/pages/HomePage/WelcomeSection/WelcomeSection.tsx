@@ -21,7 +21,8 @@ export const WelcomeSection = () => {
             }}
         >
             <Box sx={{ maxWidth: '1060px' }}>
-                <Typography variant="h1" fontFamily="inder" component="p" className={styles.title}>
+                {/* <Typography variant="h1" fontFamily="inder" component="p" className={styles.title}> */}
+                <Typography variant="h3" fontFamily="inder" className={styles.title}>
                     {t('home.welcome.title')}
                 </Typography>
                 <Typography variant="h4" fontFamily="inder" className={styles.subtitle}>

@@ -15,7 +15,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0 24px;
         @include breakpoints.sm {
+            padding: 0;
             transform: none;
             align-items: flex-start;
             top: 440px;
@@ -48,6 +50,12 @@
             }
             .title {
                 position: relative;
+                line-height: 120%;
+                margin-bottom: 10px;
+                @include breakpoints.sm {
+                    line-height: normal;
+                    margin-bottom: 0;
+                }
             }
             .subtitle {
                 position: relative;

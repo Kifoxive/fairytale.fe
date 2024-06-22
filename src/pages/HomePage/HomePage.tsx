@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { PageContent } from 'modules/layout';
 
 import { useDocumentTitle } from '../../core/application/hooks/useDocumentTitle';
+import { BookSection } from './BookSection/BookSection';
 import { CarouselSection } from './CarouselSection';
 import { HeroSection } from './HeroSection';
 import { VisitSection } from './VisitSection';
@@ -19,7 +20,8 @@ export const HomePage = () => {
             <HeroSection />
             <WelcomeSection />
             <CarouselSection />
-            {/* <VisitSection /> */}
+            <VisitSection />
+            <BookSection />
         </PageContent>
     );
 };

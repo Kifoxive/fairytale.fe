@@ -1,0 +1,32 @@
+@use '@styles/utils';
+@use '@styles/colors';
+@use '@styles/breakpoints';
+
+.bookSectionContainer {
+    width: 100%;
+    background: url('src/assets/images/skyHouse.png') top / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+    @include breakpoints.sm {
+        padding: 225px 0;
+    }
+    .content {
+        max-width: 1060px;
+        @include utils.padding(x, 6);
+        .title {
+            margin-bottom: 34px;
+            color: colors.$white;
+        }
+        .text {
+            margin-bottom: 34px;
+            color: colors.$white;
+        }
+        .reservationBtn {
+            background-color: black;
+            padding: 1px 25px;
+            border-radius: 10px;
+        }
+    }
+}
