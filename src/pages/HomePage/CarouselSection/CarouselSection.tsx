@@ -33,10 +33,10 @@ export const CarouselSection = () => {
     const [windowSize, setWindowSize] = useState(getWindowSize());
 
     const carouselItems = [
-        'src/assets/images/carouselItem.png',
-        'src/assets/images/carouselItem.png',
-        'src/assets/images/carouselItem.png',
-        'src/assets/images/carouselItem.png',
+        '/src/assets/images/carouselItem.png',
+        '/src/assets/images/carouselItem.png',
+        '/src/assets/images/carouselItem.png',
+        '/src/assets/images/carouselItem.png',
     ];
 
     const responsive = {

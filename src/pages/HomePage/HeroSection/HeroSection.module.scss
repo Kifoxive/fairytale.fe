@@ -3,7 +3,8 @@
 @use '@styles/breakpoints';
 
 .heroContainer {
-    background: url('src/assets/images/cover.png') center / cover no-repeat;
+    // background: url('src/assets/images/cover.png') center / cover no-repeat;
+    background: url('/src/assets/images/cover.png') center / cover no-repeat;
     height: calc(100vh - 60px);
     width: 100%;
     overflow: hidden;
