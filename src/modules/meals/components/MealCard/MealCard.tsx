@@ -54,11 +54,9 @@ export const MealCard: React.FC<MealCardProps> = ({ data: { meal_id, name, descr
         <Grid item lg={3} md={4} sm={6} xs={12}>
             <Card
                 sx={{
-                    // maxWidth: 345,
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    // justifyContent: 'space-between',
                 }}
             >
                 <CardMedia

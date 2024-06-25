@@ -54,6 +54,7 @@ export * from './types';
 export { UnregisteredOnboardingStateIcon } from './unregisteredOnboardingState';
 export { VehiclesInfoIcon } from './vehiclesInfo';
 export { IconWeight } from './weight';
+export { CrossClassicIcon } from './crossClassic';
 
 // function makeReactSvgAttributes(styles: string) {
 //     const properties = styles.split(';');

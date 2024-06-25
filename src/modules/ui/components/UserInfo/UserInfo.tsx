@@ -5,6 +5,7 @@ import { AccountCircle, Logout, Settings } from '@mui/icons-material';
 import { Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
 import { config } from 'config';
 import { IUser } from 'core/auth/types';
+import { LanguageSwitch } from 'modules/ui';
 
 import styles from './UserInfo.module.scss';
 
@@ -29,10 +30,12 @@ export const UserInfo: React.FC<UserInfoProps> = ({ user, onLogout }) => {
 
     return (
         <div className={styles.container}>
-            {user && (
+            {user ? (
                 <div className={styles.details}>
                     <p className={styles.name}>{`${user.firstName} ${user.lastName}`}</p>
                 </div>
+            ) : (
+                <LanguageSwitch />
             )}
             <Tooltip title={t('header.accountSettings')}>
                 <IconButton

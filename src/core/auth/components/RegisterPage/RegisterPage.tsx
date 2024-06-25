@@ -9,7 +9,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { LogoSquareIcon } from 'assets/icons';
 import { useLazyRegisterUserQuery } from 'core/api';
@@ -23,14 +22,15 @@ import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../application/hooks/useDocumentTitle';
 import { RegisterForm } from './types';
 import { registerFormSchema } from './types/index';
+import { Link } from 'react-router-dom';
 
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
+            {/* <Link color="inherit" href="https://mui.com/">
                 Kifoxive
-            </Link>{' '}
+            </Link>{' '} */}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -120,7 +120,7 @@ export const RegisterPage = () => {
 
     return (
         <AnonymousLayout>
-            <Container component="main" maxWidth="xs">
+            <Box maxWidth="xs" sx={{ paddingX: 3 }}>
                 <FormProvider {...methods}>
                     <form onSubmit={handleSubmit(onSubmit, (error) => console.log(error))}>
                         <Box
@@ -167,17 +167,19 @@ export const RegisterPage = () => {
                                 </Button>
                                 <Grid container justifyContent="flex-end">
                                     <Grid item>
-                                        <Link href={config.routes.login} variant="body2">
-                                            {t('register.form.signIn')}
+                                        <Link to={config.routes.login}>
+                                            <Typography variant="subtitle2" color="primary" sx={{ color: '#1770ff' }}>
+                                                {t('register.form.signIn')}
+                                            </Typography>
                                         </Link>
                                     </Grid>
                                 </Grid>
                             </Box>
                         </Box>
-                        <Copyright sx={{ mt: 5 }} />
+                        {/* <Copyright sx={{ mt: 5 }} /> */}
                     </form>
                 </FormProvider>
-            </Container>
+            </Box>
         </AnonymousLayout>
     );
 };

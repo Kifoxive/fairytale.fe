@@ -5,6 +5,7 @@ import { baseQuery } from 'core/api/baseQuery';
 import {
     GetAllMealCategories,
     GetMealCategoriesList,
+    GetMenu,
     GetOneMealCategory,
     PostMealCategory,
     PutMealCategory,
@@ -55,6 +56,14 @@ export const mealCategoryApi = createApi({
             invalidatesTags: (_, error, arg) =>
                 error ? [] : ['MealCategory', { type: 'MealCategoryItem', id: arg.id }],
         }),
+        getMenu: builder.query<GetMenu['response'], GetMenu['request']>({
+            query: (params) => ({
+                url: config.api.endpoints.menu,
+                params,
+                method: 'GET',
+            }),
+            providesTags: ['MealCategory'],
+        }),
     }),
 });
 
@@ -64,4 +73,5 @@ export const {
     useGetOneMealCategoryQuery,
     usePostMealCategoryMutation,
     usePutMealCategoryMutation,
+    useGetMenuQuery,
 } = mealCategoryApi;

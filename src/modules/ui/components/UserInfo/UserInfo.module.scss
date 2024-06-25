@@ -5,7 +5,7 @@
 .container {
     display: none;
     align-items: center;
-    @include breakpoints.sm {
+    @include breakpoints.md {
         display: flex;
     }
     .details {

@@ -39,6 +39,7 @@ export const Header = () => {
             default:
                 return [
                     [config.nav.home, config.routes.home],
+                    [config.nav.menu.page, config.routes.menu.page],
                     [config.nav.reservation.page, config.routes.reservation.page],
                     [config.nav.delivery.page, config.routes.delivery.page],
                     [config.nav.contact, config.routes.contact],

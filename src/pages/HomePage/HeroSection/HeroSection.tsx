@@ -1,12 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { Typography } from 'modules/ui';
+
+import { config } from '../../../config';
 
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+
     return (
         <div className={styles.heroContainer}>
             <div className={styles.heroCircle}>
@@ -19,7 +24,11 @@ export const HeroSection = () => {
                             {t('home.hero.subtitle')}
                         </Typography>
                     </div>
-                    <Button className={styles.reservationBtn} variant="contained">
+                    <Button
+                        onClick={() => navigate(config.routes.reservation.page)}
+                        className={styles.reservationBtn}
+                        variant="contained"
+                    >
                         <Typography variant="h4" fontFamily="inder" color="white">
                             {t('home.reservation')}
                         </Typography>

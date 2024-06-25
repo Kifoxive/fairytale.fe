@@ -1,0 +1,47 @@
+@use '@styles/colors';
+@use '@styles/utils';
+@use '@styles/breakpoints';
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 !important;
+
+    @include breakpoints.sm {
+        border-radius: 11px !important;
+    }
+
+    .previewImg {
+        // margin-bottom: 25px;
+        // border-radius: 11px;
+    }
+    .content {
+        padding: 15px 40px 20px;
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+            @include breakpoints.sm {
+                margin-bottom: 35px;
+            }
+        }
+        .actions {
+            display: flex;
+            align-items: center;
+            // justify-content: space-between;
+            .text {
+            }
+            .viewBtn {
+                background-color: black;
+                padding: 0 16px;
+                border-radius: 3px;
+            }
+            & :nth-child(2) {
+                text-align: center;
+            }
+            & > :last-child {
+                text-align: end;
+            }
+        }
+    }
+}

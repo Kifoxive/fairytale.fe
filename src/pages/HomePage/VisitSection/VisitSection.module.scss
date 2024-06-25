@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include utils.padding(x, 3);
+    @include utils.padding(x, 6);
     max-width: 1060px;
     .text {
         text-align: center;
@@ -17,10 +17,10 @@
         }
     }
     .reservationBtn {
-        background-color: black;
         padding: 1px 25px;
-        border-radius: 10px;
         margin-bottom: 40px;
+        border-radius: 10px;
+        background-color: black !important;
         @include breakpoints.sm {
             margin-bottom: 94px;
         }

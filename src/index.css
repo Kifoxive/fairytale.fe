@@ -4,6 +4,10 @@
     font-family: 'Inter', sans-serif !important;
 }
 
+.react-multiple-carousel__arrow {
+    z-index: 18 !important;
+}
+
 /* Basics */
 
 .mapboxgl-ctrl-geocoder,

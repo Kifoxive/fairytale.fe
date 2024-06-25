@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import { I18nProvider } from 'react-aria';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { createTheme, CssBaseline,ThemeProvider } from '@mui/material';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { config } from 'config';
 import { Authenticated, LoginPage, RegisterPage } from 'core/auth';
 import { ErrorPage } from 'core/error';
@@ -14,7 +14,7 @@ import { Page } from 'modules/layout';
 import { MealCategoryDetailPage, MealCategoryNewPage, MenuTablePage } from 'modules/mealCategories';
 import { MealNewPage } from 'modules/meals';
 import { ReservationPage, ReservationTablePage } from 'modules/reservations';
-import { HomePage } from 'pages';
+import { HomePage, MenuPage } from 'pages';
 import { store } from 'store';
 
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
@@ -32,6 +32,11 @@ const router = createBrowserRouter([
             {
                 path: config.routes.home,
                 element: <HomePage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: config.routes.menu.page,
+                element: <MenuPage />,
                 errorElement: <ErrorPage />,
             },
             {
@@ -88,6 +93,15 @@ const router = createBrowserRouter([
 const theme = createTheme({
     typography: {
         fontFamily: ['Inder', 'sans-serif'].join(','),
+    },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 640,
+            md: 768,
+            lg: 1024,
+            xl: 1280,
+        },
     },
     // palette: {
     //     black: 'black',

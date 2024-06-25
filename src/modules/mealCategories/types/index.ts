@@ -1,4 +1,5 @@
 import { T } from 'core/translation/types';
+import { IMeal } from 'modules/meals';
 import { z } from 'zod';
 
 export const mealCategoryFormSchema = (t: T) =>
@@ -74,5 +75,13 @@ export type PutMealCategory = {
     };
     response: {
         data: IMealCategory;
+    };
+};
+
+export type GetMenu = {
+    request: undefined;
+    response: {
+        data: (IMealCategory & { meals: IMeal[] })[];
+        // totalCount: number;
     };
 };

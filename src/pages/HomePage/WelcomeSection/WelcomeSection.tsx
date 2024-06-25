@@ -17,7 +17,7 @@ export const WelcomeSection = () => {
                 alignItems: 'center',
                 marginTop: '10%',
                 marginBottom: '8%',
-                paddingX: 3,
+                paddingX: '24px',
             }}
         >
             <Box sx={{ maxWidth: '1060px' }}>

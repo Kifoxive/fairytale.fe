@@ -12,6 +12,7 @@
             "detail": "Delivery detail"
         },
         "menu": {
+            "page": "Menu",
             "table": "Menu table"
         },
         "meal": {
@@ -180,7 +181,9 @@
         },
         "meals": {
             "title": "Meals",
-            "addCategory": "+ Add new meal"
+            "addCategory": "+ Add new meal",
+            "view": "View",
+            "close": "Close"
         }
     },
     "meal": {

@@ -29,6 +29,7 @@ export const config = {
             // meal category
             mealCategory: '/meal-category',
             mealCategoryList: '/meal-category/list',
+            menu: '/meal-category/menu',
             // meal
             meal: '/meal',
             mealFile: '/meal/file',
@@ -49,6 +50,7 @@ export const config = {
             detail: '/delivery/:id',
         },
         menu: {
+            page: '/menu',
             table: '/menu/table',
         },
         meal: { detail: '/meal/:id', new: '/meal/new' },
@@ -72,6 +74,7 @@ export const config = {
             detail: 'delivery.detail',
         },
         menu: {
+            page: 'menu.page',
             table: 'menu.table',
         },
         meal: {

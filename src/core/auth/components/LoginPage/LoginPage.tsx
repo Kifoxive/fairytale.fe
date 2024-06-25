@@ -8,7 +8,6 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { LogoSquareIcon } from 'assets/icons';
 import { useLoginUserMutation } from 'core/api';
@@ -18,6 +17,7 @@ import { AnonymousLayout } from 'modules/layout';
 import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../application/hooks/useDocumentTitle';
 import { LoginForm, loginFormSchema } from './types';
+import { Link } from 'react-router-dom';
 
 // import styles from './LoginPage.module.scss';
 
@@ -25,9 +25,9 @@ function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
+            {/* <Link color="inherit" href="https://mui.com/">
                 Kifoxive
-            </Link>{' '}
+            </Link>{' '} */}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -74,7 +74,7 @@ export const LoginPage = () => {
                             md={7}
                             sx={{
                                 // backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-                                backgroundImage: 'url(src/assets/images/skyHouse.png)',
+                                backgroundImage: 'url(/src/assets/images/skyHouse.png)',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundColor: (t) =>
                                     t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -86,7 +86,7 @@ export const LoginPage = () => {
                             <Box
                                 sx={{
                                     my: 8,
-                                    mx: 4,
+                                    mx: 3,
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
@@ -115,19 +115,29 @@ export const LoginPage = () => {
                                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                                         {t('login.form.signIn')}
                                     </Button>
-                                    <Grid container>
-                                        <Grid item xs>
-                                            <Link href={config.routes.resetPassword} variant="body2">
-                                                {t('login.form.forgotPassword')}
-                                            </Link>
-                                        </Grid>
+                                    <Grid container justifyContent="flex-end">
                                         <Grid item>
-                                            <Link href={config.routes.register} variant="body2">
-                                                {t('login.form.signUp')}
+                                            {/* <Link to={config.routes.resetPassword}>
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    color="primary"
+                                                    sx={{ color: '#1770ff' }}
+                                                >
+                                                       {t('login.form.forgotPassword')}
+                                                </Typography>
+                                            </Link> */}
+                                            <Link to={config.routes.register}>
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    color="primary"
+                                                    sx={{ color: '#1770ff' }}
+                                                >
+                                                    {t('login.form.signUp')}
+                                                </Typography>
                                             </Link>
                                         </Grid>
                                     </Grid>
-                                    <Copyright sx={{ mt: 5 }} />
+                                    {/* <Copyright sx={{ mt: 5 }} /> */}
                                 </Box>
                             </Box>
                         </Grid>

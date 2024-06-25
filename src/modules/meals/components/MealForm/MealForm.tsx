@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Hidden, InputAdornment, Paper } from '@mui/material';
 import { Grid, Typography } from '@mui/material';
+import { showcaseMissingImage } from 'assets/images';
 import { t } from 'i18next';
 import { SelectField, TextField } from 'modules/form';
 import { useGetMealCategoryListQuery } from 'modules/mealCategories';
@@ -105,7 +106,7 @@ export const MealForm: React.FC<MealFormProps> = ({ fetchedData, onSubmitData })
                                         src={
                                             (imgFile && URL.createObjectURL(imgFile)) ||
                                             fetchedData?.imgUrl ||
-                                            '/src/assets/images/showcase-missing-image.webp'
+                                            showcaseMissingImage
                                         }
                                         alt={name}
                                     />

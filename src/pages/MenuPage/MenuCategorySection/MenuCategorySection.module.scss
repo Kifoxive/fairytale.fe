@@ -1,0 +1,8 @@
+@use '@styles/colors';
+@use '@styles/utils';
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}

@@ -1,0 +1,76 @@
+@use '@styles/colors';
+@use '@styles/utils';
+@use '@styles/breakpoints';
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffffb3;
+    z-index: 32;
+    @include breakpoints.sm {
+        align-items: center;
+    }
+    .container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-width: 618px;
+        width: 100%;
+        border-radius: 11px 11px 0 0;
+        box-shadow: none;
+        border: 1px solid #111111;
+        @include breakpoints.sm {
+            border-radius: 11px;
+        }
+        .closeIcon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            overflow: auto;
+            background-color: colors.$white;
+            border-radius: 7px;
+            border: 1px solid #111111;
+            @include breakpoints.sm {
+                top: 35px;
+                right: 35px;
+            }
+        }
+        .content {
+            padding: 15px 24px 20px;
+            @include breakpoints.sm {
+                padding: 15px 85px 20px;
+            }
+            .cardHeader {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 18px;
+            }
+            .description {
+                margin-bottom: 29px;
+            }
+            .actions {
+                display: flex;
+                align-items: center;
+                .text {
+                }
+                .viewBtn {
+                    background-color: black;
+                    padding: 0 16px;
+                    border-radius: 3px;
+                }
+                & :nth-child(2) {
+                    text-align: center;
+                }
+                & > :last-child {
+                    text-align: end;
+                }
+            }
+        }
+    }
+}

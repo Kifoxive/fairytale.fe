@@ -6,7 +6,7 @@
     // flex-shrink: 0;
     position: fixed;
     top: 0;
-    z-index: 1001;
+    z-index: 20;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,7 @@
         display: none;
         gap: utils.sizer(2);
         align-items: center;
-        @include breakpoints.sm {
+        @include breakpoints.md {
             display: flex;
         }
         &-list {

@@ -7,6 +7,7 @@ import Carousel from 'react-multi-carousel';
 import { Box } from '@mui/material';
 
 import styles from './CarouselSection.module.scss';
+import { carouselImage1 } from 'assets/images';
 
 function getWindowSize() {
     const { innerWidth, innerHeight } = window;
@@ -32,12 +33,7 @@ export const CarouselSection = () => {
 
     const [windowSize, setWindowSize] = useState(getWindowSize());
 
-    const carouselItems = [
-        '/src/assets/images/carouselItem.png',
-        '/src/assets/images/carouselItem.png',
-        '/src/assets/images/carouselItem.png',
-        '/src/assets/images/carouselItem.png',
-    ];
+    const carouselItems = [carouselImage1, carouselImage1, carouselImage1, carouselImage1];
 
     const responsive = {
         superLargeDesktop: {
@@ -93,8 +89,8 @@ export const CarouselSection = () => {
                 className={styles.carousel}
             >
                 {carouselItems.map((item, index) => (
-                    <div className={styles.carouselItem}>
-                        <img src={item} key={index} />
+                    <div className={styles.carouselItem} key={index}>
+                        <img src={item} />
                     </div>
                 ))}
             </Carousel>
