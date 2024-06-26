@@ -4,8 +4,9 @@ import { Button, Card, CardHeader, CardMedia, Grid, IconButton, Paper } from '@m
 import { IMeal } from 'modules/meals';
 import { Typography } from 'modules/ui';
 
-import styles from './SelectedMealCard.module.scss';
 import { CrossClassicIcon } from '../../../assets/icons/crossClassic';
+
+import styles from './SelectedMealCard.module.scss';
 
 interface ISelectedMealCardProps {
     data: IMeal;
@@ -18,7 +19,7 @@ export const SelectedMealCard: React.FC<ISelectedMealCardProps> = ({ data, onClo
 
     return (
         <div className={styles.modal} onClick={onClose}>
-            <Card className={styles.container}>
+            <Card className={styles.container} onClick={(e) => e.stopPropagation()}>
                 <IconButton size="medium" className={styles.closeIcon}>
                     <CrossClassicIcon />
                 </IconButton>

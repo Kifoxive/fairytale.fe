@@ -7,44 +7,51 @@
     flex-direction: column;
     background-color: colors.$primary-black;
     .info {
-        @include utils.padding(x, 4);
+        @include utils.padding(x, 3);
         @include utils.padding(y, 8);
-        justify-content: center;
         .infoSection {
-            // max-width: 450px;
             display: flex;
             flex-direction: column;
-            // align-items: flex-start;
-            // align-items: center;
-            // @include breakpoints.sm {
-            // }
-
-            .title {
-                @include utils.margin(bottom, 4);
-            }
-            .socialMedia {
-                display: flex;
-                flex-direction: column;
-                gap: utils.sizer(1);
-                &_item {
+            align-items: center;
+            width: 100%;
+            .infoSectionWrapper {
+                max-width: 350px;
+                width: 100%;
+                @include breakpoints.sm {
+                    width: auto;
+                    max-width: auto;
+                }
+                .title {
+                    // text-align: center;
+                    // @include breakpoints.sm {
+                    //     text-align: start;
+                    // }
+                    @include utils.margin(bottom, 4);
+                }
+                .socialMedia {
                     display: flex;
-                    align-items: center;
-                    gap: utils.sizer(2);
-                    color: white;
-                    &:hover {
-                        opacity: 0.6;
+                    flex-direction: column;
+                    gap: utils.sizer(1);
+                    &_item {
+                        display: flex;
+                        align-items: center;
+                        gap: utils.sizer(2);
+                        color: white;
+                        &:hover {
+                            opacity: 0.6;
+                        }
                     }
                 }
-            }
-            .timetable {
-                display: flex;
-                flex-direction: column;
-                .day {
+                .timetable {
                     display: flex;
-                    justify-content: space-between;
-                    gap: 100px;
-                    p {
-                        white-space: nowrap;
+                    flex-direction: column;
+                    .day {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 100px;
+                        p {
+                            white-space: nowrap;
+                        }
                     }
                 }
             }

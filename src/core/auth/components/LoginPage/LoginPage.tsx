@@ -2,6 +2,7 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CssBaseline, Paper } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
@@ -17,7 +18,6 @@ import { AnonymousLayout } from 'modules/layout';
 import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../application/hooks/useDocumentTitle';
 import { LoginForm, loginFormSchema } from './types';
-import { Link } from 'react-router-dom';
 
 // import styles from './LoginPage.module.scss';
 

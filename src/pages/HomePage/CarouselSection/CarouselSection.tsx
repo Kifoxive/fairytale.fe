@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Carousel from 'react-multi-carousel';
 import { Box } from '@mui/material';
+import { carouselImage1 } from 'assets/images';
 
 import styles from './CarouselSection.module.scss';
-import { carouselImage1 } from 'assets/images';
 
 function getWindowSize() {
     const { innerWidth, innerHeight } = window;

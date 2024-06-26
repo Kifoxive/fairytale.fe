@@ -63,7 +63,7 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <Grid container spacing={4} className={styles.info}>
                 <Grid item xs={12} sm={4} className={styles.infoSection}>
-                    <Box>
+                    <Box className={styles.infoSectionWrapper}>
                         <Typography className={styles.title} variant="h4" color="white" fontWeight="semibold">
                             {t('footer.contactInfo.title')}
                         </Typography>
@@ -83,7 +83,7 @@ export const Footer = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={4} className={styles.infoSection}>
-                    <Box>
+                    <Box className={styles.infoSectionWrapper}>
                         <Typography className={styles.title} variant="h4" color="white" fontWeight="semibold">
                             {t('footer.timetable.title')}
                         </Typography>
@@ -110,7 +110,7 @@ export const Footer = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={4} className={styles.infoSection}>
-                    <Box>
+                    <Box className={styles.infoSectionWrapper}>
                         <Typography className={styles.title} variant="h4" color="white" fontWeight="semibold">
                             {t('footer.socialMedia.title')}
                         </Typography>

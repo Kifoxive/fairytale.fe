@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CssBaseline } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
@@ -22,7 +23,6 @@ import { config } from '../../../../config/index';
 import { useDocumentTitle } from '../../../application/hooks/useDocumentTitle';
 import { RegisterForm } from './types';
 import { registerFormSchema } from './types/index';
-import { Link } from 'react-router-dom';
 
 function Copyright(props: any) {
     return (

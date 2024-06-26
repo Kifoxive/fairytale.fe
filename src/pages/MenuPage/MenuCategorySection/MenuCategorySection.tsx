@@ -5,9 +5,9 @@ import { IMeal } from 'modules/meals';
 import { Typography } from 'modules/ui';
 
 import { MenuCard } from '../MenuCard';
+import { SelectedMealCard } from '../SelectedMealCard/SelectedMealCard';
 
 import styles from './MenuCategorySection.module.scss';
-import { SelectedMealCard } from '../SelectedMealCard/SelectedMealCard';
 
 interface IMenuCategorySectionProps {
     data: IMealCategory & { meals: IMeal[] };

@@ -15,6 +15,7 @@ export { ChevronLeftIcon } from './chevronLeft';
 export { ChevronRightIcon } from './chevronRight';
 export { IconClock } from './clock';
 export { CrossIcon } from './cross';
+export { CrossClassicIcon } from './crossClassic';
 export { ExclamationIcon } from './exclamation';
 export { EyeIOffIcon } from './eyeOffIcon';
 export { FilterIcon } from './filter';
@@ -54,7 +55,6 @@ export * from './types';
 export { UnregisteredOnboardingStateIcon } from './unregisteredOnboardingState';
 export { VehiclesInfoIcon } from './vehiclesInfo';
 export { IconWeight } from './weight';
-export { CrossClassicIcon } from './crossClassic';
 
 // function makeReactSvgAttributes(styles: string) {
 //     const properties = styles.split(';');
