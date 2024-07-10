@@ -47,7 +47,7 @@
         "visit": {
             "text": "Visit the restaurant “Tastes of Bukovel” and let yourself enjoy a real gastronomic masterpiece in the most magical corner of the Carpathians!",
             "kitchenTitle": "Chef and kitchen",
-            "kitchenText": "We chose him as the most demanding gourmets of this country.Our talented chef Elise Khimii knows how to surprise, and these surprises are always right on the money! Kirill has prepared an incredible menu for you. You will want to settle in our restaurant! We are waiting for you! "
+            "kitchenText": "We chose him as the most demanding gourmets of this country. Our talented chef Elise Khimii knows how to surprise, and these surprises are always right on the money! Kirill has prepared an incredible menu for you. You will want to settle in our restaurant! We are waiting for you! "
         },
         "book": {
             "title": "Book the best table or come right in!",
@@ -272,5 +272,11 @@
             "unsolved": "Unsolved"
         },
         "select": "Select"
-    }
+    },
+    "confirmEmail": {
+        "title": "Email confirmation",
+        "confirmed": "Email was confirmed successfully",
+        "error": "something went wrong"
+    },
+    "settingsPage": {}
 }

@@ -23,6 +23,7 @@ export const config = {
             refresh: '/auth/refresh',
             me: '/auth/me',
             logout: '/auth/logout',
+            confirmEmail: '/auth/confirmEmail',
             // reservation
             reservation: '/reservation',
             changeReservationStatus: '/reservation/change-status',
@@ -60,6 +61,7 @@ export const config = {
         login: '/login',
         register: '/register',
         resetPassword: '/resetPassword',
+        confirmEmail: '/confirmEmail/:linkId',
     },
     nav: {
         home: 'home',

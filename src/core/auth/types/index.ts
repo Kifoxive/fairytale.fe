@@ -5,7 +5,7 @@ export interface IUser {
     lastName: string | null;
     role: AUTH_ROLE;
     avatarUrl: string | null;
-    isActivated: boolean;
+    isconfirmd: boolean;
     createdAt: number;
     updatedAt: number;
 }

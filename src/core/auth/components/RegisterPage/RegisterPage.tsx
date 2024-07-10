@@ -47,9 +47,9 @@ export const RegisterPage = () => {
     const [isEmailAvailable, setIsEmailAvailable] = useState(true);
 
     const formDefaultValues = {
-        firstName: 'Yuriy',
-        lastName: 'Pereginyak',
-        email: 'palianycia@seznam.cz',
+        firstName: 'Yuriy 2',
+        lastName: 'Pereginyak 2',
+        email: 'yura835.ru@gmail.com',
         password: '12345678',
     };
 

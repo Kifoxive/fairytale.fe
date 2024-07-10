@@ -32,7 +32,7 @@ export const reservationApi = createApi({
             query: (body) => ({
                 url: config.api.endpoints.changeReservationStatus,
                 body,
-                method: 'POST',
+                method: 'PATCH',
             }),
             invalidatesTags: (_, error, arg) =>
                 error ? [] : ['Reservation', { type: 'ReservationItem', id: arg.data.reservation_id }],

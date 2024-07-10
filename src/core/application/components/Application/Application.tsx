@@ -14,7 +14,7 @@ import { Page } from 'modules/layout';
 import { MealCategoryDetailPage, MealCategoryNewPage, MenuTablePage } from 'modules/mealCategories';
 import { MealNewPage } from 'modules/meals';
 import { ReservationPage, ReservationTablePage } from 'modules/reservations';
-import { HomePage, MenuPage } from 'pages';
+import { ConfirmEmailPage, HomePage, MenuPage } from 'pages';
 import { store } from 'store';
 
 import { DeliveryPage } from '../../../../modules/deliveries/components/DeliveryPage/DeliveryPage';
@@ -52,6 +52,11 @@ const router = createBrowserRouter([
             {
                 path: config.routes.contact,
                 element: <ContactPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: config.routes.confirmEmail,
+                element: <ConfirmEmailPage />,
                 errorElement: <ErrorPage />,
             },
         ],

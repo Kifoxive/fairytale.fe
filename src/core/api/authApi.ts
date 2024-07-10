@@ -60,6 +60,14 @@ export const authApi = createApi({
                 };
             },
         }),
+        confirmEmail: builder.query<{ success: boolean }, { linkId: string }>({
+            query({ linkId }) {
+                return {
+                    url: `${config.api.endpoints.confirmEmail}/${linkId}`,
+                    method: 'POST',
+                };
+            },
+        }),
     }),
 });
 
@@ -69,4 +77,5 @@ export const {
     useRefreshTokenMutation,
     useGetMeQuery,
     useLazyLogoutUserQuery,
+    useConfirmEmailQuery,
 } = authApi;
